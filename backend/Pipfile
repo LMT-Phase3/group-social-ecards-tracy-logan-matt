@@ -11,6 +11,8 @@ django-extensions = "*"
 django-debug-toolbar = "*"
 werkzeug = "*"
 django-environ = "*"
+djangorestframework = "*"
+markdown = "*"
 
 [requires]
 python_version = "3.8"
