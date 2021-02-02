@@ -38,7 +38,7 @@ function App () {
             <Nav.Link>Home</Nav.Link>
             <Nav.Link>Create a Card</Nav.Link>
             <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
-              <NavDropdown.Item onClick={() => showCards(fakeFriendsCards)}>My Cards
+              <NavDropdown.Item onClick={() => showCards(fakeCards)}>My Cards
                 {/* <NavDropdown.Item onClick={() => showCards(1)}>My Liked Cards</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => showCards(2)}>My Received Cards</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => showCards(3)}>My Sent Cards</NavDropdown.Item> */}
