@@ -9,11 +9,18 @@ import LoginComponent from './components/LoginComponent'
 function App () {
   const [username, setUsername] = useState()
   const [token, setToken] = useState()
+  const [listCards, setCards] = useState(0)
 
   function setAuth (username, token) {
     setUsername(username)
     setToken(token)
   }
+
+  // Make this work like a filter to select which card list to present... can be a render of all Cards if...
+  function showCards (filter) {
+    setCards(filter) // instead of a boolean make this a choice
+  }
+
   return (
     <>
       <Navbar bg='light' expand='lg'>
@@ -24,7 +31,7 @@ function App () {
             <Nav.Link href='#home'>Home</Nav.Link>
             <Nav.Link href='#link'>Link</Nav.Link>
             <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
-              <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => showCards(1)} href='#action/3.1'>My Cards</NavDropdown.Item>
               <NavDropdown.Item href='#action/3.2'>Another action</NavDropdown.Item>
               <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
               <NavDropdown.Divider />
@@ -40,7 +47,7 @@ function App () {
             : <LoginComponent setAuth={setAuth} />}
         </Navbar.Collapse>
       </Navbar>
-
+      {((listCards === 1) && token) && (<h3>Here is my Cards</h3>)}
     </>
   )
 }
