@@ -1,5 +1,4 @@
 .jumbotron {
-  background-color: yellow;
   background-image: url("../src/images/mendala2.jpg");
   background-image: linear-gradient( #76ec7ac9, #050e0582);
   background-size: cover;
@@ -9,7 +8,7 @@
 }
 
 .jumbotron-container {
-  background-color: rgba(11, 133, 133, 0.408);
+  background-color: rgba(19, 140, 170, 0.408);
   color: rgba(220, 230, 220, 0.997);
 }
 
@@ -18,7 +17,7 @@
 }
 
 .navbar {
-  background-image: linear-gradient( #76ec7ac9, #050e0582);
+  background-image: linear-gradient( #092880c9, #050e0582);
   /* height: 10vmin; */
   margin-bottom: 10px;
 }
