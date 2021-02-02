@@ -1,23 +1,36 @@
-// import Navbar from 'react-bootstrap/Navbar'
 import Form from 'react-bootstrap/Form'
-// import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
+// import { login } from '../api'   //HOLD FOR LATER
 
 const LoginComponent = ({ setAuth }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  // const [errors, setErrors] = useState()
   function handleSubmit (event) {
     event.preventDefault()
     console.log(username, password)
     console.log('Submitting')
     setAuth(username, '1234')
+    // login(username, password)
+    //   .then(data => {
+    //     if (data && data.auth_token) {
+    //       setAuth(username, data.auth_token)
+    //     }
+    //   })
+    //   .catch(error => {
+    //     setErrors(error.message)
+    //   })
   }
   return (
+
     <>
-      <h2>Login</h2>
+      <div>Login</div>
       <Form onSubmit={handleSubmit} inline>
+        {/* {errors && (
+          <div className='bg-red white pa3'>{errors}</div>
+        )} */}
         <FormControl
           type='text'
           placeholder='Username'
