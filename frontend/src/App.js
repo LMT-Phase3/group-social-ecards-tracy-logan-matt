@@ -69,8 +69,7 @@ function App () {
           <Container className='jumbotron-container'>
             <h1 className='splash-title'>Welcome to Card Circle</h1>
             <p>
-              This is a modified jumbotron that occupies the entire horizontal space of
-              its parent.
+              A space where you can share all your greetings with friends.
             </p>
           </Container>
         </Jumbotron>
