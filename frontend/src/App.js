@@ -35,8 +35,8 @@ function App () {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <Nav.Link href='#home'>Home</Nav.Link>
-            <Nav.Link href='#link'>Link</Nav.Link>
+            <Nav.Link>Home</Nav.Link>
+            <Nav.Link>Create a Card</Nav.Link>
             <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
               <NavDropdown.Item onClick={() => showCards(fakeFriendsCards)}>My Cards
                 {/* <NavDropdown.Item onClick={() => showCards(1)}>My Liked Cards</NavDropdown.Item>
@@ -44,9 +44,9 @@ function App () {
                 <NavDropdown.Item onClick={() => showCards(3)}>My Sent Cards</NavDropdown.Item> */}
               </NavDropdown.Item>
               <NavDropdown.Item onClick={() => showCards(fakeFriendsCards)}>Friends Cards</NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
+              <NavDropdown.Item>Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href='#action/3.4'>Separated link</NavDropdown.Item>
+              <NavDropdown.Item>Separated link</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           {/* <Form inline>
@@ -58,14 +58,12 @@ function App () {
             : <LoginComponent setAuth={setAuth} />}
         </Navbar.Collapse>
       </Navbar>
-      {(listCards === fakeCards) && token && (
+      {token && (
         <>
-          <h3>All the Cards</h3>
+          <h3 className='ml-sm-4'>All the Cards</h3>
           <CardList listCards={listCards} />
         </>
       )}
-      {((listCards === 1) && token) && (<h3>Here is my Cards</h3>)}
-      {((listCards === 2) && token) && (<h3>Here are friends Cards</h3>)}
       {(token === undefined) && (
         <Jumbotron className='animate__animated animate__fadeInLeft' fluid>
           <Container className='jumbotron-container'>
