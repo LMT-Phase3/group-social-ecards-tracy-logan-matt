@@ -16,3 +16,9 @@
 .animate__animated.animate__fadeInLeft {
   --animate-duration: 2s;
 }
+
+.navbar {
+  background-image: linear-gradient( #76ec7ac9, #050e0582);
+  /* height: 10vmin; */
+  margin-bottom: 10px;
+}

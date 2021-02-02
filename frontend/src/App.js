@@ -6,12 +6,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Container from 'react-bootstrap/Container'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import LoginComponent from './components/LoginComponent'
+import CardList from './components/CardList'
+import { fakeCards, fakeFriendsCards } from './fakeCards'
 // import Button from 'react-bootstrap/Button'
 
 function App () {
   const [username, setUsername] = useState()
   const [token, setToken] = useState()
-  const [listCards, setCards] = useState(0)
+  const [listCards, setCards] = useState(fakeCards)
 
   function setAuth (username, token) {
     setUsername(username)
@@ -33,18 +35,18 @@ function App () {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <Nav.Link href='#home'>Home</Nav.Link>
-            <Nav.Link href='#link'>Link</Nav.Link>
+            <Nav.Link>Home</Nav.Link>
+            <Nav.Link>Create a Card</Nav.Link>
             <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
-              <NavDropdown.Item onClick={() => showCards(1)}>My Cards
-                <NavDropdown.Item onClick={() => showCards(1)}>My Liked Cards</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => showCards(fakeCards)}>My Cards
+                {/* <NavDropdown.Item onClick={() => showCards(1)}>My Liked Cards</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => showCards(2)}>My Received Cards</NavDropdown.Item>
-                <NavDropdown.Item onClick={() => showCards(3)}>My Sent Cards</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => showCards(3)}>My Sent Cards</NavDropdown.Item> */}
               </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => showCards(2)}>Friends Cards</NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => showCards(fakeFriendsCards)}>Friends Cards</NavDropdown.Item>
+              <NavDropdown.Item>Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href='#action/3.4'>Separated link</NavDropdown.Item>
+              <NavDropdown.Item>Separated link</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           {/* <Form inline>
@@ -56,16 +58,18 @@ function App () {
             : <LoginComponent setAuth={setAuth} />}
         </Navbar.Collapse>
       </Navbar>
-      {((listCards === 0) && token && (<h3>All the Cards</h3>))}
-      {((listCards === 1) && token) && (<h3>Here is my Cards</h3>)}
-      {((listCards === 2) && token) && (<h3>Here are friends Cards</h3>)}
+      {token && (
+        <>
+          <h3 className='ml-sm-4'>All the Cards</h3>
+          <CardList listCards={listCards} />
+        </>
+      )}
       {(token === undefined) && (
         <Jumbotron className='animate__animated animate__fadeInLeft' fluid>
           <Container className='jumbotron-container'>
             <h1 className='splash-title'>Welcome to Card Circle</h1>
             <p>
-              This is a modified jumbotron that occupies the entire horizontal space of
-              its parent.
+              A space where you can share all your greetings with friends.
             </p>
           </Container>
         </Jumbotron>
