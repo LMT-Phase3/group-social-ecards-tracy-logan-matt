@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import Container from 'react-bootstrap/Container'
+import Jumbotron from 'react-bootstrap/Jumbotron'
 import LoginComponent from './components/LoginComponent'
 // import Button from 'react-bootstrap/Button'
 
@@ -57,6 +59,17 @@ function App () {
       {((listCards === 0) && token && (<h3>All the Cards</h3>))}
       {((listCards === 1) && token) && (<h3>Here is my Cards</h3>)}
       {((listCards === 2) && token) && (<h3>Here are friends Cards</h3>)}
+      {(token === undefined) && (
+        <Jumbotron className='animate__animated animate__fadeInLeft' fluid>
+          <Container className='jumbotron-container'>
+            <h1 className='splash-title'>Welcome to Card Circle</h1>
+            <p>
+              This is a modified jumbotron that occupies the entire horizontal space of
+              its parent.
+            </p>
+          </Container>
+        </Jumbotron>
+      )}
     </>
   )
 }

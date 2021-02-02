@@ -1,38 +1,18 @@
-.App {
-  text-align: center;
+.jumbotron {
+  background-color: yellow;
+  background-image: url("../src/images/mendala2.jpg");
+  background-image: linear-gradient( #76ec7ac9, #050e0582);
+  background-size: cover;
+  height: 60vh;
+  padding-top: 100px;
+  margin-top: 60px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.jumbotron-container {
+  background-color: rgba(11, 133, 133, 0.408);
+  color: rgba(220, 230, 220, 0.997);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.animate__animated.animate__fadeInLeft {
+  --animate-duration: 2s;
 }
