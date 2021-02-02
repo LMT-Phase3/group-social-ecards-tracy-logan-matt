@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'corsheaders',
     
 
     # Project-specific
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -155,3 +157,5 @@ REST_FRAMEWORK = {
     #         'rest_framework.permissions.IsAuthenticated',
     # ]
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
