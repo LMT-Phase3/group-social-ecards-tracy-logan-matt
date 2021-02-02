@@ -36,7 +36,11 @@ function App () {
             <Nav.Link href='#home'>Home</Nav.Link>
             <Nav.Link href='#link'>Link</Nav.Link>
             <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
-              <NavDropdown.Item onClick={() => showCards(1)}>My Cards</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => showCards(1)}>My Cards
+                <NavDropdown.Item onClick={() => showCards(1)}>My Liked Cards</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => showCards(2)}>My Received Cards</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => showCards(3)}>My Sent Cards</NavDropdown.Item>
+              </NavDropdown.Item>
               <NavDropdown.Item onClick={() => showCards(2)}>Friends Cards</NavDropdown.Item>
               <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
               <NavDropdown.Divider />
