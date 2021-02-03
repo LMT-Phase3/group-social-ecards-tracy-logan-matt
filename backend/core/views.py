@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from .serializers import UserSerializer, CardSerializer
 from rest_framework.response import Response 
 from core.models import Card, User
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
 # Create your views here.
 class TestView(APIView):
@@ -24,3 +25,10 @@ class CardListView(APIView):
             return Response(serializer.data)
 
         return Response(serializer.errors)
+
+
+class UserCardView(APIView):
+    def get(self, request):
+        cards = self.request.user.cards.all()
+        serializer = CardSerializer(cards, many=True)
+        return Response(serializer.data)
