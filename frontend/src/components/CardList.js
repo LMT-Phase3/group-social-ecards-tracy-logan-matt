@@ -34,7 +34,7 @@ const CardList = ({ token }) => {
         <Route path='/card-detail'>
           <>
             <h3 className='ml-sm-4'>Card Detail</h3>
-            <CardDetail token={token} id={1} />
+            <CardDetail token={token} id='1' />
           </>
         </Route>
       </Switch>

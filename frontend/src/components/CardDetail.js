@@ -8,7 +8,7 @@ const CardDetail = ({ token, id }) => {
     getCards(token).then(cards => setCards(cards))
   }, [token])
 
-  const card = cards[id]
+  const card = cards[0]
 
   if (!token) {
     return <Redirect to='/login' />
