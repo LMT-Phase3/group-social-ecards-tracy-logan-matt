@@ -6,7 +6,7 @@ const CardDetail = ({ token, pk }) => {
   const [card, setCard] = useState([])
   useEffect(() => {
     getCardDetail(token, pk).then(card => setCard(card))
-  }, [token])
+  }, [token, pk])
 
   if (!token) {
     return <Redirect to='/login' />
