@@ -10,6 +10,7 @@ import Register from './components/Register'
 import CardList from './components/CardList'
 // import { fakeCards, fakeFriendsCards } from './fakeCards'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
+import { LinkContainer } from 'react-router-bootstrap'
 
 function App () {
   const [username, setUsername] = useState()
@@ -28,16 +29,31 @@ function App () {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <Nav.Link>Home</Nav.Link>
-            <Nav.Link>Create a Card</Nav.Link>
+            <LinkContainer to='/'>
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/register'>
+              <Nav.Link>Create A Card</Nav.Link>
+            </LinkContainer>
             <NavDropdown title='Cards' id='basic-nav-dropdown'>
-              <NavDropdown.Item>My Cards
+              <NavDropdown.Item>
+                <LinkContainer to='/'>
+                  <Nav.Link>My Cards</Nav.Link>
+                </LinkContainer>
                 {/* <NavDropdown.Item onClick={() => showCards(1)}>My Liked Cards</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => showCards(2)}>My Received Cards</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => showCards(3)}>My Sent Cards</NavDropdown.Item> */}
               </NavDropdown.Item>
-              <NavDropdown.Item>Friends Cards</NavDropdown.Item>
-              <NavDropdown.Item>Something</NavDropdown.Item>
+              <NavDropdown.Item>
+                <LinkContainer to='/register'>
+                  <Nav.Link>Friends Cards</Nav.Link>
+                </LinkContainer>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <LinkContainer to='/'>
+                  <Nav.Link>Something</Nav.Link>
+                </LinkContainer>
+              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>Separated link</NavDropdown.Item>
             </NavDropdown>
