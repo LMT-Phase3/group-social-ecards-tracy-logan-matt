@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
 from core import views
+from core import views as core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/test/', views.TestView.as_view()),
     path('api/auth/', include('djoser.urls')),
-    path('api/auth/', include('djoser.urls.authtoken'))
+    path('api/auth/', include('djoser.urls.authtoken')),
+    path('api/cards/', core_views.CardListView.as_view(), name='card-list')
 ]
 
 if settings.DEBUG:
