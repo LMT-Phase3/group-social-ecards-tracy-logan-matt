@@ -24,7 +24,7 @@ function App () {
   return (
     <Router>
       <Navbar bg='light' expand='lg'>
-        <Navbar.Brand>Social Circle Cards</Navbar.Brand>
+        <Navbar.Brand>Cards with Friends</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
@@ -78,8 +78,16 @@ function App () {
             </>
           )}
         </Route>
-      </Switch>
 
+      </Switch>
+      {/* <Switch>
+        <Route path='/card-detail'>
+          <>
+            <h3 className='ml-sm-4'>Card Detail</h3>
+            <CardDetail token={token} id={1} />
+          </>
+        </Route>
+      </Switch> */}
     </Router>
   )
 }
