@@ -63,3 +63,13 @@ export function getCards (token) {
     })
     .then(res => res.data)
 }
+
+export function getCardDetail (token, pk) {
+  return API
+    .get(`card-detail/${pk}/`, {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}
