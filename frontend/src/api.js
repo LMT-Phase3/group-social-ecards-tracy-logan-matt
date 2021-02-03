@@ -66,7 +66,7 @@ export function getCards (token) {
 
 export function getCardDetail (token, pk) {
   return API
-    .get('card-detail/pk', {
+    .get(`card-detail/${pk}`, {
       headers: {
         Authorization: `Token ${token}`
       }

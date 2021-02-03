@@ -25,19 +25,20 @@ const CardList = ({ token }) => {
       <ListGroup className='ml-sm-4 mr-sm-4'>
         {cards.map((card, idx) => (
           <ListGroupItem card={card} key={idx}>
-            <Link to='/card-detail'>Title: {card.title}</Link>
+            <Link to={`/card-detail/${card.pk}/`}>Title: {card.title}</Link>
             <div>User: {card.user}</div>
+            <Switch>
+              <Route path={`/card-detail/${card.pk}`}>
+                <>
+                  <h3 className='ml-sm-4'>Card Detail</h3>
+                  <CardDetail token={token} pk={card.pk} />
+                </>
+              </Route>
+            </Switch>
+
           </ListGroupItem>
         ))}
       </ListGroup>
-      <Switch>
-        <Route path='/card-detail'>
-          <>
-            <h3 className='ml-sm-4'>Card Detail</h3>
-            <CardDetail token={token} id='1' />
-          </>
-        </Route>
-      </Switch>
     </Router>
 
   )

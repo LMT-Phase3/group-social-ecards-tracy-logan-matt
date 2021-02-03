@@ -2,25 +2,28 @@ import { getCardDetail } from '../api'
 import { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 
-const CardDetail = ({ token, id }) => {
-  const [cards, setCards] = useState([])
+const CardDetail = ({ token, pk }) => {
+  const [card, setCard] = useState([])
   useEffect(() => {
-    getCardDetail(token).then(cards => setCards(cards))
+    getCardDetail(token, pk).then(card => setCard(card))
   }, [token])
-
-  const card = cards[0]
 
   if (!token) {
     return <Redirect to='/login' />
   }
   return (
-    <div className='ml-sm-4 mr-sm-4'>
+    <>
+      {card && (
+        <div className='ml-sm-4 mr-sm-4'>
 
-      <div>Title: {card.title}</div>
-      <div>User: {card.user}</div>
-      <div>Message: {card.message}</div>
+          <div>Title: {card.title}</div>
+          <div>User: {card.user}</div>
+          <div>Message: {card.message}</div>
 
-    </div>
+        </div>
+      )}
+    </>
+
   )
 }
 
