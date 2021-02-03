@@ -38,7 +38,7 @@ class CardDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = CardSerializer
 
     def get_queryset(self):
-        return Card.objects.all()
-        # return self.request.user.cards.all()
+        # return Card.objects.all()
+        return self.request.user.cards.all()
     
     

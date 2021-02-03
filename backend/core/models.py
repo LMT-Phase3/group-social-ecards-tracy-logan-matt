@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    friends = models.ManyToManyField('User', symmetrical=False, related_name='followers', null=True, blank=True)
+    friends = models.ManyToManyField('User', symmetrical=False, related_name='followers', blank=True)
     pass
     def __str__(self):
         return self.username
