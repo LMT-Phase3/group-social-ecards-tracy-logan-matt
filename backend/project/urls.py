@@ -26,7 +26,7 @@ urlpatterns = [
     path('api/auth/', include('djoser.urls.authtoken')),
     path('api/cards/', core_views.CardListView.as_view(), name='card-list'),
     path('api/user-cards/', core_views.UserCardView.as_view(), name='user-card-list'),
-    path('api/card-detail/<int:pk>', core_views.CardDetailView.as_view(), name='card-detail')
+    path('api/card-detail/<int:pk>/', core_views.CardDetailView.as_view(), name='card-detail')
 ]
 
 if settings.DEBUG:
