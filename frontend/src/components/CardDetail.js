@@ -1,11 +1,11 @@
-import { getCards } from '../api'
+import { getCardDetail } from '../api'
 import { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 
 const CardDetail = ({ token, id }) => {
   const [cards, setCards] = useState([])
   useEffect(() => {
-    getCards(token).then(cards => setCards(cards))
+    getCardDetail(token).then(cards => setCards(cards))
   }, [token])
 
   const card = cards[0]
