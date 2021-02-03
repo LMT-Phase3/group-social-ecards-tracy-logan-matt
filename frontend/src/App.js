@@ -8,13 +8,12 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import LoginComponent from './components/LoginComponent'
 import Register from './components/Register'
 import CardList from './components/CardList'
-import { fakeCards, fakeFriendsCards } from './fakeCards'
-import { BrowserRouter as Router, Link, Switch, Route, Redirect } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
+// import { fakeCards, fakeFriendsCards } from './fakeCards'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
 
 function App () {
   const [username, setUsername] = useState()
   const [token, setToken] = useState()
-  const [listCards, setCards] = useState(fakeCards)
 
   function setAuth (username, token) {
     setUsername(username)
@@ -22,29 +21,22 @@ function App () {
   }
   const isLoggedIn = (username && token)
 
-  function showCards (filter) {
-    if (token) {
-      setCards(filter)
-    }
-    // instead of a boolean make this a choice
-  }
-
   return (
     <Router>
       <Navbar bg='light' expand='lg'>
-        <Navbar.Brand as='Link' to='/'>Social Circle Cards</Navbar.Brand>
+        <Navbar.Brand>Social Circle Cards</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <Nav.Link as='Link' to='/'>Home</Nav.Link>
+            <Nav.Link>Home</Nav.Link>
             <Nav.Link>Create a Card</Nav.Link>
             <NavDropdown title='Cards' id='basic-nav-dropdown'>
-              <NavDropdown.Item as='Link' to='/mycards'>My Cards
+              <NavDropdown.Item>My Cards
                 {/* <NavDropdown.Item onClick={() => showCards(1)}>My Liked Cards</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => showCards(2)}>My Received Cards</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => showCards(3)}>My Sent Cards</NavDropdown.Item> */}
               </NavDropdown.Item>
-              <NavDropdown.Item as='Link' to='/friends-cards'>Friends Cards</NavDropdown.Item>
+              <NavDropdown.Item>Friends Cards</NavDropdown.Item>
               <NavDropdown.Item>Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>Separated link</NavDropdown.Item>
@@ -82,7 +74,7 @@ function App () {
           {token && (
             <>
               <h3 className='ml-sm-4'>All the Cards</h3>
-              <CardList listCards={listCards} />
+              <CardList token={token} />
             </>
           )}
         </Route>

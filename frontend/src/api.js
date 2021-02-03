@@ -53,3 +53,13 @@ export function register (username, password) {
       throw err
     })
 }
+
+export function getCards (token) {
+  return API
+    .get('cards/', {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}
