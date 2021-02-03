@@ -2,10 +2,10 @@ import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
-import { login } from '../api'
-import { Redirect, Link } from 'react-router-dom'
+import { register } from '../api'
+import { Redirect } from 'react-router-dom'
 
-const LoginComponent = ({ setAuth, isLoggedIn }) => {
+const Register = ({ setAuth, isLoggedIn }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState()
@@ -17,7 +17,7 @@ const LoginComponent = ({ setAuth, isLoggedIn }) => {
     event.preventDefault()
     console.log(username, password)
     console.log('Submitting')
-    login(username, password)
+    register(username, password)
       .then(data => {
         if (data && data.auth_token) {
           setAuth(username, data.auth_token)
@@ -30,7 +30,7 @@ const LoginComponent = ({ setAuth, isLoggedIn }) => {
   return (
 
     <>
-      <div className='mr-sm-2'>Login</div>
+      <div className='mr-sm-2'>Register</div>
       <Form onSubmit={handleSubmit} inline>
         {errors && (
           <div className='bg-red white pa3'>{errors}</div>
@@ -54,9 +54,8 @@ const LoginComponent = ({ setAuth, isLoggedIn }) => {
           onChange={evt => setPassword(evt.target.value)}
         />
         <Button type='submit'>Submit</Button>
-        <Link to='register' className='ml-sm-2'>Need to Register?</Link>
       </Form>
     </>
   )
 }
-export default LoginComponent
+export default Register

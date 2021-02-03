@@ -1,23 +1,54 @@
 import axios from 'axios'
 
 const API = axios.create({
-  baseURL: 'http://localhost:8000/api/auth'
+  baseURL: 'http://localhost:8000/api'
 })
 
 export function login (username, password) {
   return API
-    .post('/token/login/', {
+    .post('auth/token/login/', {
       username: username,
       password: password
     })
     .then(res => res.data)
     .catch(error => {
-      console.log({ error })
+      let errors = []
       if (error.response) {
         if (error.response.data.non_field_errors) {
-          throw new Error(error.response.data.non_field_errors.join(' '))
+          errors = errors.concat(error.response.data.non_field_errors)
         }
       }
-      throw new Error('There was an issue logging in.')
+      if (errors.length === 0) {
+        errors.push('There was a problem logging in.')
+      }
+      throw new Error(errors[0])
+    })
+}
+
+export function register (username, password) {
+  return API
+    .post('auth/users/', {
+      username: username,
+      password: password
+    })
+    .then(res => {
+      return login(username, password)
+    })
+    .catch(error => {
+      let errors = []
+      if (error.response) {
+        const data = error.response.data
+        if (data.username) {
+          errors = errors.concat(data.username)
+        }
+        if (data.password) {
+          errors = errors.concat(data.password)
+        }
+      }
+      if (errors.length === 0) {
+        errors.push('There was a problem registering.')
+      }
+      const err = new Error(errors[0])
+      throw err
     })
 }
