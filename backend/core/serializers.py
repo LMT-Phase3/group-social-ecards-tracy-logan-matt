@@ -25,3 +25,5 @@ class CardSerializer(serializers.ModelSerializer):
             'image_back',
             'message',
         ]
+
+        

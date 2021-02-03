@@ -24,7 +24,8 @@ urlpatterns = [
     path('api/test/', views.TestView.as_view()),
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.authtoken')),
-    path('api/cards/', core_views.CardListView.as_view(), name='card-list')
+    path('api/cards/', core_views.CardListView.as_view(), name='card-list'),
+    path('api/user-cards/', core_views.UserCardView.as_view(), name='user-card-list')
 ]
 
 if settings.DEBUG:
