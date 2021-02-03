@@ -1,15 +1,14 @@
 .jumbotron {
-  background-image: url("../src/images/mendala2.jpg");
-  background-image: linear-gradient( #76ec7ac9, #050e0582);
+  background-image: url("../src/images/pexels-nick-collins-1293120.jpg");
+  /* background-image: linear-gradient( #e8eaf37a, #9fa8daab); */
   background-size: cover;
-  height: 60vh;
-  padding-top: 100px;
-  margin-top: 60px;
+  height: 100vh;
+  padding-top: 20vh;
 }
 
 .jumbotron-container {
-  background-color: rgba(19, 140, 170, 0.408);
-  color: rgba(220, 230, 220, 0.997);
+  background-color: #dc471a94;
+  color: rgba(216, 223, 231, 0.856);
 }
 
 .animate__animated.animate__fadeInLeft {
@@ -17,7 +16,10 @@
 }
 
 .navbar {
-  background-image: linear-gradient( #092880c9, #050e0582);
-  /* height: 10vmin; */
-  margin-bottom: 10px;
+  background-image: linear-gradient( #fafafa, #bdbdbd);  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.btn {
+  background-color: rgb(150, 31, 12);
 }
