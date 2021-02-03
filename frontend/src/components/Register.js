@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
-import { login } from '../api'
+import { register } from '../api'
 import { Redirect } from 'react-router-dom'
 
 const Register = ({ setAuth, isLoggedIn }) => {
@@ -17,7 +17,7 @@ const Register = ({ setAuth, isLoggedIn }) => {
     event.preventDefault()
     console.log(username, password)
     console.log('Submitting')
-    login(username, password)
+    register(username, password)
       .then(data => {
         if (data && data.auth_token) {
           setAuth(username, data.auth_token)
