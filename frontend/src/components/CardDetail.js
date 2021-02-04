@@ -52,20 +52,20 @@ const CardDetail = ({ idx, token, pk, setViewDetail, viewDetail, cards }) => {
               </Card>
             </Accordion>
             <Navbar bg='dark' variant='dark' style={{ backgroundImage: 'none', justifyContent: 'space-between', width: '700px' }}>
-              <Navbar.Text style={{ color: 'white', fontSize: '18px' }}>
-                Favorite
+              <Navbar.Text style={{ color: 'white' }}>
+                <span style={{ fontSize: '25px' }} className='material-icons'>favorite_border</span>
               </Navbar.Text>
-              <Navbar.Text style={{ color: 'white', fontSize: '18px' }}>
-                Edit card
+              <Navbar.Text style={{ color: 'white' }}>
+                <span style={{ fontSize: '25px' }} className='material-icons'>edit</span>
               </Navbar.Text>
-              <Navbar.Text style={{ color: 'white', fontSize: '18px' }}>
-                Delete card
+              <Navbar.Text style={{ color: 'white' }}>
+                <span style={{ fontSize: '25px' }} className='material-icons'>delete</span>
               </Navbar.Text>
-              <Navbar.Text onClick={() => getPreviousCard(idx)} style={{ color: 'white', fontSize: '18px' }}>
-                Previous card
+              <Navbar.Text onClick={() => getPreviousCard(idx)} style={{ color: 'white' }}>
+                <span style={{ fontSize: '25px' }} className='material-icons'>arrow_back</span>
               </Navbar.Text>
-              <Navbar.Text onClick={() => getNextCard(idx)} style={{ color: 'white', fontSize: '18px' }}>
-                Next card
+              <Navbar.Text onClick={() => getNextCard(idx)} style={{ color: 'white' }}>
+                <span style={{ fontSize: '25px' }} className='material-icons'>arrow_forward</span>
               </Navbar.Text>
             </Navbar>
           </div>
