@@ -1,6 +1,5 @@
-import './App.css'
 import 'font-awesome/css/font-awesome.min.css'
-
+import './App.css'
 import { useState } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -32,7 +31,7 @@ function App () {
 
   return (
     <Router>
-      <Navbar bg='dark' variant='dark' expand='lg'>
+      <Navbar className='top-navbar' expand='lg'>
         <Navbar.Brand>Cards with Friends</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
@@ -43,7 +42,7 @@ function App () {
             <LinkContainer onClick={() => handleSwitch(true)} to='/cards'>
               <Nav.Link>Create A Card</Nav.Link>
             </LinkContainer>
-            <NavDropdown bg='dark' variant='dark' title='Cards' id='basic-nav-dropdown'>
+            <NavDropdown className='top-dropdown' title='Cards' id='basic-nav-dropdown'>
               <NavDropdown.Item>
                 <LinkContainer onClick={() => handleSwitch(true)} to='/cards'>
                   <Nav.Link style={{ color: 'black' }}>My Cards</Nav.Link>
@@ -72,7 +71,7 @@ function App () {
             </Route>
             <Route path='/'>
               {token
-                ? <div>Logged in as {username} <button onClick={() => setToken(null)}>Log Out</button></div>
+                ? <div className='logged-in-info'>Logged in as {username} <button onClick={() => setToken(null)}>Log Out</button></div>
                 : <LoginComponent isLoggedIn={isLoggedIn} setAuth={setAuth} />}
             </Route>
 
@@ -86,7 +85,7 @@ function App () {
             <Jumbotron className='animate__animated animate__fadeInLeft' fluid>
               <Container className='jumbotron-container'>
                 <h1 className='splash-title'>Welcome to Card Circle</h1>
-                <p>
+                <p className='splash-space'>
                   A space where you can share all your greetings with friends.
                 </p>
               </Container>
