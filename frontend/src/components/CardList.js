@@ -30,7 +30,7 @@ const CardList = ({ token }) => {
             <Switch>
               <Route path={`/card-detail/${card.pk}`}>
                 <>
-                  <h3 className='ml-sm-4'>Card Detail</h3>
+                  {/* <h3 className='ml-sm-4'>Card Detail</h3> */}
                   <CardDetail token={token} pk={card.pk} />
                 </>
               </Route>

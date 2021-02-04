@@ -15,12 +15,16 @@ import { LinkContainer } from 'react-router-bootstrap'
 function App () {
   const [username, setUsername] = useState()
   const [token, setToken] = useState()
+  const [viewMyCards, setViewMyCards] = useState(false)
 
   function setAuth (username, token) {
     setUsername(username)
     setToken(token)
   }
   const isLoggedIn = (username && token)
+  function handleSwitch (status) {
+    setViewMyCards(status)
+  }
 
   return (
     <Router>
@@ -29,15 +33,15 @@ function App () {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <LinkContainer to='/'>
+            <LinkContainer onClick={() => handleSwitch(false)} to='/'>
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer to='/register'>
+            <LinkContainer onClick={() => handleSwitch(true)} to='/cards'>
               <Nav.Link>Create A Card</Nav.Link>
             </LinkContainer>
             <NavDropdown title='Cards' id='basic-nav-dropdown'>
               <NavDropdown.Item>
-                <LinkContainer to='/'>
+                <LinkContainer onClick={() => handleSwitch(true)} to='/cards'>
                   <Nav.Link>My Cards</Nav.Link>
                 </LinkContainer>
                 {/* <NavDropdown.Item onClick={() => showCards(1)}>My Liked Cards</NavDropdown.Item>
@@ -72,9 +76,9 @@ function App () {
 
         </Navbar.Collapse>
       </Navbar>
-      <Switch>
-        <Route path='/'>
-          {(!token) && (
+      {(!viewMyCards) && (
+        <Switch>
+          <Route path='/'>
             <Jumbotron className='animate__animated animate__fadeInLeft' fluid>
               <Container className='jumbotron-container'>
                 <h1 className='splash-title'>Welcome to Card Circle</h1>
@@ -86,15 +90,17 @@ function App () {
                 <p>Holder space to add carousel of images</p>
               </Container>
             </Jumbotron>
-          )}
-          {token && (
-            <>
-              <h3 className='ml-sm-4'>All the Cards</h3>
-              <CardList token={token} />
-            </>
-          )}
-        </Route>
+          </Route>
+        </Switch>
+      )}
 
+      <Switch>
+        {token && viewMyCards && (
+          <Route path='/cards'>
+            <h3 className='ml-sm-4'>All the Cards</h3>
+            <CardList token={token} />
+          </Route>
+        )}
       </Switch>
       {/* <Switch>
         <Route path='/card-detail'>
