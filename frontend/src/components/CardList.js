@@ -25,7 +25,8 @@ const CardList = ({ token }) => {
       <ListGroup className='ml-sm-4 mr-sm-4'>
         {cards.map((card, idx) => (
           <ListGroupItem card={card} key={idx}>
-            <Link to={`/card-detail/${card.pk}/`}>Title: {card.title}</Link>
+            <Link className='card-title' to={`/card-detail/${card.pk}/`}>Title: {card.title}</Link>
+            <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
             <div>User: {card.user}</div>
             <Switch>
               <Route path={`/card-detail/${card.pk}`}>
