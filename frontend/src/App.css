@@ -15,6 +15,13 @@
   --animate-duration: 2s;
 }
 
+.animate__animated.animate__fadeInRight {
+  --animate-duration: 3s;
+}
+.animate__animated.animate__fadeOutLeft {
+  --animate-duration: 5s;
+}
+
 .navbar {
   background-image: linear-gradient( #fafafa, #bdbdbd);  padding-bottom: 15px;
   padding-top: 15px;
@@ -22,4 +29,42 @@
 
 .btn {
   background-color: rgb(150, 31, 12);
+}
+
+.card-container {
+  padding: 15px;
+}
+.mybackground {
+  padding: 20px;
+  width: 300px;
+  height: 200px;
+  /* border: 4px solid black; */
+}
+.myjustify {
+  justify-content: flex-end;
+}
+
+.myfont-big {
+  font-size: 25px;
+  font-family: monospace;
+}
+
+.myfont-small {
+  /* background-color:rgba(150, 30, 12, 0.193); */
+  color: white;
+  font-size: 18px;
+  font-family: cursive;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.myimage {
+  background-image: url(./images/mendala2.jpg);
+  background-size: cover;
+  width: 300px;
+  height: 200px;
+  border: 10px solid black;
 }
