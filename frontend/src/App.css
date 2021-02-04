@@ -36,6 +36,9 @@ body {
 .navbar {
   padding-bottom: 15px;
   padding-top: 15px;
+  background-image: linear-gradient(black, lightblue);
+  border-bottom: 7px dotted #000;
+  box-shadow: inset 0 -3px 0 0 teal, 0 3px 0 teal;
 }
 
 .btn, button {
