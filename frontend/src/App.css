@@ -33,7 +33,7 @@ body {
 .animate__animated.animate__fadeOutLeft {
   --animate-duration: 5s;
 }
-.navbar {
+.top-navbar {
   padding-bottom: 15px;
   padding-top: 15px;
   background-image: linear-gradient(black, lightblue);
@@ -55,23 +55,28 @@ a {
   justify-content: flex-end;
 }
 
-.list-group {
+.my-list-group {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  flex-wrap: wrap;
 }
-.myfont-big {
-  font-size: 28px;
-  font-family: monospace;
+.my-list-group div {
+  margin: 5px;
+  border-radius: 10px;
+  background-color:rgba(255, 255, 255, 0.15);
+
 }
 
-.myfont-small {
-  color: white;
-  font-size: 20px;
-  /* font-family: cursive; */
+.myfont-big {
+  font-size: 32px;
+  font-family: monospace;
+  padding-top: 50px;
 }
+
 
 .list-view-image {
   width: 300px;
@@ -87,13 +92,7 @@ a {
   flex-direction: column;
 }
 
-.myimage {
-  background-image: url(./images/mendala2.jpg);
-  background-size: cover;
-  width: 700px;
-  height: 450px;
-  border: 10px solid black;
-}
+
 
 /* This is a native class to the Card component from bootstrap */
 .card-body {
@@ -113,13 +112,13 @@ a {
   font-size: xx-large;
 }
 
-.navbar-brand {
+.top-navbar .navbar-brand {
   font-family: 'Caveat', cursive;
   font-size: x-large;
-  color: white;
+  /* color: white; */
 }
 
-.navbar-nav {
+.top-navbar .navbar-nav {
   font-family: 'Anton', sans-serif;
   font-size: large;
 }
@@ -147,19 +146,34 @@ a {
   background-image: none;
   justify-content: space-between;
   background-color: darkgray;
+  position: relative;
 }
 
 .card-detail-holder {
-  height: 450px;
+  height: 350px;
+}
+.my-card-title {
+  background-color: rgba(0, 0, 0, 0.227);
+  margin-left: 50px;
 }
 
-.card-detail-holder, .card-detail-navbar, .inside-body {
-  width: 700px;
+.card-detail-holder, .card-detail-navbar{
+  width: 600px;
+  border-radius: 10px;
+  background-size: cover;
+
 }
 
 .inside-body {
-  padding: 20px;
-  height: 450px;
+  /* padding: 20px; */
+  width: 560px;
+  height: 350px;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  display: flex;
+  margin: 20px;
+
 }
 
 .general-link {

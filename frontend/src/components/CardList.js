@@ -29,12 +29,16 @@ const CardList = ({ token, setViewDetail, viewDetail }) => {
     <>{(viewDetail === false)
       ? (
         <Router>
-          <ListGroup style={{ justifyContent: 'center' }} className='ml-sm-4 mr-sm-4'>
+          <ListGroup className='my-list-group'>
             {cards.map((card, idx) => (
               <ListGroupItem card={card} key={idx}>
-                <Link className='card-title' onClick={() => showDetail(card.pk, idx)} to={`/card-detail/${card.pk}/`}>Title: {card.title}</Link>
-                <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
-                <div>User: {card.user}</div>
+
+                <div style={{ justifyContent: 'space-between' }} className='flex'><span>{card.title}</span><span className='material-icons sm-nav-icon'>favorite_border</span></div>
+
+                <Link className='card-title' onClick={() => showDetail(card.pk, idx)} to={`/card-detail/${card.pk}/`}>
+                  <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
+                </Link>
+                <div className='flex'><span>{card.user}</span><span className='material-icons sm-nav-icon'>thumb_up_off_alt</span></div>
               </ListGroupItem>
             ))}
           </ListGroup>
