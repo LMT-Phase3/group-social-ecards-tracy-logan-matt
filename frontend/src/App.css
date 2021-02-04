@@ -15,7 +15,7 @@ body {
 }
 
 .jumbotron-container h1 {
-  font-family: cursive;
+  font-family: 'Caveat', cursive;
 }
 
 .animate__animated.animate__fadeInLeft {
@@ -50,11 +50,6 @@ a {
 
 .card-container {
   padding: 15px;
-}
-.mybackground {
-  padding: 20px;
-  width: 700px;
-  height: 450px;
 }
 .myjustify {
   justify-content: flex-end;
@@ -108,4 +103,79 @@ a {
   background-color: black;
   width: 750px;
   height: 500px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.splash-space {
+  font-family: 'Caveat', cursive;
+  font-size: xx-large;
+}
+
+.navbar-brand {
+  font-family: 'Caveat', cursive;
+  font-size: x-large;
+  color: white;
+}
+
+.navbar-nav {
+  font-family: 'Anton', sans-serif;
+  font-size: large;
+}
+
+.mr-sm-2 {
+  font-family: 'Anton', sans-serif;
+  font-size: large;
+}
+
+.btn-primary {
+  font-family: 'Anton', sans-serif;
+}
+
+.ml-sm-2 {
+  font-family: 'Anton', sans-serif;
+  color:rgba(22, 22, 22, 0.952);
+}
+
+.logged-in-info {
+  font-family: 'Anton', sans-serif;
+  font-size: large;
+}
+
+.card-detail-navbar {
+  background-image: none;
+  justify-content: space-between;
+  background-color: darkgray;
+}
+
+.card-detail-holder {
+  height: 450px;
+}
+
+.card-detail-holder, .card-detail-navbar, .inside-body {
+  width: 700px;
+}
+
+.inside-body {
+  padding: 20px;
+  height: 450px;
+}
+
+.general-link {
+  font-size: 20px;
+}
+
+.card-detail-all {
+  align-items: center;
+  margin-top: 30px;
+}
+
+.inside-body{
+  padding-left: 70px;
+  padding-right: 70px;  
+}
+
+.sm-nav-icon {
+  font-size: 25px;
 }
