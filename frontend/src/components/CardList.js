@@ -7,8 +7,10 @@ import CardDetail from './CardDetail'
 // import { Redirect } from 'react-router-dom'
 import { BrowserRouter as Router, Link, Redirect, Route, Switch } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
 
-const CardList = ({ token }) => {
+const CardList = ({ token, setViewDetail, viewDetail }) => {
   const [cards, setCards] = useState([])
+  const [pk, setPk] = useState('')
+  const [key, setKey] = useState('')
   useEffect(() => {
     getCards(token).then(cards => setCards(cards))
   }, [token])
@@ -16,31 +18,41 @@ const CardList = ({ token }) => {
   if (!token) {
     return <Redirect to='/login' />
   }
-  // function viewDetail () {
-  //   console.log('I clicked to view')
-  //   return <Redirect to='/register' />
-  // }
+  function showDetail (id, key) {
+    if (!viewDetail) {
+      setViewDetail(true)
+      setPk(id)
+      setKey(key)
+    }
+  }
   return (
-    <Router>
-      <ListGroup className='ml-sm-4 mr-sm-4'>
-        {cards.map((card, idx) => (
-          <ListGroupItem card={card} key={idx}>
-            <Link className='card-title' to={`/card-detail/${card.pk}/`}>Title: {card.title}</Link>
-            <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
-            <div>User: {card.user}</div>
-            <Switch>
-              <Route path={`/card-detail/${card.pk}`}>
-                <>
-                  {/* <h3 className='ml-sm-4'>Card Detail</h3> */}
-                  <CardDetail token={token} pk={card.pk} />
-                </>
-              </Route>
-            </Switch>
+    <>{(viewDetail === false)
+      ? (
+        <Router>
+          <ListGroup style={{ justifyContent: 'center' }} className='ml-sm-4 mr-sm-4'>
+            {cards.map((card, idx) => (
+              <ListGroupItem card={card} key={idx}>
+                <Link className='card-title' onClick={() => showDetail(card.pk, idx)} to={`/card-detail/${card.pk}/`}>Title: {card.title}</Link>
+                <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
+                <div>User: {card.user}</div>
+              </ListGroupItem>
+            ))}
+          </ListGroup>
+        </Router>
+        )
+      : (
+        <Router>
+          <Switch>
+            <Route path={`/card-detail/${pk}`}>
+              <>
+                <CardDetail idx={key} token={token} pk={pk} viewDetail={viewDetail} setViewDetail={setViewDetail} cards={cards} />
+              </>
+            </Route>
+          </Switch>
+        </Router>
+        )}
 
-          </ListGroupItem>
-        ))}
-      </ListGroup>
-    </Router>
+    </>
 
   )
 }

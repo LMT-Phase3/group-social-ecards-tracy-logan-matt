@@ -1,14 +1,21 @@
 .jumbotron {
   background-image: url("https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2700&q=80");
   /* background-image: linear-gradient( #e8eaf37a, #9fa8daab); */
-  background-size: contain;
+  background-size: cover;
   height: 100vh;
   padding-top: 20vh;
 }
-
+body {
+  background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1268&q=80");
+  background-size: cover;
+}
 .jumbotron-container {
   background-color: #009ab1c9;
   color: rgba(22, 22, 22, 0.952);
+}
+
+.jumbotron-container h1 {
+  font-family: cursive;
 }
 
 .animate__animated.animate__fadeInLeft {
@@ -26,27 +33,14 @@
 .animate__animated.animate__fadeOutLeft {
   --animate-duration: 5s;
 }
-/* body, .list-group-item {
-  background-image: linear-gradient( #02516357, #8caeb7);
-} */
-
 .navbar {
-  background-image: linear-gradient( #121313f8, #131414);
   padding-bottom: 15px;
   padding-top: 15px;
+  background-image: linear-gradient(black, lightblue);
+  border-bottom: 7px dotted #000;
+  box-shadow: inset 0 -3px 0 0 teal, 0 3px 0 teal;
 }
-.navbar-nav, .navbar-brand {
-  color: white;
-}
-a.nav-link, a.active.nav-link {
-  background-color: black;
-}
-#basic-nav-dropdown:hover {
-  color: white;
-}
-#basic-nav-dropdown {
-  color: white;
-}
+
 .btn, button {
   background-color: #009ab1c9;
 }
@@ -59,25 +53,31 @@ a {
 }
 .mybackground {
   padding: 20px;
-  width: 750px;
-  height: 500px;
-  /* border: 4px solid black; */
+  width: 700px;
+  height: 450px;
 }
 .myjustify {
   justify-content: flex-end;
 }
 
+.list-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 .myfont-big {
-  font-size: 25px;
+  font-size: 28px;
   font-family: monospace;
 }
 
 .myfont-small {
-  /* background-color:rgba(150, 30, 12, 0.193); */
   color: white;
-  font-size: 18px;
-  font-family: cursive;
+  font-size: 20px;
+  /* font-family: cursive; */
 }
+
 .list-view-image {
   width: 300px;
   height: 200px;
@@ -95,8 +95,8 @@ a {
 .myimage {
   background-image: url(./images/mendala2.jpg);
   background-size: cover;
-  width: 750px;
-  height: 500px;
+  width: 700px;
+  height: 450px;
   border: 10px solid black;
 }
 
@@ -107,4 +107,5 @@ a {
 .carousel {
   background-color: black;
   width: 750px;
+  height: 500px;
 }
