@@ -11,6 +11,10 @@
   color: rgba(22, 22, 22, 0.952);
 }
 
+.jumbotron-container h1 {
+  font-family: cursive;
+}
+
 .animate__animated.animate__fadeInLeft {
   --animate-duration: 2s;
 }
@@ -31,15 +35,17 @@
 } */
 
 .navbar {
-  background-image: linear-gradient( #121313f8, #131414);
+  background-image: linear-gradient(lightblue, white);
   padding-bottom: 15px;
   padding-top: 15px;
+  border-bottom: 7px dotted #000;
+  box-shadow: inset 0 -3px 0 0 teal, 0 3px 0 teal;
 }
 .navbar-nav, .navbar-brand {
   color: white;
 }
 a.nav-link, a.active.nav-link {
-  background-color: black;
+  background-color: white;
 }
 #basic-nav-dropdown:hover {
   color: white;
