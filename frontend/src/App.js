@@ -1,4 +1,6 @@
 import './App.css'
+import 'font-awesome/css/font-awesome.min.css'
+
 import { useState } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -16,6 +18,7 @@ function App () {
   const [username, setUsername] = useState()
   const [token, setToken] = useState()
   const [viewMyCards, setViewMyCards] = useState(false)
+  const [viewDetail, setViewDetail] = useState(false)
 
   function setAuth (username, token) {
     setUsername(username)
@@ -24,11 +27,12 @@ function App () {
   const isLoggedIn = (username && token)
   function handleSwitch (status) {
     setViewMyCards(status)
+    setViewDetail(false)
   }
 
   return (
     <Router>
-      <Navbar bg='light' expand='lg'>
+      <Navbar bg='dark' variant='dark' expand='lg'>
         <Navbar.Brand>Cards with Friends</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
@@ -39,10 +43,10 @@ function App () {
             <LinkContainer onClick={() => handleSwitch(true)} to='/cards'>
               <Nav.Link>Create A Card</Nav.Link>
             </LinkContainer>
-            <NavDropdown title='Cards' id='basic-nav-dropdown'>
+            <NavDropdown bg='dark' variant='dark' title='Cards' id='basic-nav-dropdown'>
               <NavDropdown.Item>
                 <LinkContainer onClick={() => handleSwitch(true)} to='/cards'>
-                  <Nav.Link>My Cards</Nav.Link>
+                  <Nav.Link style={{ color: 'black' }}>My Cards</Nav.Link>
                 </LinkContainer>
                 {/* <NavDropdown.Item onClick={() => showCards(1)}>My Liked Cards</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => showCards(2)}>My Received Cards</NavDropdown.Item>
@@ -97,8 +101,7 @@ function App () {
       <Switch>
         {token && viewMyCards && (
           <Route path='/cards'>
-            <h3 className='ml-sm-4'>All the Cards</h3>
-            <CardList token={token} />
+            <CardList token={token} viewDetail={viewDetail} setViewDetail={setViewDetail} />
           </Route>
         )}
       </Switch>
