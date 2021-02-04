@@ -43,7 +43,6 @@ const CardList = ({ token, setViewDetail, viewDetail }) => {
           <Switch>
             <Route path={`/card-detail/${pk}`}>
               <>
-                {/* <h3 className='ml-sm-4'>Card Detail</h3> */}
                 <CardDetail token={token} pk={pk} viewDetail={viewDetail} setViewDetail={setViewDetail} cards={cards} />
               </>
             </Route>

@@ -14,6 +14,10 @@ body {
   color: rgba(22, 22, 22, 0.952);
 }
 
+.jumbotron-container h1 {
+  font-family: cursive;
+}
+
 .animate__animated.animate__fadeInLeft {
   --animate-duration: 2s;
 }
@@ -46,8 +50,8 @@ a {
 }
 .mybackground {
   padding: 20px;
-  width: 750px;
-  height: 500px;
+  width: 700px;
+  height: 450px;
 }
 .myjustify {
   justify-content: flex-end;
@@ -55,8 +59,8 @@ a {
 
 .list-group {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -88,8 +92,8 @@ a {
 .myimage {
   background-image: url(./images/mendala2.jpg);
   background-size: cover;
-  width: 750px;
-  height: 500px;
+  width: 700px;
+  height: 450px;
   border: 10px solid black;
 }
 

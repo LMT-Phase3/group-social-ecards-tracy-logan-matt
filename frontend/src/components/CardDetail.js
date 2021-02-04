@@ -2,9 +2,9 @@ import { getCardDetail } from '../api'
 // import 'font-awesome/css/font-awesome.min.css'
 import { useState, useEffect } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-// import Accordion from 'react-bootstrap/Accordion'
-// import Card from 'react-bootstrap/Card'
-import Carousel from 'react-bootstrap/Carousel'
+import Accordion from 'react-bootstrap/Accordion'
+import Card from 'react-bootstrap/Card'
+// import Carousel from 'react-bootstrap/Carousel'
 import Navbar from 'react-bootstrap/Navbar'
 
 const CardDetail = ({ token, pk, setViewDetail, viewDetail, cards }) => {
@@ -32,37 +32,43 @@ const CardDetail = ({ token, pk, setViewDetail, viewDetail, cards }) => {
     <>
       {card && (
         <>
-          {/* <div className='flex-col' style={{ alignItems: 'center', marginTop: '50px', border: '2px black solid' }}>
+          <div className='flex-col' style={{ alignItems: 'center', marginTop: '30px' }}>
+            <Link className='ml-sm-4' style={{ fontSize: '20px' }} onClick={() => hideDetail()} to='/cards'>Return to Cards List</Link>
 
-            <Accordion style={{ width: '1100px' }} className='flex' defaultActiveKey='0'>
+            <Accordion style={{ width: '700px' }} className='flex' defaultActiveKey='0'>
               <Card>
                 <Card.Body>
                   <Accordion.Toggle as={Card.Body} eventKey='1'>
-                    <div style={{ border: '10px solid yellowgreen', color: 'white' }} className='myimage myfont-big'>{card.title}</div>
+                    <div style={{ border: `20px solid ${card.background}`, color: 'white', backgroundImage: `url(${card.image_front}` }} className='myimage myfont-big'>{card.title}</div>
                   </Accordion.Toggle>
                 </Card.Body>
               </Card>
               <Card>
                 <Accordion.Collapse className='animate__animated animate__fadeInLeft' eventKey='1'>
-                  <Card.Body><div style={{ justifyContent: 'center', backgroundColor: '#12125f', border: '10px solid yellowgreen' }} className='flex mybackground '><span className='myfont-small'>{card.message}</span></div></Card.Body>
+                  <Card.Body><div style={{ border: `20px solid ${card.background}`, paddingLeft: '70px', paddingRight: '70px', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#12125f' }} className='flex mybackground '><span style={{ fontFamily: `${card.font}` }} className='myfont-small'>{card.message}</span></div></Card.Body>
                 </Accordion.Collapse>
               </Card>
             </Accordion>
-            <Navbar style={{ backgroundColor: 'yellowgreen', justifyContent: 'space-between', width: '1100px' }}>
-              <Navbar.Brand><Link to='/cards'>Return to Cards List</Link></Navbar.Brand>
-              <Navbar.Text>
+            <Navbar bg='dark' variant='dark' style={{ backgroundImage: 'none', justifyContent: 'space-between', width: '700px' }}>
+              <Navbar.Text style={{ color: 'white', fontSize: '18px' }}>
                 Favorite
               </Navbar.Text>
-              <Navbar.Text>
+              <Navbar.Text style={{ color: 'white', fontSize: '18px' }}>
                 Edit card
               </Navbar.Text>
-              <Navbar.Text>
+              <Navbar.Text style={{ color: 'white', fontSize: '18px' }}>
                 Delete card
               </Navbar.Text>
+              <Navbar.Text onClick={() => getPreviousCard(pk)} style={{ color: 'white', fontSize: '18px' }}>
+                Previous card
+              </Navbar.Text>
+              <Navbar.Text onClick={() => getNextCard(pk)} style={{ color: 'white', fontSize: '18px' }}>
+                Next card
+              </Navbar.Text>
             </Navbar>
-          </div> */}
+          </div>
 
-          <div className='flex-col' style={{ alignItems: 'center', marginTop: '40px' }}>
+          {/* <div className='flex-col' style={{ alignItems: 'center', marginTop: '40px' }}>
             <Link className='ml-sm-4' style={{ fontSize: '20px' }} onClick={() => hideDetail()} to='/cards'>Return to Cards List</Link>
             <Carousel>
               <Carousel.Item>
@@ -73,7 +79,6 @@ const CardDetail = ({ token, pk, setViewDetail, viewDetail, cards }) => {
               </Carousel.Item>
             </Carousel>
             <Navbar style={{ backgroundImage: 'none', justifyContent: 'space-between', width: '750px', backgroundColor: 'black', color: 'white' }}>
-
               <Navbar.Text style={{ color: 'white', fontSize: '20px' }}>
                 Favorite
               </Navbar.Text>
@@ -90,7 +95,7 @@ const CardDetail = ({ token, pk, setViewDetail, viewDetail, cards }) => {
                 Next card
               </Navbar.Text>
             </Navbar>
-          </div>
+          </div> */}
         </>
       )}
     </>
