@@ -1,14 +1,14 @@
 .jumbotron {
-  background-image: url("../src/images/pexels-nick-collins-1293120.jpg");
+  background-image: url("https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2700&q=80");
   /* background-image: linear-gradient( #e8eaf37a, #9fa8daab); */
-  background-size: cover;
+  background-size: contain;
   height: 100vh;
   padding-top: 20vh;
 }
 
 .jumbotron-container {
-  background-color: #dc471a94;
-  color: rgba(216, 223, 231, 0.856);
+  background-color: #009ab1c9;
+  color: rgba(22, 22, 22, 0.952);
 }
 
 .animate__animated.animate__fadeInLeft {
@@ -26,16 +26,22 @@
 .animate__animated.animate__fadeOutLeft {
   --animate-duration: 5s;
 }
+/* body, .list-group-item {
+  background-image: linear-gradient( #02516357, #8caeb7);
+} */
 
 .navbar {
-  background-image: linear-gradient( #fafafa, #bdbdbd);  padding-bottom: 15px;
+  background-image: linear-gradient( #02516357, #8caeb7);
+  padding-bottom: 15px;
   padding-top: 15px;
 }
 
-.btn {
-  background-color: rgb(150, 31, 12);
+.btn, button {
+  background-color: #009ab1c9;
 }
-
+a {
+  color: white;
+}
 .card-container {
   padding: 15px;
 }

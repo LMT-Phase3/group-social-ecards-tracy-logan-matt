@@ -57,15 +57,15 @@ const CardDetail = ({ token, pk }) => {
                 <div style={{ border: `10px solid ${card.background}`, paddingLeft: '70px', paddingRight: '70px', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#12125f' }} className='flex mybackground '><span className='myfont-small'>{card.message}</span></div>
               </Carousel.Item>
             </Carousel>
-            <Navbar style={{ backgroundImage: 'none', justifyContent: 'space-between', width: '750px', backgroundColor: `${card.background}` }}>
-              <Navbar.Brand><Link to='/cards'>Return to Cards List</Link></Navbar.Brand>
-              <Navbar.Text>
+            <Navbar style={{ backgroundImage: 'none', justifyContent: 'space-between', width: '750px', backgroundColor: 'black', color: 'white' }}>
+              <Navbar.Brand style={{ color: 'white' }}><Link to='/cards'>Return to Cards List</Link></Navbar.Brand>
+              <Navbar.Text style={{ color: 'white' }}>
                 Favorite
               </Navbar.Text>
-              <Navbar.Text>
+              <Navbar.Text style={{ color: 'white' }}>
                 Edit card
               </Navbar.Text>
-              <Navbar.Text>
+              <Navbar.Text style={{ color: 'white' }}>
                 Delete card
               </Navbar.Text>
             </Navbar>
