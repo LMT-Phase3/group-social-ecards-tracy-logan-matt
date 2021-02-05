@@ -11,7 +11,8 @@ const LoginComponent = ({ setAuth, isLoggedIn }) => {
   const [errors, setErrors] = useState()
 
   if (isLoggedIn) {
-    return <Redirect to='/' />
+    console.log('I am logged in')
+    return <Redirect to='/cards' />
   }
   function handleSubmit (event) {
     event.preventDefault()
@@ -21,6 +22,7 @@ const LoginComponent = ({ setAuth, isLoggedIn }) => {
       .then(data => {
         if (data && data.auth_token) {
           setAuth(username, data.auth_token)
+          return <Redirect to='/cards' />
         }
       })
       .catch(error => {
@@ -54,7 +56,7 @@ const LoginComponent = ({ setAuth, isLoggedIn }) => {
           onChange={evt => setPassword(evt.target.value)}
         />
         <Button type='submit'>Submit</Button>
-        <Link to='register' className='ml-sm-2'>Need to Register?</Link>
+        <Link to='/register' className='ml-sm-2'>Need to Register?</Link>
       </Form>
     </>
   )
