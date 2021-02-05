@@ -5,10 +5,6 @@ const API = axios.create({
   baseURL: 'https://group-social-ecards.herokuapp.com/api'
 })
 
-const API_PHOTOS = axios.create({
-  baseURL: 'https://api.unsplash.com/photos/?client_id=Z9V0WhGfK0DRkcWKTH9mUFSsNdrXfiWemw0M-PrLb4s'
-})
-
 export function login (username, password) {
   return API
     .post('auth/token/login/', {
@@ -78,8 +74,21 @@ export function getCardDetail (token, pk) {
     .then(res => res.data)
 }
 
-export function getSamplePhotos () {
-  return API_PHOTOS
-    .get()
-    .then(res => console.log(res.data))
+export function createCard (token, backgroundColor, font, border, backgroundImage) {
+  return API
+    .post('cards/', {
+      background: backgroundColor,
+      font: font,
+      border: border,
+      title: 'Testing',
+      image_front: backgroundImage,
+      image_back: null,
+      message: 'This is test content to test creating a card.'
+    },
+    {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
 }
