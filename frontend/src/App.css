@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,500&display=swap');
+
 .jumbotron {
   background-image: url("https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2700&q=80");
   /* background-image: linear-gradient( #e8eaf37a, #9fa8daab); */
@@ -10,7 +14,6 @@ body {
   background-size: cover;
 }
 .jumbotron-container {
-  background-color: #009ab1c9;
   color: rgba(22, 22, 22, 0.952);
 }
 
@@ -68,6 +71,8 @@ a {
   margin: 5px;
   border-radius: 10px;
   background-color:rgba(255, 255, 255, 0.15);
+  font-family: 'Rubik', sans-serif;
+  font-size: large;
 
 }
 
@@ -155,6 +160,7 @@ a {
 .my-card-title {
   background-color: rgba(0, 0, 0, 0.227);
   margin-left: 50px;
+  font-family: 'Rubik', sans-serif;
 }
 
 .card-detail-holder, .card-detail-navbar{
@@ -192,4 +198,8 @@ a {
 
 .sm-nav-icon {
   font-size: 25px;
+}
+
+.ml-sm-4 {
+  font-family: 'Rubik', sans-serif;
 }
