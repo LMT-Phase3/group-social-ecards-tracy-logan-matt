@@ -31,7 +31,8 @@ const CardDetail = ({ token }) => {
       {card && (
         <>
           <div className='flex-col card-detail-all'>
-            <Link className='ml-sm-4 general-link' to='/cards'>Return to Cards List</Link>
+            <div style={{ justifyContent: 'space-between', width: '600px' }} className='flex'><Link className='general-link' to='/cards'>Return to Cards List</Link><span className='general-link'>Follow {card.user}<span className='material-icons'>thumb_up_off_alt</span></span></div>
+
             <Navbar className='card-detail-navbar'>
               <Navbar.Text style={{ color: 'white' }}>
                 <span className='material-icons sm-nav-icon'>favorite_border</span>
@@ -49,7 +50,6 @@ const CardDetail = ({ token }) => {
                 <span className='material-icons sm-nav-icon'>arrow_forward</span>
               </Navbar.Text>
             </Navbar>
-
             <Accordion defaultActiveKey='0'>
               <Card>
                 <Card.Body>

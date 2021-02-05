@@ -39,7 +39,7 @@ body {
 .top-navbar {
   padding-bottom: 15px;
   padding-top: 15px;
-  background-image: linear-gradient(black, lightblue);
+  /* background-image: linear-gradient(black, lightblue); */
   border-bottom: 7px dotted #000;
   box-shadow: inset 0 -3px 0 0 teal, 0 3px 0 teal;
 }
@@ -66,6 +66,7 @@ a {
   margin-left: 20px;
   margin-right: 20px;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 .my-list-group div {
   margin: 5px;
@@ -119,7 +120,7 @@ a {
 
 .top-navbar .navbar-brand {
   font-family: 'Caveat', cursive;
-  font-size: x-large;
+  font-size: 36px;
   /* color: white; */
 }
 
@@ -151,7 +152,8 @@ a {
   background-image: none;
   justify-content: space-between;
   background-color: darkgray;
-  position: relative;
+  /* position: relative; */
+
 }
 
 .card-detail-holder {
@@ -188,7 +190,7 @@ a {
 
 .card-detail-all {
   align-items: center;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 .inside-body{
