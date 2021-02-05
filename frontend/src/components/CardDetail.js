@@ -1,12 +1,13 @@
 import { getCardDetail } from '../api'
 // import 'font-awesome/css/font-awesome.min.css'
 import { useState, useEffect } from 'react'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect, Link, useParams } from 'react-router-dom'
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 import Navbar from 'react-bootstrap/Navbar'
 
-const CardDetail = ({ idx, token, pk, setViewDetail, viewDetail, cards }) => {
+const CardDetail = ({ token }) => {
+  const { pk } = useParams()
   const [card, setCard] = useState([])
   useEffect(() => {
     getCardDetail(token, pk).then(card => setCard(card))
@@ -15,27 +16,22 @@ const CardDetail = ({ idx, token, pk, setViewDetail, viewDetail, cards }) => {
   if (!token) {
     return <Redirect to='/login' />
   }
-  function getNextCard (id) {
-    console.log(id)
-    console.log(cards[id])
-    setCard(cards[id + 1])
-  }
-  function getPreviousCard (id) {
-    console.log(id)
-    setCard(cards[id - 1])
-  }
+  // function getNextCard (id) {
+  //   console.log(id)
+  //   console.log(cards[id])
+  //   setCard(cards[id + 1])
+  // }
+  // function getPreviousCard (id) {
+  //   console.log(id)
+  //   setCard(cards[id - 1])
+  // }
 
-  function hideDetail () {
-    if (viewDetail) {
-      setViewDetail(false)
-    }
-  }
   return (
     <>
       {card && (
         <>
           <div className='flex-col card-detail-all'>
-            <Link className='ml-sm-4 general-link' onClick={() => hideDetail()} to='/cards'>Return to Cards List</Link>
+            <Link className='ml-sm-4 general-link' to='/cards'>Return to Cards List</Link>
             <Navbar className='card-detail-navbar'>
               <Navbar.Text style={{ color: 'white' }}>
                 <span className='material-icons sm-nav-icon'>favorite_border</span>
@@ -46,10 +42,10 @@ const CardDetail = ({ idx, token, pk, setViewDetail, viewDetail, cards }) => {
               <Navbar.Text style={{ color: 'white' }}>
                 <span className='material-icons sm-nav-icon'>delete</span>
               </Navbar.Text>
-              <Navbar.Text onClick={() => getPreviousCard(idx)} style={{ color: 'white' }}>
+              <Navbar.Text style={{ color: 'white' }}>
                 <span className='material-icons sm-nav-icon'>arrow_back</span>
               </Navbar.Text>
-              <Navbar.Text onClick={() => getNextCard(idx)} style={{ color: 'white' }}>
+              <Navbar.Text style={{ color: 'white' }}>
                 <span className='material-icons sm-nav-icon'>arrow_forward</span>
               </Navbar.Text>
             </Navbar>
