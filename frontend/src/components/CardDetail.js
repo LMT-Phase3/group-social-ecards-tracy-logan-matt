@@ -15,15 +15,6 @@ const CardDetail = ({ token }) => {
   if (!token) {
     return <Redirect to='/' />
   }
-  // function getNextCard (id) {
-  //   console.log(id)
-  //   console.log(cards[id])
-  //   setCard(cards[id + 1])
-  // }
-  // function getPreviousCard (id) {
-  //   console.log(id)
-  //   setCard(cards[id - 1])
-  // }
 
   return (
     <>

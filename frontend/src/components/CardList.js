@@ -10,6 +10,7 @@ const CardList = ({ token }) => {
   const [isCreating, setIsCreating] = useState(false)
 
   useEffect(updateCards, [token])
+
   function updateCards () {
     getCards(token).then(cards => setCards(cards))
   }
@@ -47,8 +48,9 @@ const CardList = ({ token }) => {
             ))}
           </ListGroup>)
         : (<CreateCard
-            token={token} handleDone={() => {
+            token={token} handleDone={(newCard) => {
               setIsCreating(false)
+              setCards([...cards, newCard])
             }}
            />
           )}

@@ -73,3 +73,22 @@ export function getCardDetail (token, pk) {
     })
     .then(res => res.data)
 }
+
+export function createCard (token, backgroundColor, font, border, backgroundImage) {
+  return API
+    .post('cards/', {
+      background: backgroundColor,
+      font: font,
+      border: border,
+      title: 'Testing',
+      image_front: backgroundImage,
+      image_back: null,
+      message: 'This is test content to test creating a card.'
+    },
+    {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}

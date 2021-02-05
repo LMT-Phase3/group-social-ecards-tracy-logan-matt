@@ -20,11 +20,17 @@ const useToken = createPersistedState('cards_token')
 function App () {
   const [username, setUsername] = useUsername()
   const [token, setToken] = useToken()
+  // const [creating, setCreating] = useToken(false)
 
   function setAuth (username, token) {
     setUsername(username)
     setToken(token)
   }
+
+  // function handleCreating () {
+  //   setCreating(true)
+  // }
+
   const isLoggedIn = (username && token)
 
   return (
