@@ -9,6 +9,7 @@ import LoginComponent from './components/LoginComponent'
 import Register from './components/Register'
 import CardList from './components/CardList'
 import CardDetail from './components/CardDetail'
+import PhotoSearch from './components/PhotoSearch'
 import createPersistedState from 'use-persisted-state'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
 import { LinkContainer } from 'react-router-bootstrap'
@@ -38,6 +39,9 @@ function App () {
             </LinkContainer>
             <LinkContainer to='/cards'>
               <Nav.Link>Create A Card</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/photos'>
+              <Nav.Link>Search Photos</Nav.Link>
             </LinkContainer>
             <NavDropdown className='top-dropdown' title='Cards' id='basic-nav-dropdown'>
               <NavDropdown.Item>
@@ -84,6 +88,10 @@ function App () {
 
           <Route path='/card/:pk'>
             <CardDetail token={token} />
+          </Route>
+
+          <Route path='/photos'>
+            <PhotoSearch token={token} />
           </Route>
 
           <Route path='/'>

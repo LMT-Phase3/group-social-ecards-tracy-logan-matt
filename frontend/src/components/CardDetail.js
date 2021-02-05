@@ -1,5 +1,4 @@
 import { getCardDetail } from '../api'
-// import 'font-awesome/css/font-awesome.min.css'
 import { useState, useEffect } from 'react'
 import { Redirect, Link, useParams } from 'react-router-dom'
 import Accordion from 'react-bootstrap/Accordion'
@@ -14,7 +13,7 @@ const CardDetail = ({ token }) => {
   }, [token, pk])
 
   if (!token) {
-    return <Redirect to='/login' />
+    return <Redirect to='/' />
   }
   // function getNextCard (id) {
   //   console.log(id)
