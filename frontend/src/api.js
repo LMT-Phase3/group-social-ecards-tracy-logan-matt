@@ -74,9 +74,38 @@ export function getCardDetail (token, pk) {
     .then(res => res.data)
 }
 
+export function deleteCard (token, pk) {
+  return API
+    .delete(`card-detail/${pk}/`, {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    // .then(res => res.data)
+}
+
 export function createCard (token, backgroundColor, font, border, backgroundImage, title, message) {
   return API
     .post('cards/', {
+      background: backgroundColor,
+      font: font,
+      border: border,
+      title: title,
+      image_front: backgroundImage,
+      image_back: null,
+      message: message
+    },
+    {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}
+
+export function updateCard (token, pk, backgroundColor, font, border, backgroundImage, title, message) {
+  return API
+    .patch(`card-detail/${pk}/`, {
       background: backgroundColor,
       font: font,
       border: border,
