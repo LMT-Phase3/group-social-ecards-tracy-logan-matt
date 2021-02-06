@@ -3,30 +3,37 @@ import { Redirect } from 'react-router-dom'
 import { getSamplePhotos } from '../photoApi'
 import { useState } from 'react'
 
-const PhotoSearch = ({ token }) => {
+const PhotoSearch = ({ token, setBackgroundImage }) => {
   const [photos, setPhotos] = useState([])
-  const [displayPhoto, setDisplayPhoto] = useState('')
-  function getPhotos () {
-    getSamplePhotos()
+  const [searchTerm, setSearchTerm] = useState('')
+
+  function getPhotos (keyword) {
+    getSamplePhotos(keyword)
       .then(photos => setPhotos(photos))
   }
+
+  // useEffect(setImage, '')
+
+  // function setImage (photo) {
+  //   handleBackground(photo)
+  // }
 
   if (!token) {
     return <Redirect to='/login' />
   }
 
   return (
-    <>
-      <button onClick={() => getPhotos()}>Get Photos</button>
-      <div style={{ backgroundImage: `url(${displayPhoto})`, width: '300px', height: '200px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }} />
-      {/* <div className='flex' style={{ flexWrap: 'wrap' }}> */}
-      <div className='flex' style={{ flexWrap: 'wrap' }}>
+    <div className='create-card-section'>
+      <div className='create-card-header'>Search for Photos</div>
+      <label className='photo-label' htmlFor='photo'>Search Term</label>
+      <input type='text' id='photo' required value={searchTerm} onClick={evt => setSearchTerm('')} onChange={evt => setSearchTerm(evt.target.value)} />
+      <button type='submit' className='button-style' onClick={() => getPhotos(searchTerm)}>Get Photos</button>
+      <div className='flex'>
         {photos.map(photo => (
-
-          <div onClick={() => setDisplayPhoto(photo)} photo={photo} key={photo} style={{ backgroundImage: `url(${photo})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', height: '200px', width: '300px' }} />
+          <div className='photo-thumbnail' onClick={() => setBackgroundImage(photo)} photo={photo} key={photo} setBackgroundImage={setBackgroundImage} style={{ backgroundImage: `url(${photo})` }} />
         ))}
       </div>
-    </>
+    </div>
   )
 }
 

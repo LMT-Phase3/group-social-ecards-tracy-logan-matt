@@ -18,9 +18,6 @@ const CardList = ({ token }) => {
   if (!token) {
     return <Redirect to='/login' />
   }
-  // function handleToggle () {
-  //   setShowAll(!showAll)
-  // }
 
   return (
     <>{token &&
@@ -54,7 +51,8 @@ const CardList = ({ token }) => {
             }}
            />
           )}
-       </>
+      </>
+
       )}
     </>
 
