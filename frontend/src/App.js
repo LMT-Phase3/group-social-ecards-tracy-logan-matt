@@ -89,15 +89,15 @@ function App () {
             <LoginComponent isLoggedIn={isLoggedIn} setAuth={setAuth} />
           </Route>
           <Route path='/cards'>
-            <CardList token={token} />
+            <CardList token={token} username={username} />
           </Route>
 
           <Route path='/card/:pk'>
-            <CardDetail token={token} />
+            <CardDetail token={token} username={username} />
           </Route>
 
           <Route path='/photos'>
-            <PhotoSearch token={token} />
+            <PhotoSearch token={token} username={username} />
           </Route>
 
           <Route path='/'>
