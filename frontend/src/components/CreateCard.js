@@ -20,7 +20,7 @@ const CreateCard = ({ token, handleDone }) => {
     <>
       <div className='flex'>
         <CardForm
-          token={token} handleDone={handleDone} setBackgroundColor={setBackgroundColor} setBorder={setBorder} setFont={setFont} setTitle={setTitle} setMessage={setMessage} setBackgroundImage={setBackgroundImage}
+          token={token} pk='' handleDone={handleDone} setBackgroundColor={setBackgroundColor} setBorder={setBorder} setFont={setFont} setTitle={setTitle} setMessage={setMessage} setBackgroundImage={setBackgroundImage}
           backgroundColor={backgroundColor} font={font} border={border} backgroundImage={backgroundImage} title={title} message={message}
         />
       </div>

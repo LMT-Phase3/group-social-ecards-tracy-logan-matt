@@ -1,20 +1,31 @@
 
 import { Redirect } from 'react-router-dom'
-import { createCard } from '../api'
+import { createCard, updateCard } from '../api'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 
-const CardForm = ({ token, handleDone, setBackgroundColor, setBorder, setFont, setTitle, setMessage, setBackgroundImage, backgroundColor, font, border, backgroundImage, title, message }) => {
+const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBorder, setFont, setTitle, setMessage, setBackgroundImage, backgroundColor, font, border, backgroundImage, title, message }) => {
   if (!token) {
     return <Redirect to='/' />
   }
 
   function handleSubmit (event) {
     event.preventDefault()
-    createCard(token, backgroundColor, font, border, backgroundImage, title, message)
-      .then(card => {
-        handleDone(card)
-      })
+    console.log('at top of handle submit')
+    console.log(isUpdating)
+    if (!isUpdating) {
+      createCard(token, backgroundColor, font, border, backgroundImage, title, message)
+        .then(card => {
+          handleDone(card)
+        })
+    } else {
+      console.log('I am here')
+      updateCard(token, pk, backgroundColor, font, border, backgroundImage, title, message)
+        .then(card => {
+          console.log(card)
+          handleDone(card)
+        })
+    }
   }
 
   return (
