@@ -40,7 +40,7 @@ const CardDetail = ({ token }) => {
                 <span className='material-icons sm-nav-icon'>arrow_forward</span>
               </Navbar.Text>
             </Navbar>
-            <Accordion defaultActiveKey='0'>
+            <Accordion style={{ display: 'flex', flexWrap: 'wrap' }} defaultActiveKey='0'>
               <Card>
                 <Card.Body>
                   <Accordion.Toggle as={Card.Body} eventKey='1'>

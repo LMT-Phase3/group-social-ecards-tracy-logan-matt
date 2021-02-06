@@ -1,12 +1,15 @@
 
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { getSamplePhotos } from '../photoApi'
-import { useEffect } from 'react'
+import { useState } from 'react'
 
 const PhotoSearch = ({ token }) => {
-  useEffect(() => {
+  const [photos, setPhotos] = useState([])
+  const [displayPhoto, setDisplayPhoto] = useState('')
+  function getPhotos () {
     getSamplePhotos()
-  }, [])
+      .then(photos => setPhotos(photos))
+  }
 
   if (!token) {
     return <Redirect to='/login' />
@@ -14,8 +17,15 @@ const PhotoSearch = ({ token }) => {
 
   return (
     <>
-      <div>Hello World</div>
-      <Link to='/'>Back Home</Link>
+      <button onClick={() => getPhotos()}>Get Photos</button>
+      <div style={{ backgroundImage: `url(${displayPhoto})`, width: '300px', height: '200px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }} />
+      {/* <div className='flex' style={{ flexWrap: 'wrap' }}> */}
+      <div className='flex' style={{ flexWrap: 'wrap' }}>
+        {photos.map(photo => (
+
+          <div onClick={() => setDisplayPhoto(photo)} photo={photo} key={photo} style={{ backgroundImage: `url(${photo})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', height: '200px', width: '300px' }} />
+        ))}
+      </div>
     </>
   )
 }
