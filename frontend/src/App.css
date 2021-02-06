@@ -51,7 +51,6 @@ body {
 .top-navbar {
   padding-bottom: 15px;
   padding-top: 15px;
-  /* background-image: linear-gradient(black, lightblue); */
   border-bottom: 7px dotted #000;
   box-shadow: inset 0 -3px 0 0 teal, 0 3px 0 teal;
 }
@@ -90,11 +89,8 @@ a {
 }
 
 .list-view-image {
-  /* width: 300px;
-  height: 200px;
-   */
-   width: 250px;
-   height: 167px;
+  width: 250px;
+  height: 167px;
 }
 
 .flex {
@@ -129,7 +125,6 @@ a {
 .top-navbar .navbar-brand {
   font-family: 'Caveat', cursive;
   font-size: 36px;
-  /* color: white; */
 }
 
 .top-navbar .navbar-nav {
@@ -164,9 +159,8 @@ a {
 
 .card-detail-navbar {
   background-image: none;
-  justify-content: space-between;
-  background-color: darkgray;
-  /* position: relative; */
+  justify-content: space-around;
+  background-color: rgba(26, 28, 28, 0.678);
 }
 
 .create-card-header {
@@ -199,13 +193,19 @@ a {
 }
 
 
-.card-detail-holder, .card-detail-navbar{
+.card-detail-holder{
   width: 600px;
   border-radius: 10px;
   background-size: cover;
 
 }
 
+.card-detail-navbar {
+  width: 400px;
+  border-radius: 10px;
+  font-size: 22px;
+  padding: 0;
+}
 .inside-body {
   width: 600px;
   height: 350px;
@@ -218,7 +218,8 @@ a {
 }
 
 .general-link {
-  font-size: 20px;
+  font-size: 25px;
+  color: black;
 }
 .card {
   background-color: none;

@@ -5,9 +5,9 @@ import { getCards } from '../api'
 import { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-const CardList = ({ token }) => {
+const CardList = ({ token, isCreating, setIsCreating }) => {
   const [cards, setCards] = useState([])
-  const [isCreating, setIsCreating] = useState(false)
+  // const [isCreating, setIsCreating] = useState(false)
 
   useEffect(updateCards, [token])
 
@@ -51,7 +51,7 @@ const CardList = ({ token }) => {
             }}
            />
           )}
-      </>
+       </>
 
       )}
     </>
