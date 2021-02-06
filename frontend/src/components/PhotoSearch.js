@@ -30,7 +30,7 @@ const PhotoSearch = ({ token, setBackgroundImage }) => {
       <button type='submit' className='button-style' onClick={() => getPhotos(searchTerm)}>Get Photos</button>
       <div className='flex'>
         {photos.map(photo => (
-          <div className='photo-thumbnail' onClick={() => setBackgroundImage(photo)} photo={photo} key={photo} setBackgroundImage={setBackgroundImage} style={{ backgroundImage: `url(${photo})` }} />
+          <div className='photo-thumbnail' onClick={() => setBackgroundImage(photo)} photo={photo} key={photo} style={{ backgroundImage: `url(${photo})` }} />
         ))}
       </div>
     </div>

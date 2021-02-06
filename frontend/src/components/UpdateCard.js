@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import CardContent from './CardContent'
+// import CardContent from './CardContent'
 import PhotoSearch from './PhotoSearch'
 import CardForm from './CardForm'
 
@@ -24,7 +24,7 @@ const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) 
           backgroundColor={backgroundColor} font={font} border={border} backgroundImage={backgroundImage} title={title} message={message}
         />
       </div>
-      <CardContent backgroundColor={backgroundColor} border={border} font={font} backgroundImage={backgroundImage} title={title} message={message} />
+      {/* <CardContent backgroundColor={backgroundColor} border={border} font={font} backgroundImage={backgroundImage} title={title} message={message} /> */}
       <PhotoSearch token={token} setBackgroundImage={setBackgroundImage} />
     </>
   )

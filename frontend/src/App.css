@@ -176,7 +176,7 @@ a {
   padding-left: 10px;
   padding-right: 10px;
   margin-top: 30px;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .card-detail-holder {
@@ -222,7 +222,7 @@ a {
   color: black;
 }
 .card {
-  background-color: none;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 .card-detail-all {
   align-items: flex-start;

@@ -14,6 +14,7 @@ const CardNav = ({ token, username, card, pk, setIsUpdating }) => {
   }
   function handleUpdate () {
     setIsUpdating(true)
+    return <Redirect to='/cards' />
   }
 
   return (
