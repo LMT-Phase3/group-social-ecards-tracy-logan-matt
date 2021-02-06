@@ -9,10 +9,10 @@ import LoginComponent from './components/LoginComponent'
 import Register from './components/Register'
 import CardList from './components/CardList'
 import CardDetail from './components/CardDetail'
-import PhotoSearch from './components/PhotoSearch'
 import createPersistedState from 'use-persisted-state'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useState } from 'react'
 
 const useUsername = createPersistedState('cards_username')
 const useToken = createPersistedState('cards_token')
@@ -20,6 +20,8 @@ const useToken = createPersistedState('cards_token')
 function App () {
   const [username, setUsername] = useUsername()
   const [token, setToken] = useToken()
+  const [isCreating, setIsCreating] = useState(false)
+
   // const [creating, setCreating] = useToken(false)
 
   function setAuth (username, token) {
@@ -27,9 +29,12 @@ function App () {
     setToken(token)
   }
 
-  // function handleCreating () {
-  //   setCreating(true)
-  // }
+  function handleCreatingOn () {
+    setIsCreating(true)
+  }
+  function handleCreatingOff () {
+    setIsCreating(false)
+  }
 
   const isLoggedIn = (username && token)
 
@@ -40,28 +45,25 @@ function App () {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <LinkContainer to='/'>
+            <LinkContainer onClick={() => handleCreatingOff()} to='/'>
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer to='/cards'>
+            <LinkContainer onClick={() => handleCreatingOn()} to='/cards'>
               <Nav.Link>Create A Card</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/photos'>
-              <Nav.Link>Search Photos</Nav.Link>
             </LinkContainer>
             <NavDropdown className='top-dropdown' title='Cards' id='basic-nav-dropdown'>
               <NavDropdown.Item>
-                <LinkContainer to='/cards'>
+                <LinkContainer onClick={() => handleCreatingOff()} to='/cards'>
                   <Nav.Link style={{ color: 'black' }}>My Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer to='/register'>
+                <LinkContainer onClick={() => handleCreatingOff()} to='/cards'>
                   <Nav.Link>Friends Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer to='/'>
+                <LinkContainer onClick={() => handleCreatingOff()} to='/'>
                   <Nav.Link>All Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
@@ -89,19 +91,14 @@ function App () {
             <LoginComponent isLoggedIn={isLoggedIn} setAuth={setAuth} />
           </Route>
           <Route path='/cards'>
-            <CardList token={token} username={username} />
+            <CardList token={token} username={username} isCreating={isCreating} setIsCreating={setIsCreating} />
           </Route>
 
           <Route path='/card/:pk'>
             <CardDetail token={token} username={username} />
           </Route>
 
-          <Route path='/photos'>
-            <PhotoSearch token={token} username={username} />
-          </Route>
-
           <Route path='/'>
-
             <Jumbotron className='animate__animated animate__fadeInLeft' fluid>
               <Container className='jumbotron-container'>
                 <h1 className='splash-title'>Welcome to Card Circle</h1>
