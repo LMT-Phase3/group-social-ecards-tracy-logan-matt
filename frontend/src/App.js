@@ -62,11 +62,11 @@ function App () {
               </NavDropdown.Item>
               <NavDropdown.Item>
                 <LinkContainer to='/'>
-                  <Nav.Link>Something</Nav.Link>
+                  <Nav.Link>All Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item>Separated link</NavDropdown.Item>
+              <NavDropdown.Item>My Favorites</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <div>

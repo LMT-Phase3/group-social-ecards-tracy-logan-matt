@@ -7,5 +7,19 @@ const API_PHOTOS = axios.create({
 export function getSamplePhotos () {
   return API_PHOTOS
     .get()
-    .then(res => console.log(res.data))
+    .then(res => res.data)
+    .then(data => {
+      const photos = []
+      // console.log(data)
+      for (const photo of data) {
+        if (photo.width > photo.height) {
+          photos.push(photo.urls.regular)
+        }
+        // console.log(photo.urls.regular)
+      }
+      return photos
+      // console.log(photos)
+    }
+
+    )
 }

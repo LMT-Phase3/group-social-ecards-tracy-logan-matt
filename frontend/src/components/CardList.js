@@ -27,7 +27,7 @@ const CardList = ({ token }) => {
       (<>{(!isCreating)
         ? (
           <ListGroup className='my-list-group'>
-            <ListGroupItem>
+            <ListGroupItem key='1'>
               <div style={{ justifyContent: 'space-between' }} className='flex'><span>New Card</span></div>
 
               <div onClick={() => setIsCreating(true)} style={{ margin: '0 0 12px' }} className='card-title'>
@@ -50,7 +50,7 @@ const CardList = ({ token }) => {
         : (<CreateCard
             token={token} handleDone={(newCard) => {
               setIsCreating(false)
-              setCards([...cards, newCard])
+              setCards([newCard, ...cards])
             }}
            />
           )}
