@@ -16,6 +16,10 @@ class Card(models.Model):
     image_front = models.CharField(max_length=500, null=True)
     image_back = models.CharField(max_length=500, null=True)
     message = models.TextField(max_length=5000, blank=False)
+    border_type = models.CharField(max_length=500, default='solid')
+    font_color = models.CharField(max_length=500, default='white')
+    justify = models.CharField(max_length=500, default='flex-start')
+
 
 
     def __str__(self):
