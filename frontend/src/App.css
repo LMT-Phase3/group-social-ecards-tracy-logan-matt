@@ -21,9 +21,21 @@ body {
   font-family: 'Caveat', cursive;
 }
 
+.animate__animated.animate__fadeIn {
+  --animate-duration: 2s;
+}
+
 .animate__animated.animate__fadeInLeft {
   --animate-duration: 2s;
 }
+.animate__animated.animate__fadeInRight {
+  --animate-duration: 2s;
+}
+
+.animate__animated.animate__backInRight {
+  --animate-duration: 2s;
+}
+
 
 .animate__animated.animate__flipInY {
   --animate-duration: 1500ms;
@@ -48,7 +60,7 @@ body {
   background-color: #009ab1c9;
 }
 a {
-  color: rgb(136, 131, 131);
+  color: rgb(164, 161, 161);
 }
 
 .card-container {
@@ -77,16 +89,12 @@ a {
 
 }
 
-.myfont-big {
-  font-size: 32px;
-  font-family: monospace;
-  padding-top: 50px;
-}
-
-
 .list-view-image {
-  width: 300px;
+  /* width: 300px;
   height: 200px;
+   */
+   width: 250px;
+   height: 167px;
 }
 
 .flex {
@@ -129,7 +137,13 @@ a {
   font-size: large;
 }
 
+/* Set these as there own classes instead of ones from bootstrap default */
 .mr-sm-2 {
+  font-family: 'Anton', sans-serif;
+  font-size: large;
+}
+
+.ml-sm-4 {
   font-family: 'Anton', sans-serif;
   font-size: large;
 }
@@ -153,7 +167,22 @@ a {
   justify-content: space-between;
   background-color: darkgray;
   /* position: relative; */
+}
 
+.create-card-header {
+  padding-left: 20px;
+  font-size: 30px;
+}
+.create-card-section {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 25px;
+}
+.create-card-dropdown {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 30px;
+  justify-content: space-between;
 }
 
 .card-detail-holder {
@@ -162,8 +191,13 @@ a {
 .my-card-title {
   background-color: rgba(0, 0, 0, 0.227);
   margin-left: 50px;
-  font-family: 'Rubik', sans-serif;
+  font-size: 32px;
 }
+
+.myfont-big {
+  padding-top: 50px;
+}
+
 
 .card-detail-holder, .card-detail-navbar{
   width: 600px;
@@ -173,43 +207,35 @@ a {
 }
 
 .inside-body {
-  /* padding: 20px; */
   width: 600px;
   height: 350px;
   color: white;
-  font-size: 23px;
+  font-size: 25px;
   border-radius: 10px;
   display: flex;
   padding-left: 70px;
   padding-right: 70px;  
-
-  /* margin: 20px; */
-
 }
 
 .general-link {
   font-size: 20px;
 }
-
+.card {
+  background-color: none;
+}
 .card-detail-all {
   align-items: flex-start;
   margin-top: 30px;
   margin-left: 50px;
   margin-right: 50px;
-  /* padding-left: 50px;
-  padding-right: 50px; */
 }
 
 .sm-nav-icon {
   font-size: 25px;
 }
 
-.ml-sm-4 {
-  font-family: 'Rubik', sans-serif;
-}
-
 .button-style {
-  /* margin-left: 30px; */
+  margin: 5px;
   padding: 3px;
   border-radius: 6px;
   font-size: 18px;
@@ -217,5 +243,16 @@ a {
   background-color: #009ab1c9;
   border: 2px solid teal;
   font-family: 'Anton', sans-serif;
+
+}
+
+.photo-thumbnail {
+  border: 2px solid black;
+  border-radius: 6px;
+  margin: 5px;
+  background-size: cover;
+  height: 167px;
+  width: 250px;
+  background-repeat: no-repeat;
 
 }

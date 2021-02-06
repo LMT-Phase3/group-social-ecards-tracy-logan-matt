@@ -72,7 +72,7 @@ function App () {
           <div>
             {isLoggedIn
 
-              ? <div className='logged-in-info'>Logged in as {username} <button onClick={() => setToken(null)}>Log Out</button></div>
+              ? <div className='logged-in-info'>Logged in as {username} <button className='button-style' onClick={() => setToken(null)}>Log Out</button></div>
               : <span><Link to='/login'>Login</Link> or <Link to='/register'>Register</Link></span>}
 
           </div>
