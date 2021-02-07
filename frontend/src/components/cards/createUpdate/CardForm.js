@@ -1,6 +1,6 @@
 
 import { Redirect } from 'react-router-dom'
-import { createCard, updateCard } from '../../api'
+import { createCard, updateCard } from '../../../api'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
@@ -9,6 +9,7 @@ import { useState } from 'react'
 const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBorder, setFont, setTitle, setMessage, setBackgroundImage, backgroundColor, font, border, backgroundImage, title, message }) => {
   const [fontColor, setFontColor] = useState('white')
   const [borderType, setBorderType] = useState('solid')
+  const [justification, setJustification] = useState('left')
 
   if (!token) {
     return <Redirect to='/' />
@@ -102,7 +103,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             alignRight
             title='Select Justification'
             id='justification'
-            // onSelect={(e) => setJustification(e)}
+            onSelect={(e) => setJustification(e)}
           >
             <Dropdown.Item style={{ textAlign: 'left' }} eventKey='left'>Left</Dropdown.Item>
             <Dropdown.Item style={{ textAlign: 'center' }} eventKey='center'>Center</Dropdown.Item>
@@ -126,7 +127,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
           <Card className='flex animate__animated animate__fadeInLeft'>
             <Card.Body>
               <div className='inside-body flex' style={{ border: `${borderType} ${border}`, justifyContent: 'center', alignItems: 'center', backgroundColor: `${backgroundColor}` }}>
-                <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: 'right', fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
+                <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justification}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
 
               </div>
               {/* Make border-solid and justification fields in model */}

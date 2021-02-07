@@ -34,7 +34,7 @@ const CardList = ({ token, username, cardFilter, isCreating, setIsCreating }) =>
   }
 
   return (
-    <>{token &&
+    <>{token && cards &&
       (<>{(!isCreating)
         ? (<>
           <>
@@ -72,7 +72,7 @@ const CardList = ({ token, username, cardFilter, isCreating, setIsCreating }) =>
               </ListGroupItem>
             ))}
           </ListGroup>
-        </>)
+           </>)
         : (<CreateCard
             token={token} setIsCreating={setIsCreating} handleDone={(newCard) => {
               setIsCreating(false)
@@ -80,7 +80,7 @@ const CardList = ({ token, username, cardFilter, isCreating, setIsCreating }) =>
             }}
            />
           )}
-      </>
+       </>
 
       )}
     </>

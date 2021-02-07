@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 // import CardContent from './CardContent'
-import PhotoSearch from './PhotoSearch'
-import CardForm from './CardForm'
+import PhotoSearch from './createUpdate/PhotoSearch'
+import CardForm from './createUpdate/CardForm'
 
 const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) => {
   const [backgroundColor, setBackgroundColor] = useState(card.background)

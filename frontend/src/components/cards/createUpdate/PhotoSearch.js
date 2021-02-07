@@ -1,6 +1,6 @@
 
 import { Redirect } from 'react-router-dom'
-import { getSamplePhotos } from '../../photoApi'
+import { getSamplePhotos } from '../../../photoApi'
 import { useState } from 'react'
 
 const PhotoSearch = ({ token, setBackgroundImage }) => {
