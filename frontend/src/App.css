@@ -51,7 +51,6 @@ body {
 .top-navbar {
   padding-bottom: 15px;
   padding-top: 15px;
-  /* background-image: linear-gradient(black, lightblue); */
   border-bottom: 7px dotted #000;
   box-shadow: inset 0 -3px 0 0 teal, 0 3px 0 teal;
 }
@@ -90,11 +89,8 @@ a {
 }
 
 .list-view-image {
-  /* width: 300px;
-  height: 200px;
-   */
-   width: 250px;
-   height: 167px;
+  width: 250px;
+  height: 167px;
 }
 
 .flex {
@@ -129,7 +125,6 @@ a {
 .top-navbar .navbar-brand {
   font-family: 'Caveat', cursive;
   font-size: 36px;
-  /* color: white; */
 }
 
 .top-navbar .navbar-nav {
@@ -164,9 +159,8 @@ a {
 
 .card-detail-navbar {
   background-image: none;
-  justify-content: space-between;
-  background-color: darkgray;
-  /* position: relative; */
+  justify-content: space-around;
+  background-color: rgba(26, 28, 28, 0.678);
 }
 
 .create-card-header {
@@ -181,12 +175,13 @@ a {
 .create-card-dropdown {
   padding-left: 10px;
   padding-right: 10px;
-  margin-top: 30px;
-  justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  justify-content: flex-end;
 }
 
 .card-detail-holder {
-  height: 350px;
+  height: 280px;
 }
 .my-card-title {
   background-color: rgba(0, 0, 0, 0.227);
@@ -198,17 +193,27 @@ a {
   padding-top: 50px;
 }
 
-
-.card-detail-holder, .card-detail-navbar{
-  width: 600px;
+.card-detail-header {
+  justify-content: space-between;
+  width: 80%;
+  flex-wrap: wrap;
+}
+.card-detail-holder{
+  width: 500px;
   border-radius: 10px;
   background-size: cover;
 
 }
 
+.card-detail-navbar {
+  width: 400px;
+  border-radius: 10px;
+  font-size: 22px;
+  padding: 0;
+}
 .inside-body {
-  width: 600px;
-  height: 350px;
+  width: 500px;
+  height: 280px;
   color: white;
   font-size: 25px;
   border-radius: 10px;
@@ -216,12 +221,17 @@ a {
   padding-left: 70px;
   padding-right: 70px;  
 }
-
+.photo-label {
+  margin-left: 30px;
+  margin-right: 10px;
+  font-size: 18px;
+}
 .general-link {
-  font-size: 20px;
+  font-size: 25px;
+  color: black;
 }
 .card {
-  background-color: none;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 .card-detail-all {
   align-items: flex-start;

@@ -7,12 +7,13 @@ import Container from 'react-bootstrap/Container'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import LoginComponent from './components/LoginComponent'
 import Register from './components/Register'
-import CardList from './components/CardList'
-import CardDetail from './components/CardDetail'
-import PhotoSearch from './components/PhotoSearch'
+import CardList from './components/cards/CardList'
+import CardDetail from './components/cards/CardDetail'
+import UserList from './components/users/UserList'
 import createPersistedState from 'use-persisted-state'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useState } from 'react'
 
 const useUsername = createPersistedState('cards_username')
 const useToken = createPersistedState('cards_token')
@@ -20,6 +21,13 @@ const useToken = createPersistedState('cards_token')
 function App () {
   const [username, setUsername] = useUsername()
   const [token, setToken] = useToken()
+  const [isCreating, setIsCreating] = useState(false)
+  const [cardFilter, setCardFilter] = useState('all')
+  const [userFilter, setUserFilter] = useState('all')
+  let isLoggedIn = (username && token)
+  const cardProps = { token, username, cardFilter, isCreating, setIsCreating }
+  const userProps = { token, username, userFilter }
+
   // const [creating, setCreating] = useToken(false)
 
   function setAuth (username, token) {
@@ -27,12 +35,34 @@ function App () {
     setToken(token)
   }
 
-  // function handleCreating () {
-  //   setCreating(true)
-  // }
+  function handleCardsFilter (whichSet) {
+    setIsCreating(false)
+    setCardFilter(whichSet)
+    setUserFilter('all')
+  }
+  function handleLogOut () {
+    setToken(null)
+    setIsCreating(false)
+    isLoggedIn = false
+    setCardFilter('all')
+  }
 
-  const isLoggedIn = (username && token)
+  function handleUserFilter (who) {
+    setIsCreating(false)
+    setUserFilter(who)
+    setCardFilter('all')
+  }
+  function handleHome () {
+    setIsCreating(false)
+    setUserFilter('all')
+    setCardFilter('all')
+  }
 
+  function handleCreate () {
+    setIsCreating(true)
+    setUserFilter('all')
+    setCardFilter('all')
+  }
   return (
     <Router>
       <Navbar className='top-navbar' expand='lg'>
@@ -40,39 +70,55 @@ function App () {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <LinkContainer to='/'>
+            <LinkContainer onClick={() => handleHome()} to='/'>
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer to='/cards'>
+            <LinkContainer onClick={() => handleCreate()} to='/cards'>
               <Nav.Link>Create A Card</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/photos'>
-              <Nav.Link>Search Photos</Nav.Link>
             </LinkContainer>
             <NavDropdown className='top-dropdown' title='Cards' id='basic-nav-dropdown'>
               <NavDropdown.Item>
-                <LinkContainer to='/cards'>
+                <LinkContainer onClick={() => handleCardsFilter('my')} to='/mycards'>
                   <Nav.Link style={{ color: 'black' }}>My Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer to='/register'>
+                <LinkContainer onClick={() => handleCardsFilter('friends')} to='/friendscards'>
                   <Nav.Link>Friends Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer to='/'>
+                <LinkContainer onClick={() => handleCardsFilter('all')} to='/cards'>
                   <Nav.Link>All Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>My Favorites</NavDropdown.Item>
             </NavDropdown>
+            <NavDropdown className='top-dropdown' title='Users' id='basic-nav-dropdown'>
+              <NavDropdown.Item>
+                <LinkContainer onClick={() => handleUserFilter('me')} to='/me'>
+                  <Nav.Link style={{ color: 'black' }}>My Profile</Nav.Link>
+                </LinkContainer>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <LinkContainer onClick={() => handleUserFilter('friends')} to='/friends'>
+                  <Nav.Link>My Friends</Nav.Link>
+                </LinkContainer>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <LinkContainer onClick={() => handleUserFilter('all')} to='/users'>
+                  <Nav.Link>All Users</Nav.Link>
+                </LinkContainer>
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item>Update My Profile</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           <div>
             {isLoggedIn
 
-              ? <div className='logged-in-info'>Logged in as {username} <button className='button-style' onClick={() => setToken(null)}>Log Out</button></div>
+              ? <div className='logged-in-info'>Logged in as {username} <button className='button-style' onClick={() => handleLogOut()}>Log Out</button></div>
               : <span><Link to='/login'>Login</Link> or <Link to='/register'>Register</Link></span>}
 
           </div>
@@ -89,19 +135,34 @@ function App () {
             <LoginComponent isLoggedIn={isLoggedIn} setAuth={setAuth} />
           </Route>
           <Route path='/cards'>
-            <CardList token={token} />
+            <CardList {...cardProps} />
+          </Route>
+
+          <Route path='/mycards'>
+            <CardList {...cardProps} />
+          </Route>
+
+          <Route path='/friendscards'>
+            <CardList {...cardProps} />
           </Route>
 
           <Route path='/card/:pk'>
-            <CardDetail token={token} />
+            <CardDetail {...cardProps} />
           </Route>
 
-          <Route path='/photos'>
-            <PhotoSearch token={token} />
+          <Route path='/me'>
+            <UserList {...userProps}>Hello Me</UserList>
+          </Route>
+
+          <Route path='/friends'>
+            <UserList {...userProps}>Hello Friends</UserList>
+          </Route>
+
+          <Route path='/users'>
+            <UserList {...userProps}>Hello Everyone</UserList>
           </Route>
 
           <Route path='/'>
-
             <Jumbotron className='animate__animated animate__fadeInLeft' fluid>
               <Container className='jumbotron-container'>
                 <h1 className='splash-title'>Welcome to Card Circle</h1>
