@@ -176,6 +176,7 @@ a {
   padding-left: 10px;
   padding-right: 10px;
   margin-top: 5px;
+  margin-bottom: 20px;
   justify-content: flex-end;
 }
 
@@ -192,7 +193,11 @@ a {
   padding-top: 50px;
 }
 
-
+.card-detail-header {
+  justify-content: space-between;
+  width: 80%;
+  flex-wrap: wrap;
+}
 .card-detail-holder{
   width: 500px;
   border-radius: 10px;

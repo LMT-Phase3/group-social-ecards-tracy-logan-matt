@@ -1,5 +1,5 @@
 import Navbar from 'react-bootstrap/Navbar'
-import { deleteCard, getCards } from '../api'
+import { deleteCard, getCards } from '../../api'
 import { Link, Redirect } from 'react-router-dom'
 
 const CardNav = ({ token, username, card, pk, setIsUpdating }) => {
