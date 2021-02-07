@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const API = axios.create({
   // baseURL: 'http://localhost:8000/api'
-  baseURL: 'https://group-social-ecards.herokuapp.com/api'
+  baseURL: 'https://group-social-ecards.herokuapp.com/api/'
 })
 
 export function login (username, password) {
@@ -62,6 +62,26 @@ export function getCards (token) {
       }
     })
     .then(res => res.data)
+}
+
+export function getMyCards (token, username) {
+  return API
+    .get('cards/', {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+    // .then(data => {
+    //   const cards = []
+    //   for (const card of cards) {
+    //     if (username === card.user) {
+    //       cards.push(card)
+    //     }
+    //     cards.push(card)
+    //   }
+    // }
+    // )
 }
 
 export function getCardDetail (token, pk) {

@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { Redirect } from 'react-router-dom'
-import CardContent from './CardContent'
-import PhotoSearch from './PhotoSearch'
-import CardForm from './CardForm'
+import { Redirect, Link } from 'react-router-dom'
+// import CardContent from './CardContent'
+import PhotoSearch from './createUpdate/PhotoSearch'
+import CardForm from './createUpdate/CardForm'
 
-const CreateCard = ({ token, handleDone }) => {
+const CreateCard = ({ token, setIsCreating, handleDone }) => {
   const [backgroundColor, setBackgroundColor] = useState('black')
   const [border, setBorder] = useState('black')
   const [font, setFont] = useState("Rubik', sans-serif")
@@ -18,13 +18,16 @@ const CreateCard = ({ token, handleDone }) => {
 
   return (
     <>
+      <div className='flex card-detail-all card-detail-header'>
+        <Link onClick={() => setIsCreating(false)} className='general-link' to='/cards'>Return to Cards List</Link>
+      </div>
       <div className='flex'>
         <CardForm
           token={token} pk='' handleDone={handleDone} setBackgroundColor={setBackgroundColor} setBorder={setBorder} setFont={setFont} setTitle={setTitle} setMessage={setMessage} setBackgroundImage={setBackgroundImage}
           backgroundColor={backgroundColor} font={font} border={border} backgroundImage={backgroundImage} title={title} message={message}
         />
       </div>
-      <CardContent backgroundColor={backgroundColor} border={border} font={font} backgroundImage={backgroundImage} title={title} message={message} />
+      {/* <CardContent backgroundColor={backgroundColor} border={border} font={font} backgroundImage={backgroundImage} title={title} message={message} /> */}
       <PhotoSearch token={token} setBackgroundImage={setBackgroundImage} />
     </>
   )

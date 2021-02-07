@@ -19,9 +19,9 @@ export function getSamplePhotos (searchTerm) {
       const photos = []
       // console.log(data)
       for (const photo of data.results) {
-        if (photo.width > photo.height) {
-          photos.push(photo.urls.regular)
-        }
+        // if (photo.width > photo.height) {
+        photos.push(photo.urls.regular)
+        // }
         // console.log(photo.urls.regular)
       }
       return photos
