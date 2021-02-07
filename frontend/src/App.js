@@ -21,6 +21,7 @@ function App () {
   const [username, setUsername] = useUsername()
   const [token, setToken] = useToken()
   const [isCreating, setIsCreating] = useState(false)
+  // const [cardFilter, setCardFilter] = useState('all')
 
   // const [creating, setCreating] = useToken(false)
 
@@ -53,17 +54,17 @@ function App () {
             </LinkContainer>
             <NavDropdown className='top-dropdown' title='Cards' id='basic-nav-dropdown'>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleCreatingOff()} to='/cards'>
+                <LinkContainer onClick={() => handleCreatingOff()} to='/mycards'>
                   <Nav.Link style={{ color: 'black' }}>My Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleCreatingOff()} to='/cards'>
+                <LinkContainer onClick={() => handleCreatingOff()} to='/friendscards'>
                   <Nav.Link>Friends Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleCreatingOff()} to='/'>
+                <LinkContainer onClick={() => handleCreatingOff()} to='/cards'>
                   <Nav.Link>All Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
@@ -94,6 +95,7 @@ function App () {
             <CardList token={token} username={username} isCreating={isCreating} setIsCreating={setIsCreating} />
           </Route>
 
+          <Route path='/mycards' />
           <Route path='/card/:pk'>
             <CardDetail token={token} username={username} />
           </Route>
