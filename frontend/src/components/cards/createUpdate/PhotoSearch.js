@@ -16,23 +16,21 @@ const PhotoSearch = ({ token, setBackgroundImage }) => {
   function pageForward (keyword, page) {
     setPageNumber(page + 1)
     console.log(pageNumber)
-    getPhotos(keyword, pageNumber)
+    console.log(page)
+    getPhotos(keyword, page + 1)
   }
   function pageBack (keyword, page) {
     setPageNumber(page - 1)
     console.log(pageNumber)
-    getPhotos(keyword, pageNumber)
+    console.log(page)
+    getPhotos(keyword, page - 1)
   }
 
   function startPhotoSearch (keyword) {
     setPageNumber(1)
+    console.log(pageNumber)
     getPhotos(keyword, 1)
   }
-  // useEffect(setImage, '')
-
-  // function setImage (photo) {
-  //   handleBackground(photo)
-  // }
 
   if (!token) {
     return <Redirect to='/login' />
@@ -48,20 +46,22 @@ const PhotoSearch = ({ token, setBackgroundImage }) => {
         {photos.map(photo => (
           <div className='photo-thumbnail' onClick={() => setBackgroundImage(photo)} photo={photo} key={photo} style={{ backgroundImage: `url(${photo})` }} />
         ))}
-      </div>
-      <div>
-        {(pageNumber === 1) && (
-          <button className='button-style' onClick={() => pageForward(searchTerm, pageNumber)}><span>Next</span></button>
+        <div className='flex-col' style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <div className='flex'>
+            {(pageNumber === 1) && (
+              <button className='button-style' onClick={() => pageForward(searchTerm, pageNumber)}><span>Next</span></button>
 
-        )}
-        {(pageNumber > 1) && (
-          <>
-            <button className='button-style' onClick={() => pageBack(searchTerm, pageNumber)}><span>Previous</span></button>
-
-            <button className='button-style' onClick={() => pageForward(searchTerm, pageNumber)}><span>Next</span></button>
-          </>
-        )}
+            )}
+            {(pageNumber > 1) && (
+              <>
+                <button className='button-style' onClick={() => pageBack(searchTerm, pageNumber)}><span>Previous</span></button>
+                <button className='button-style' onClick={() => pageForward(searchTerm, pageNumber)}><span>Next</span></button>
+              </>
+            )}
+          </div>
+        </div>
       </div>
+
     </div>
   )
 }

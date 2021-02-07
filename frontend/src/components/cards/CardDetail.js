@@ -30,7 +30,10 @@ const CardDetail = ({ token, username }) => {
 
               <CardNav token={token} username={username} setIsUpdating={setIsUpdating} card={card} pk={pk} />
             </div>
-            <CardContent backgroundColor={card.background} border={card.border} font={card.font} backgroundImage={card.image_front} title={card.title} message={card.message} />
+            <CardContent
+              backgroundColor={card.background} border={card.border} font={card.font} backgroundImage={card.image_front} title={card.title} message={card.message}
+              fontColor={card.font_color} borderType={card.border_type}
+            />
           </div>)
         : (
           <UpdateCard
