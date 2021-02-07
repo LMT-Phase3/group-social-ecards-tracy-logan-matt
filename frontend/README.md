@@ -82,3 +82,5 @@ set up pagination on backend
 make sure sorting by most recent first
 live refreshing?
 how to mark followers
+need to fix set of cards when select add card -- update set
+
