@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from .serializers import UserSerializer, CardSerializer
+from .serializers import UserSerializer, CardSerializer, UserCreateSerializer
 from rest_framework.response import Response 
 from core.models import Card, User
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
@@ -44,3 +44,23 @@ class CardListView(ListCreateAPIView):
     serializer_class = CardSerializer
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+class UserListView(APIView):
+    def get(self, request):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
+
+
+class FollowersView(APIView):
+    def get(self,request):
+        user = self.request.user()
+        serializer = UserCreateSerializer(user)
+
+
+class UserDetailView(RetrieveUpdateDestroyAPIView):
+    serializer_class = UserCreateSerializer
+    # permission_classes = (permissions.IsAuthenticated, IsUserOrReadOnly)
+
+    def get_queryset(self):
+        return User.objects.all()

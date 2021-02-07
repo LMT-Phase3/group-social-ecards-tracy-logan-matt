@@ -7,6 +7,9 @@ class UserSerializer(serializers.ModelSerializer):
         fields = [
             'pk',
             'username',
+            'email',
+            "first_name",
+            'last_name'
         ]
 
 
@@ -24,6 +27,16 @@ class CardSerializer(serializers.ModelSerializer):
             'image_front',
             'image_back',
             'message',
+            'border_type',
+            'font_color'
         ]
-
-        
+class UserCreateSerializer(serializers.ModelSerializer):
+    friends = serializers.StringRelatedField(many=True, read_only=True)
+    class Meta:
+        model = User
+        fields = [
+            'pk',
+            'username',
+            'friends',
+        ]
+ 
