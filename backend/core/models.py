@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     friends = models.ManyToManyField('User', symmetrical=False, related_name='followers', blank=True)
+    # avatar = models.CharField(max_length=500, null=True, blank=True)
+    # about = models.TextField(max_length=5000, null=True, blank=True)
     pass
     def __str__(self):
         return self.username
