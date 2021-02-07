@@ -104,7 +104,7 @@ export function deleteCard (token, pk) {
     // .then(res => res.data)
 }
 
-export function createCard (token, backgroundColor, font, border, backgroundImage, title, message) {
+export function createCard (token, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType) {
   return API
     .post('cards/', {
       background: backgroundColor,
@@ -113,7 +113,9 @@ export function createCard (token, backgroundColor, font, border, backgroundImag
       title: title,
       image_front: backgroundImage,
       image_back: null,
-      message: message
+      message: message,
+      font_color: fontColor,
+      border_type: borderType
     },
     {
       headers: {
@@ -123,7 +125,7 @@ export function createCard (token, backgroundColor, font, border, backgroundImag
     .then(res => res.data)
 }
 
-export function updateCard (token, pk, backgroundColor, font, border, backgroundImage, title, message) {
+export function updateCard (token, pk, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType) {
   return API
     .patch(`card-detail/${pk}/`, {
       background: backgroundColor,
@@ -132,7 +134,9 @@ export function updateCard (token, pk, backgroundColor, font, border, background
       title: title,
       image_front: backgroundImage,
       image_back: null,
-      message: message
+      message: message,
+      font_color: fontColor,
+      border_type: borderType
     },
     {
       headers: {
