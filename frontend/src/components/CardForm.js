@@ -33,12 +33,6 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
     <form onSubmit={(event) => handleSubmit(event)}>
       <div style={{ border: 'solid 2px black', borderRadius: '8px' }} className='card-detail-all'>
         <div className='create-card-header'>Select Card Features</div>
-        {/* <div style={{ marginTop: '25px', paddingLeft: '15px', paddingRight: '15px' }} className='flex'>
-          <label className='title-label' htmlFor='title'>Title</label>
-          <input type='text' id='title' required value={title} onClick={evt => setTitle('')} onChange={evt => setTitle(evt.target.value)} />
-          <label className='message-label' htmlFor='message'>Message</label>
-          <input type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
-        </div> */}
         <div className='create-card-dropdown flex'>
           <DropdownButton
             className='levels'
@@ -67,6 +61,18 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
           <DropdownButton
             className='levels'
             alignRight
+            title='Select Border Type'
+            id='border-type'
+            // onSelect={(e) => setBorder(e)}
+          >
+            <Dropdown.Item style={{ border: 'solid 8px black' }} eventKey='black'>Solid Big</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'dotted 8px black' }} eventKey='yellow'>Dotted Big</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'solid 2px black' }} eventKey='blue'>Solid Narrow</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'dotted 2px black' }} eventKey='green'>Dotted Narrow</Dropdown.Item>
+          </DropdownButton>
+          <DropdownButton
+            className='levels'
+            alignRight
             title='Select Background Color'
             id='background'
             onSelect={(e) => setBackgroundColor(e)}
@@ -87,7 +93,6 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
         <div className='flex'>
           <Card>
             <Card.Body>
-              {/* <div className='card-detail-holder myimage myfont-big' style={{ color: 'white', backgroundImage: `url(${backgroundImage}` }}><span style={{ fontFamily: `${font}` }} className='my-card-title'>{title}</span></div> */}
               <div className='card-detail-holder myimage myfont-big' style={{ color: 'white', backgroundImage: `url(${backgroundImage}` }}>
                 <input style={{ fontFamily: `${font}`, color: 'white' }} className='my-card-title' type='text' id='title' required value={title} onClick={evt => setTitle('')} onChange={evt => setTitle(evt.target.value)} />
               </div>
@@ -96,7 +101,6 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
           <Card className='flex animate__animated animate__fadeInLeft'>
             <Card.Body>
               <div className='inside-body flex' style={{ border: `20px solid ${border}`, justifyContent: 'center', alignItems: 'center', backgroundColor: `${backgroundColor}` }}>
-                {/* <span style={{ fontFamily: `${font}` }}>{message}</span> */}
                 <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: 'right', fontFamily: `${font}`, color: 'white', backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
 
               </div>

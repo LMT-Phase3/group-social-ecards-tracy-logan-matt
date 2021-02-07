@@ -175,12 +175,12 @@ a {
 .create-card-dropdown {
   padding-left: 10px;
   padding-right: 10px;
-  margin-top: 30px;
-  justify-content: space-around;
+  margin-top: 5px;
+  justify-content: flex-end;
 }
 
 .card-detail-holder {
-  height: 350px;
+  height: 280px;
 }
 .my-card-title {
   background-color: rgba(0, 0, 0, 0.227);
@@ -194,7 +194,7 @@ a {
 
 
 .card-detail-holder{
-  width: 600px;
+  width: 500px;
   border-radius: 10px;
   background-size: cover;
 
@@ -207,8 +207,8 @@ a {
   padding: 0;
 }
 .inside-body {
-  width: 600px;
-  height: 350px;
+  width: 500px;
+  height: 280px;
   color: white;
   font-size: 25px;
   border-radius: 10px;
@@ -216,7 +216,11 @@ a {
   padding-left: 70px;
   padding-right: 70px;  
 }
-
+.photo-label {
+  margin-left: 30px;
+  margin-right: 10px;
+  font-size: 18px;
+}
 .general-link {
   font-size: 25px;
   color: black;

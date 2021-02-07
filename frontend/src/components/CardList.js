@@ -10,7 +10,8 @@ const CardList = ({ token, isCreating, setIsCreating }) => {
   // const [isCreating, setIsCreating] = useState(false)
 
   useEffect(updateCards, [token])
-
+  // could write a condition within update cards to make a request to getMyCards
+  // or getFriendsCards
   function updateCards () {
     getCards(token).then(cards => setCards(cards))
   }
