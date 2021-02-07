@@ -64,6 +64,26 @@ export function getCards (token) {
     .then(res => res.data)
 }
 
+export function getMyCards (token, username) {
+  return API
+    .get('cards/', {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+    // .then(data => {
+    //   const cards = []
+    //   for (const card of cards) {
+    //     if (username === card.user) {
+    //       cards.push(card)
+    //     }
+    //     cards.push(card)
+    //   }
+    // }
+    // )
+}
+
 export function getCardDetail (token, pk) {
   return API
     .get(`card-detail/${pk}/`, {

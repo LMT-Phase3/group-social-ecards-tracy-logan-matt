@@ -70,3 +70,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 MATT TEST LINE
+
+
+
+TODOS:
+
+make profile paths
+make card paths
+set up border type and justification and font color from backend
+set up pagination on backend
+make sure sorting by most recent first
+live refreshing?
+how to mark followers

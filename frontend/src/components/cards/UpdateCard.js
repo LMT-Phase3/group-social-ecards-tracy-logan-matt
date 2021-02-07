@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 // import CardContent from './CardContent'
 import PhotoSearch from './PhotoSearch'
 import CardForm from './CardForm'
@@ -18,7 +18,11 @@ const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) 
 
   return (
     <>
+      <div className='flex card-detail-all card-detail-header'>
+        <Link onClick={() => setIsUpdating(false)} className='general-link' to='/cards'>Return to Cards List</Link>
+      </div>
       <div className='flex'>
+
         <CardForm
           token={token} pk={pk} isUpdating={isUpdating} handleDone={handleDone} setBackgroundColor={setBackgroundColor} setBorder={setBorder} setFont={setFont} setTitle={setTitle} setMessage={setMessage} setBackgroundImage={setBackgroundImage}
           backgroundColor={backgroundColor} font={font} border={border} backgroundImage={backgroundImage} title={title} message={message}
