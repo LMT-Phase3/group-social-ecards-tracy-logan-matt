@@ -68,7 +68,8 @@ const CardList = ({ token, username, cardFilter, isCreating, setIsCreating, setC
                 <Link className='card-title' to={`/card/${card.pk}`}>
                   <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
                 </Link>
-                <Link to={`/users-detail/${card.user.pk}`}>
+                {/* <Link to={`/users-detail/${card.user.pk}`}> */}
+                <Link to={`/users-detail/${card.user}`}>
                   <div className='flex'>
                     <span>{card.user}</span>
                     <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>

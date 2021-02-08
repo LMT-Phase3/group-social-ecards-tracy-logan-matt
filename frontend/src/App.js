@@ -163,7 +163,7 @@ function App () {
             <UserList {...userProps}>Hello Everyone</UserList>
           </Route>
 
-          <Route path='/user/:pk'>
+          <Route path='/user/:username'>
             <UserProfile {...userProps} />
           </Route>
 

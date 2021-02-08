@@ -1,7 +1,7 @@
 
 import { Redirect } from 'react-router-dom'
 import { updateUser } from '../../../api'
-import Card from 'react-bootstrap/Card'
+// import Card from 'react-bootstrap/Card'
 // import UserContent from '../UserContent'
 
 const UserForm = ({ token, pk, handleDone, isUpdatingProfile, username, firstName, lastName, email, avatarImage, about, setFirstName, setLastName, setAvatarImage, setEmail, setAbout }) => {
