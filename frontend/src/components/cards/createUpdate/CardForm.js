@@ -99,7 +99,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Dropdown.Item style={{ border: 'dotted 2px black' }} eventKey='dotted 5px'>Dotted Narrow</Dropdown.Item>
             <Dropdown.Item style={{ border: 'groove 8px black' }} eventKey='groove 5px'>Groove Narrow</Dropdown.Item>
             <Dropdown.Item style={{ border: 'ridge 8px black' }} eventKey='ridge 5px'>Ridge</Dropdown.Item>
-            <Dropdown.Item style={{ border: 'double 10px black' }} eventKey='double 5px'>Double</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'double 8px black' }} eventKey='double 10px'>Double</Dropdown.Item>
             <Dropdown.Item style={{ border: 'outset 8px black' }} eventKey='outset 5px'>Outset</Dropdown.Item>
             <Dropdown.Item style={{ border: 'inset 8px black' }} eventKey='inset 5px'>Inset</Dropdown.Item>
           </DropdownButton>
