@@ -15,8 +15,6 @@ const Register = ({ setAuth, isLoggedIn }) => {
   }
   function handleSubmit (event) {
     event.preventDefault()
-    console.log(username, password)
-    console.log('Submitting')
     register(username, password)
       .then(data => {
         if (data && data.auth_token) {

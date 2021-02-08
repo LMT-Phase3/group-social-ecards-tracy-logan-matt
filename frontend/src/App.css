@@ -93,6 +93,13 @@ a {
   height: 167px;
 }
 
+.user-card-profile {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  border-radius: 80px;
+} 
+
 .flex {
   display: flex;
   flex-wrap: wrap;
@@ -166,6 +173,7 @@ a {
 .create-card-header {
   padding-left: 20px;
   font-size: 30px;
+  font-family: 'Rubik', sans-serif;
 }
 .create-card-section {
   margin-left: 50px;
@@ -187,6 +195,7 @@ a {
   background-color: rgba(0, 0, 0, 0.227);
   margin-left: 50px;
   font-size: 32px;
+  font-family: 'Rubik', sans-serif;
 }
 
 .myfont-big {
@@ -220,6 +229,7 @@ a {
   display: flex;
   padding-left: 70px;
   padding-right: 70px;  
+  font-family: 'Rubik', sans-serif;
 }
 .photo-label {
   margin-left: 30px;
@@ -265,4 +275,13 @@ a {
   width: 250px;
   background-repeat: no-repeat;
 
+}
+
+.dropdown-item {
+  font-family: 'Rubik', sans-serif;
+
+}
+
+.photo-label {
+  font-family: 'Rubik', sans-serif;
 }
