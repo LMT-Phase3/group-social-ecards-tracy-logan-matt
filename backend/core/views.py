@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from core.models import Card, User
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from rest_framework import permissions
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
 
 # Create your views here.
 class TestView(APIView):
@@ -17,7 +17,7 @@ class TestView(APIView):
 
 class UserCardView(APIView):
     def get(self, request):
-        cards = self.request.user.cards.all()
+        cards = self.request.user.cards.all().order_by('-created_date')
         serializer = CardSerializer(cards, many=True)
         return Response(serializer.data)
 
@@ -61,6 +61,9 @@ class FollowersView(APIView):
 class UserDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = UserCreateSerializer
     # permission_classes = (permissions.IsAuthenticated, IsUserOrReadOnly)
-
+    lookup_field = 'username'
     def get_queryset(self):
         return User.objects.all()
+
+
+
