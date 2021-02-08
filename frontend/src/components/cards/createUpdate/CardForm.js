@@ -62,6 +62,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Dropdown.Item style={{ fontFamily: "'Parisienne', cursive" }} eventKey='parisienne'>Parisienne</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Bangers', cursive" }} eventKey='bangers'>Bangers</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Calligraffitti', cursive" }} eventKey='calligraffitti'>Calligraffitti</Dropdown.Item>
+            <Dropdown.Item style= {{ fontFamily: "'Sedgwick Ave Display', cursive" }} eventKey="'Sedgwick Ave Display', cursive">Sedgwick Ave Display</Dropdown.Item>
 
           </DropdownButton>
           <DropdownButton
