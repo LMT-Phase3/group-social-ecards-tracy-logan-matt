@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
 from .serializers import UserSerializer, CardSerializer, UserCreateSerializer
 from rest_framework.response import Response 
@@ -64,6 +64,14 @@ class UserDetailView(RetrieveUpdateDestroyAPIView):
     lookup_field = 'username'
     def get_queryset(self):
         return User.objects.all()
+
+
+class CardsForUserView(APIView):
+    def get(self,request, username):
+        user = get_object_or_404(User, username=username)
+        serializer = CardSerializer(user.cards.all(), many=True)
+
+        return Response(data=serializer.data)
 
 
 
