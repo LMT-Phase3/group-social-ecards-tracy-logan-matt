@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 // import CardContent from './CardContent'
 import PhotoSearch from './createUpdate/PhotoSearch'
 import CardForm from './createUpdate/CardForm'
@@ -13,15 +13,21 @@ const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card, ca
   const [backgroundImage, setBackgroundImage] = useState(card.image_front)
   const [fontColor, setFontColor] = useState(card.font_color)
   const [borderType, setBorderType] = useState(card.border_type)
-
+  const history = useHistory()
   if (!token) {
     return <Redirect to='/login' />
   }
 
+  function handleGoBack (card) {
+    handleDone(card)
+    history.goBack()
+  }
   return (
     <>
       <div className='flex card-detail-all card-detail-header'>
-        <Link onClick={() => handleCardsFilter('all')} className='general-link' to='/cards'>Return to Cards List</Link>
+        <button className='general-link' onClick={() => handleGoBack({ card })}>Return to Cards List</button>
+
+        {/* <Link onClick={() => handleCardsFilter('all')} className='general-link' to='/cards'>Return to Cards List</Link> */}
 
         {/* {(cardFilter === 'any') && (
           <Link onClick={() => handleDone()} className='general-link' to='/cards'>Return to Cards List</Link>

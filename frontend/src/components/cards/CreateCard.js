@@ -4,7 +4,7 @@ import { Redirect, Link } from 'react-router-dom'
 import PhotoSearch from './createUpdate/PhotoSearch'
 import CardForm from './createUpdate/CardForm'
 
-const CreateCard = ({ token, setIsCreating, handleDone, setCardFilter }) => {
+const CreateCard = ({ token, setIsCreating, handleDone }) => {
   const [backgroundColor, setBackgroundColor] = useState('black')
   const [border, setBorder] = useState('black')
   const [font, setFont] = useState("Rubik', sans-serif")

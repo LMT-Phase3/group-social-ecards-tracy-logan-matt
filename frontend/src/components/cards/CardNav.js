@@ -19,7 +19,12 @@ const CardNav = ({ token, username, card, pk, setIsUpdating }) => {
       {(username !== card.user) && (
         <>
           <Navbar.Text style={{ color: 'white' }}>
-            <span className='follow-link'>{card.user}<span className='material-icons'>thumb_up_off_alt</span></span>
+            <Link to={`/user/${card.user}`}>
+              <span className='follow-link'>{card.user}</span>
+            </Link>
+          </Navbar.Text>
+          <Navbar.Text style={{ color: 'white' }}>
+            <span className='follow-link'>Follow<span className='material-icons'>thumb_up_off_alt</span></span>
           </Navbar.Text>
           <Navbar.Text style={{ color: 'white' }}>
             <span className='material-icons sm-nav-icon'>favorite_border</span>

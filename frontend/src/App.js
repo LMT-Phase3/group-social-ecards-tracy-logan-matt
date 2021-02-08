@@ -136,16 +136,16 @@ function App () {
             <LoginComponent isLoggedIn={isLoggedIn} setAuth={setAuth} />
           </Route>
           <Route path='/cards'>
-            <CardList {...cardProps} />
+            <CardList apiPath='cards' {...cardProps} />
           </Route>
 
           <Route path='/mycards'>
             {/* <CardList cardFilter='my' {...cardProps} /> */}
-            <CardList {...cardProps} />
+            <CardList apiPath='user-cards' {...cardProps} />
           </Route>
 
           <Route path='/friendscards'>
-            <CardList {...cardProps} />
+            <CardList apiPath='friends-cards' {...cardProps} />
           </Route>
 
           <Route path='/card/:pk'>

@@ -62,7 +62,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Dropdown.Item style={{ fontFamily: "'Parisienne', cursive" }} eventKey='parisienne'>Parisienne</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Bangers', cursive" }} eventKey='bangers'>Bangers</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Calligraffitti', cursive" }} eventKey='calligraffitti'>Calligraffitti</Dropdown.Item>
-            <Dropdown.Item style= {{ fontFamily: "'Sedgwick Ave Display', cursive" }} eventKey="'Sedgwick Ave Display', cursive">Sedgwick Ave Display</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Sedgwick Ave Display', cursive" }} eventKey="'Sedgwick Ave Display', cursive">Sedgwick Ave Display</Dropdown.Item>
 
           </DropdownButton>
           <DropdownButton
@@ -136,17 +136,18 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
         </div>
         <button type='submit' className='button-style'>Submit Card</button>
       </div>
-      <div className='create-card-section flex-col'>
-        <div className='create-card-header'>Your Card</div>
-        <div className='flex'>
-          <Card>
+      <div className='card-detail-all'>
+        <div className='create-card-section flex-col'>
+          {/* <div className='create-card-header'>Your Card</div> */}
+          <div className='flex'>
+            <Card>
             <Card.Body>
               <div className='card-detail-holder myimage myfont-big' style={{ color: `${fontColor}`, backgroundImage: `url(${backgroundImage}` }}>
                 <input style={{ fontFamily: `${font}`, color: 'white' }} className='my-card-title' type='text' id='title' required value={title} onClick={evt => setTitle('')} onChange={evt => setTitle(evt.target.value)} />
               </div>
             </Card.Body>
           </Card>
-          <Card className='flex animate__animated animate__fadeInLeft'>
+            <Card className='flex animate__animated animate__fadeInLeft'>
             <Card.Body>
               <div className='inside-body flex' style={{ border: `${borderType} ${border}`, justifyContent: 'center', alignItems: 'center', backgroundColor: `${backgroundColor}` }}>
                 <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justification}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
@@ -155,6 +156,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
               {/* Make border-solid and justification fields in model */}
             </Card.Body>
           </Card>
+          </div>
         </div>
       </div>
     </form>

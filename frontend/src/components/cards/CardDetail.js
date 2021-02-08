@@ -1,6 +1,6 @@
 import { getCardDetail } from '../../api'
 import { useState, useEffect } from 'react'
-import { Redirect, Link, useParams } from 'react-router-dom'
+import { Redirect, useParams, useHistory } from 'react-router-dom'
 import CardNav from './CardNav'
 import CardContent from './CardContent'
 import UpdateCard from './UpdateCard'
@@ -9,6 +9,7 @@ const CardDetail = ({ token, username, setCardFilter, cardFilter, handleCardsFil
   const { pk } = useParams()
   const [card, setCard] = useState([])
   const [isUpdating, setIsUpdating] = useState(false)
+  const history = useHistory()
 
   useEffect(updateCard, [token, pk])
   function updateCard () {
@@ -25,8 +26,8 @@ const CardDetail = ({ token, username, setCardFilter, cardFilter, handleCardsFil
       (<>{(!isUpdating)
         ? (
           <div className='flex-col card-detail-all'>
-            <div className='flex card-detail-header'>
-              <Link onClick={() => handleCardsFilter('all')} className='general-link' to='/cards'>Return to Cards List</Link>
+            <div className='flex-col card-detail-header'>
+              <button className='general-link' onClick={() => history.goBack()}>Return to Cards List</button>
               <CardNav token={token} username={username} setIsUpdating={setIsUpdating} card={card} pk={pk} />
             </div>
             <CardContent
