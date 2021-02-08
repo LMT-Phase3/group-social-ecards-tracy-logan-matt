@@ -50,6 +50,18 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Dropdown.Item style={{ fontFamily: 'cursive' }} eventKey='cursive'>Cursive</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: 'Lucinda' }} eventKey='Lucinda'>Lucinda</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: 'monospace' }} eventKey='monospace'>Monospace</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: 'fantasy' }} eventKey='monospace'>Fantasy</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Caveat', cursive" }} eventKey='caveat'>Caveat</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Anton', sans-serif" }} eventKey='anton'>Anton</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Pacifico', cursive" }} eventKey="'Pacifico', cursive">Pacifico</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Bungee Shade', cursive" }} eventKey="'Bungee Shade', cursive">Bungee Shade</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Creepster', cursive" }} eventkey="'Creepster', cursive">Creepster</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Lobster', cursive" }} eventKey='lobster'>Lobster</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Dancing Script', cursive" }} eventKey='dancing-script'>Dancing Script</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Indie Flower', cursive" }} eventKey="'Indie Flower', cursive">Indie Flower</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Parisienne', cursive" }} eventKey='parisienne'>Parisienne</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Bangers', cursive" }} eventKey='bangers'>Bangers</Dropdown.Item>B
+
           </DropdownButton>
           <DropdownButton
             className='levels'
@@ -72,6 +84,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Dropdown.Item style={{ border: 'dotted 5px yellow' }} eventKey='yellow'>Yellow</Dropdown.Item>
             <Dropdown.Item style={{ border: 'solid 5px blue' }} eventKey='blue'>Blue</Dropdown.Item>
             <Dropdown.Item style={{ border: 'solid 5px green' }} eventKey='green'>Green</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'solid 5px red' }} eventKey='red'>Red</Dropdown.Item>
           </DropdownButton>
           <DropdownButton
             className='levels'
@@ -84,6 +97,11 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Dropdown.Item style={{ border: 'dotted 8px black', fontWeight: 'bold' }} eventKey='dotted 20px'>Dotted Big</Dropdown.Item>
             <Dropdown.Item style={{ border: 'solid 2px black' }} eventKey='solid 5px'>Solid Narrow</Dropdown.Item>
             <Dropdown.Item style={{ border: 'dotted 2px black' }} eventKey='dotted 5px'>Dotted Narrow</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'groove 8px black' }} eventKey='groove 5px'>Groove Narrow</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'ridge 8px black' }} eventKey='ridge 5px'>Ridge</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'double 8px black' }} eventKey='double 10px'>Double</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'outset 8px black' }} eventKey='outset 5px'>Outset</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'inset 8px black' }} eventKey='inset 5px'>Inset</Dropdown.Item>
           </DropdownButton>
           <DropdownButton
             className='levels'
