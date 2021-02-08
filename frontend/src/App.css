@@ -104,7 +104,8 @@ a {
 .user-card-profile {
   width: 140px;
   height: 140px;
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 80px;
 } 
 

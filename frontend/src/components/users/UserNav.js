@@ -1,7 +1,7 @@
 import Navbar from 'react-bootstrap/Navbar'
 import { Redirect } from 'react-router-dom'
 
-const CardNav = ({ token, user, pk, setIsUpdatingProfile }) => {
+const UserNav = ({ token, user, profileUsername, setIsUpdatingProfile }) => {
   function handleUpdate () {
     setIsUpdatingProfile(true)
   }
@@ -22,4 +22,4 @@ const CardNav = ({ token, user, pk, setIsUpdatingProfile }) => {
   )
 }
 
-export default CardNav
+export default UserNav

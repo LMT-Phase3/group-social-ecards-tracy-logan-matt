@@ -140,6 +140,7 @@ function App () {
           </Route>
 
           <Route path='/mycards'>
+            {/* <CardList cardFilter='my' {...cardProps} /> */}
             <CardList {...cardProps} />
           </Route>
 
@@ -163,7 +164,7 @@ function App () {
             <UserList {...userProps}>Hello Everyone</UserList>
           </Route>
 
-          <Route path='/user/:username'>
+          <Route path='/user/:profileUsername'>
             <UserProfile {...userProps} />
           </Route>
 

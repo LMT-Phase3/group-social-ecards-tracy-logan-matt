@@ -4,15 +4,16 @@ import { Redirect, Link, useParams } from 'react-router-dom'
 import UserNav from './UserNav'
 import UserContent from './UserContent'
 import UpdateUser from './UpdateUser'
+import UserFriends from './UserFriends'
 
 const UserProfile = ({ token, username }) => {
-  const { pk } = useParams()
-  const [user, setUser] = useState([])
+  const { profileUsername } = useParams()
+  const [user, setUser] = useState()
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false)
 
-  useEffect(updateUser, [token, pk])
+  useEffect(updateUser, [token, profileUsername])
   function updateUser () {
-    getUserProfile(token, pk).then(user => setUser(user))
+    getUserProfile(token, profileUsername).then(user => setUser(user))
   }
 
   if (!token) {
@@ -28,13 +29,14 @@ const UserProfile = ({ token, username }) => {
             <div className='flex card-detail-header'>
               <Link className='general-link' to='/users'>Return to User List</Link>
             </div>
-            <UserNav token={token} username={username} setIsUpdatingProfile={setIsUpdatingProfile} user={user} pk={pk} />
-            <UserContent username={user.username} firstName='Tracy' lastName='Falba' email='tfalba@mac.com' about='I am an avid photographer and love my three boys' avatarImage='https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2700&q=80' />
+            <UserNav token={token} username={username} setIsUpdatingProfile={setIsUpdatingProfile} user={user} profileUsername={profileUsername} />
+            <UserContent token={token} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name} email={user.email} about={user.about} avatarImage={user.avatar} />
+            <UserFriends token={token} user={user} profileUsername={profileUsername} />
 
           </div>)
         : (
           <UpdateUser
-            token={token} pk={pk} isUpdatingProfile={isUpdatingProfile} setIsUpdatingProfile={setIsUpdatingProfile} user={user} handleDone={(updatedUser) => {
+            token={token} profileUsername={profileUsername} isUpdatingProfile={isUpdatingProfile} setIsUpdatingProfile={setIsUpdatingProfile} user={user} handleDone={(updatedUser) => {
               setIsUpdatingProfile(false)
               setUser(updatedUser)
             }}

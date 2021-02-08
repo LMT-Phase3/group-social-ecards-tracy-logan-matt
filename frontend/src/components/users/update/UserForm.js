@@ -4,15 +4,15 @@ import { updateUser } from '../../../api'
 // import Card from 'react-bootstrap/Card'
 // import UserContent from '../UserContent'
 
-const UserForm = ({ token, pk, handleDone, isUpdatingProfile, username, firstName, lastName, email, avatarImage, about, setFirstName, setLastName, setAvatarImage, setEmail, setAbout }) => {
+const UserForm = ({ token, handleDone, isUpdatingProfile, profileUsername, firstName, lastName, email, avatarImage, about, setFirstName, setLastName, setAvatarImage, setEmail, setAbout }) => {
   if (!token) {
     return <Redirect to='/' />
   }
-
+  console.log(profileUsername)
   function handleSubmit (event) {
     event.preventDefault()
 
-    updateUser(token, pk, firstName, lastName, email, avatarImage)
+    updateUser(token, profileUsername, firstName, lastName, email, about, avatarImage)
       .then(user => {
         handleDone(user)
       })
@@ -24,12 +24,12 @@ const UserForm = ({ token, pk, handleDone, isUpdatingProfile, username, firstNam
         <div style={{ width: '100%', justifyContent: 'flex-start' }} className='create-card-header flex'>Your Profile</div>
         {/* INSERTING USER CONTENT HERE */}
         <>
-          <div className='create-card-header'>Show {username} Cards</div>
+          <div className='create-card-header'>Show {profileUsername} Cards</div>
           <div style={{ alignItems: 'center', width: '90%' }} className='create-card-section flex-col'>
             <div style={{ border: '3px solid black', width: '100%', justifyContent: 'space-around', alignItems: 'center' }} className='flex animate__animated animate__fadeInLeft'>
               <div style={{ color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <div className='user-card-profile' style={{ justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', backgroundSize: 'cover', backgroundImage: `url(${avatarImage})` }} />
-                <div>{username}</div>
+                <div>{profileUsername}</div>
               </div>
               <div style={{ color: 'black' }}>
                 <div>
