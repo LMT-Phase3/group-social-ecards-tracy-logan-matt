@@ -61,6 +61,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Dropdown.Item style={{ fontFamily: "'Indie Flower', cursive" }} eventKey="'Indie Flower', cursive">Indie Flower</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Parisienne', cursive" }} eventKey='parisienne'>Parisienne</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Bangers', cursive" }} eventKey='bangers'>Bangers</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Calligraffitti', cursive" }} eventKey='calligraffitti'>Calligraffitti</Dropdown.Item>
 
           </DropdownButton>
           <DropdownButton
@@ -72,6 +73,8 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
           >
             <Dropdown.Item style={{ color: 'black' }} eventKey='black'>Black</Dropdown.Item>
             <Dropdown.Item style={{ color: 'white', backgroundColor: 'black' }} eventKey='white'>White</Dropdown.Item>
+            <Dropdown.Item style={{ color: 'blue' }} eventKey='blue'>Blue</Dropdown.Item>
+            <Dropdown.Item style={{ color: 'red' }} eventKey='red'>Red</Dropdown.Item>
           </DropdownButton>
           <DropdownButton
             className='levels'
