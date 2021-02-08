@@ -6,11 +6,11 @@ import { useEffect, useState } from 'react'
 
 const UserList = ({ token, username, userFilter }) => {
   const [users, setUsers] = useState([])
-  useEffect(updateCards, [token, username])
+  useEffect(updateUsers, [token, username])
   // could write a condition within update cards to make a request to getMyCards
   // or getFriendsCards
 
-  function updateCards () {
+  function updateUsers () {
     getUsers(token).then(users => setUsers(users))
   }
 
@@ -27,11 +27,6 @@ const UserList = ({ token, username, userFilter }) => {
         )}
       </>
       <>
-        {(userFilter === 'me') && (
-          <div className='general-link card-detail-header card-detail-all'>My Profile</div>
-        )}
-      </>
-      <>
         {(userFilter === 'friends') && (
           <div className='general-link card-detail-header card-detail-all'>Friends' Profiles</div>
         )}
@@ -39,20 +34,13 @@ const UserList = ({ token, username, userFilter }) => {
       <ListGroup className='my-list-group'>
         {users.map(user => (
           <ListGroupItem user={user} key={user.pk}>
-            <Link className='card-title' to={`/user/${user.pk}`}>
-              <div className='flex'><span>{user.username} </span><span className='material-icons sm-nav-icon'>thumb_up_off_alt</span></div>
+            {/* <Link className='card-title' to={`/user/${user.pk}`}> */}
+            <Link className='card-title' to={`/user/${user.username}`}>
+              <div style={{ color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <div className='user-card-profile' style={{ borderRadius: '80px', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', backgroundImage: `url(${user.avatar})` }} />
+                <div>{user.username}</div>
+              </div>
             </Link>
-            {user.friends && (
-              <>
-                {user.friends.map(friend => (
-                  <ListGroupItem friend={friend} key={friend.pk}>
-                    <div>{friend}</div>
-                  </ListGroupItem>
-
-                ))}
-              </>
-            )}
-
           </ListGroupItem>
         ))}
       </ListGroup>

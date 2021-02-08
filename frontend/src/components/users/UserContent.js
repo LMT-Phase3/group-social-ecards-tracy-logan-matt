@@ -1,21 +1,22 @@
 
-const UserContent = ({ username, firstName, lastName, email, about }) => {
+const UserContent = ({ token, username, profileUsername, firstName, lastName, email, avatarImage, about }) => {
   return (
-    <div className='create-card-section flex-col'>
-      <div className='create-card-header'>{username}</div>
-      <div className='flex'>
-        <div style={{ width: '400px', height: '200px', border: '3px solid black' }} className='flex animate__animated animate__fadeInLeft'>
-          <div style={{ color: 'black' }}>
-            <div className='user-card-profile' style={{ justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', backgroundImage: "url('https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2700&q=80')" }} />
-            {/* Make border-solid and justification fields in model */}
-            <span>{firstName}</span><span> {lastName}</span>
+    <>
+      <div className='create-card-header'>Show {profileUsername} Cards</div>
+      <div style={{ alignItems: 'center', width: '90%' }} className='create-card-section flex-col'>
+        <div style={{ width: '60%', justifyContent: 'space-around', alignItems: 'center' }} className='flex animate__animated animate__fadeIn'>
+          <div style={{ color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <div className='user-card-profile' style={{ justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', backgroundImage: `url(${avatarImage})` }} />
+            <div>{profileUsername}</div>
           </div>
           <div style={{ color: 'black' }}>
-            <span>{about}</span>
+            <div><span>{firstName}</span><span> {lastName}</span></div>
+            <div>{email}</div>
+            <div>{about}</div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

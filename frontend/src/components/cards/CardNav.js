@@ -30,6 +30,7 @@ const CardNav = ({ token, username, card, pk, setIsUpdating }) => {
         <>
           <Navbar.Text style={{ color: 'white' }}>
             {/* <Link to={`/cards/${pk}/`}> */}
+            {/* Make these buttons */}
             <span onClick={() => handleUpdate()}>Edit</span><span className='material-icons sm-nav-icon'>edit</span>
             {/* </Link> */}
           </Navbar.Text>

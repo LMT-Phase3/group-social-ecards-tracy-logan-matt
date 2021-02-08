@@ -155,12 +155,13 @@ export function updateCard (token, pk, backgroundColor, font, border, background
     .then(res => res.data)
 }
 
-export function updateUser (token, pk, firstName, lastName, email, avatarImage) {
+export function updateUser (token, username, firstName, lastName, email, about, avatarImage) {
   return API
-    .patch(`users-detail/${pk}/`, {
+    .patch(`users-detail/${username}/`, {
       first_name: firstName,
       last_name: lastName,
       email: email,
+      about: about,
       avatar: avatarImage
     },
     {
