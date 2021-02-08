@@ -29,7 +29,8 @@ urlpatterns = [
     path('api/card-detail/<int:pk>/', core_views.CardDetailView.as_view(), name='card-detail'),
     path('api/users/', core_views.UserListView.as_view(), name='user-list'),
     path('api/users-detail/<username>/', core_views.UserDetailView.as_view(), name='user-list'),
-    path('api/users/<username>/cards/', core_views.CardsForUserView.as_view())
+    path('api/users/<username>/cards/', core_views.CardsForUserView.as_view()),
+    path('api/friends-cards/', core_views.FriendsCardsView.as_view())
 ]
 
 if settings.DEBUG:
