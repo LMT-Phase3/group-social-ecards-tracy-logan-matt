@@ -12,8 +12,8 @@ const UpdateUser = ({ token, handleDone, pk, user, isUpdatingProfile, setIsUpdat
   const [firstName, setFirstName] = useState('Tracy')
   const [lastName, setLastName] = useState('Falba')
   const [email, setEmail] = useState(user.email)
-  const [avatarImage, setAvatarImage] = useState(user.avatar)
-
+  const [avatarImage, setAvatarImage] = useState('https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2700&q=80')
+  const [about, setAbout] = useState('I am an avid photographer and love my three boys')
   // const [username, setUsername] = useState(user.username)
 
   if (!token) {
@@ -30,7 +30,7 @@ const UpdateUser = ({ token, handleDone, pk, user, isUpdatingProfile, setIsUpdat
         <UserForm
           token={token} pk={pk} handleDone={handleDone} username={user.username} firstName={firstName} setFirstName={setFirstName}
           lastName={lastName} setLastName={setLastName} email={email} setEmail={setEmail}
-          avatarImage={avatarImage} setAvatarImage={setAvatarImage} isUpdatingProfile={isUpdatingProfile}
+          avatarImage={avatarImage} setAvatarImage={setAvatarImage} isUpdatingProfile={isUpdatingProfile} about={about} setAbout={setAbout}
         />
       </div>
       {/* <CardContent backgroundColor={backgroundColor} border={border} font={font} backgroundImage={backgroundImage} title={title} message={message} /> */}

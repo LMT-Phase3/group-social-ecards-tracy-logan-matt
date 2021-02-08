@@ -152,7 +152,7 @@ function App () {
           </Route>
 
           <Route path='/me'>
-            <UserList {...userProps}>Hello Me</UserList>
+            <UserProfile {...userProps}>Hello Me</UserProfile>
           </Route>
 
           <Route path='/friends'>

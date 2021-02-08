@@ -94,8 +94,8 @@ a {
 }
 
 .user-card-profile {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   background-size: contain;
   border-radius: 80px;
 } 
@@ -274,8 +274,20 @@ a {
   height: 167px;
   width: 250px;
   background-repeat: no-repeat;
+}
+
+.avatar-thumbnail {
+  border: 2px solid black;
+  border-radius: 6px;
+  margin: 5px;
+  background-size: cover;
+  height: 140px;
+  width: 140px;
+  background-repeat: no-repeat;
+  border-radius: 80px;
 
 }
+
 
 .dropdown-item {
   font-family: 'Rubik', sans-serif;

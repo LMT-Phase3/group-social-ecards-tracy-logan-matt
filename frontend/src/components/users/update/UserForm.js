@@ -2,9 +2,9 @@
 import { Redirect } from 'react-router-dom'
 import { updateUser } from '../../../api'
 import Card from 'react-bootstrap/Card'
-import UserContent from '../UserContent'
+// import UserContent from '../UserContent'
 
-const UserForm = ({ token, pk, handleDone, isUpdatingProfile, username, firstName, lastName, email, avatarImage, setFirstName, setLastName, setAvatarImage, setEmail }) => {
+const UserForm = ({ token, pk, handleDone, isUpdatingProfile, username, firstName, lastName, email, avatarImage, about, setFirstName, setLastName, setAvatarImage, setEmail, setAbout }) => {
   if (!token) {
     return <Redirect to='/' />
   }
@@ -19,42 +19,32 @@ const UserForm = ({ token, pk, handleDone, isUpdatingProfile, username, firstNam
   }
 
   return (
-    <form onSubmit={(event) => handleSubmit(event)}>
-      <div style={{ border: 'solid 2px black', borderRadius: '8px' }} className='card-detail-all'>
-        <button type='submit' className='button-style'>Submit Update</button>
-      </div>
-      <div className='create-card-section flex-col'>
-        <div className='create-card-header'>Your Profile</div>
-        <div className='create-card-section flex-col'>
-          <div className='create-card-header'>{username}</div>
-          <div className='flex'>
-            <Card className='flex animate__animated animate__fadeInLeft'>
-              <Card.Body>
-                <div className='inside-body' style={{ border: '5px solid black', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black' }}><span style={{ color: 'white' }}>{firstName}</span></div>
-                {/* Make border-solid and justification fields in model */}
-              </Card.Body>
-            </Card>
-          </div>
-        </div>
-        <UserContent username={username} firstName='Tracy' lastName='Falba' email='tfalba@mac.com' about='I am an avid photographer and love my three boys' />
-        <div className='flex'>
-          <Card>
-            <Card.Body>
-              <div className='card-detail-holder myimage myfont-big' style={{ backgroundImage: `url(${avatarImage}` }} />
-            </Card.Body>
-          </Card>
-          <Card className='flex animate__animated animate__fadeInLeft'>
-            <Card.Body>
-              <div className='inside-body flex'>
-                <input className='my-card-title' type='text' id='first-name' value={firstName} onClick={evt => setFirstName('')} onChange={evt => setFirstName(evt.target.value)} />
-                <input className='my-card-title' type='text' id='last-name' value={lastName} onClick={evt => setLastName('')} onChange={evt => setLastName(evt.target.value)} />
-                <input className='my-card-title' type='text' id='email' value={email} onClick={evt => setEmail('')} onChange={evt => setEmail(evt.target.value)} />
+    <form className='flex-col' style={{ width: '90%', alignItems: 'flex-start' }} onSubmit={(event) => handleSubmit(event)}>
+      <div style={{ width: '100%', alignItems: 'flex-start' }} className='create-card-section flex-col'>
+        <div style={{ width: '100%', justifyContent: 'flex-start' }} className='create-card-header flex'>Your Profile</div>
+        {/* INSERTING USER CONTENT HERE */}
+        <>
+          <div className='create-card-header'>Show {username} Cards</div>
+          <div style={{ alignItems: 'center', width: '90%' }} className='create-card-section flex-col'>
+            <div style={{ border: '3px solid black', width: '100%', justifyContent: 'space-around', alignItems: 'center' }} className='flex animate__animated animate__fadeInLeft'>
+              <div style={{ color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <div className='user-card-profile' style={{ justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', backgroundSize: 'cover', backgroundImage: `url(${avatarImage})` }} />
+                <div>{username}</div>
               </div>
-              {/* Make border-solid and justification fields in model */}
-            </Card.Body>
-          </Card>
-        </div>
+              <div style={{ color: 'black' }}>
+                <div>
+                  <span><input type='text' id='first-name' value={firstName} onClick={evt => setFirstName('')} onChange={evt => setFirstName(evt.target.value)} /></span>
+                  <span><input type='text' id='last-name' value={lastName} onClick={evt => setLastName('')} onChange={evt => setLastName(evt.target.value)} /></span>
+                </div>
+                <div><input type='text' id='email' value={email} onClick={evt => setEmail('')} onChange={evt => setEmail(evt.target.value)} /></div>
+                <div> <textarea type='text' id='about' value={about} onClick={evt => setAbout('')} onChange={evt => setAbout(evt.target.value)} /></div>
+              </div>
+            </div>
+          </div>
+        </>
       </div>
+      <button type='submit' className='button-style'>Submit Update</button>
+
     </form>
   )
 }

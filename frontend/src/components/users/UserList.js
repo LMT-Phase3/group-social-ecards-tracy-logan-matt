@@ -27,11 +27,6 @@ const UserList = ({ token, username, userFilter }) => {
         )}
       </>
       <>
-        {(userFilter === 'me') && (
-          <div className='general-link card-detail-header card-detail-all'>My Profile</div>
-        )}
-      </>
-      <>
         {(userFilter === 'friends') && (
           <div className='general-link card-detail-header card-detail-all'>Friends' Profiles</div>
         )}

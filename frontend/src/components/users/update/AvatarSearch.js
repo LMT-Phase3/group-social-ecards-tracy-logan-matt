@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { getSampleAvatars } from '../../../avatarApi'
 import { useState } from 'react'
 
-const AvatarSearch = ({ token, setBackgroundImage }) => {
+const AvatarSearch = ({ token, setAvatarImage }) => {
   const [Avatars, setAvatars] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [pageNumber, setPageNumber] = useState(0)
@@ -39,7 +39,7 @@ const AvatarSearch = ({ token, setBackgroundImage }) => {
       <button type='submit' className='button-style' onClick={() => startAvatarSearch(searchTerm)}>Get Avatars</button>
       <div className='flex'>
         {Avatars.map(avatar => (
-          <div className='photo-thumbnail' onClick={() => setBackgroundImage(avatar)} avatar={avatar} key={avatar} style={{ backgroundImage: `url(${avatar})` }} />
+          <div className='avatar-thumbnail' onClick={() => setAvatarImage(avatar)} avatar={avatar} key={avatar} style={{ backgroundImage: `url(${avatar})` }} />
         ))}
         <div className='flex-col' style={{ justifyContent: 'center', alignItems: 'center' }}>
           <div className='flex'>
