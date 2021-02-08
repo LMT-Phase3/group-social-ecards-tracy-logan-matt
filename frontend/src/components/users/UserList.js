@@ -13,6 +13,8 @@ const UserList = ({ token, username, userFilter }) => {
   function updateCards () {
     getUsers(token).then(users => setUsers(users))
   }
+
+  // console.log(users[0].friends)
   if (!token) {
     return <Redirect to='/login' />
   }
@@ -39,8 +41,18 @@ const UserList = ({ token, username, userFilter }) => {
           <ListGroupItem user={user} key={user.pk}>
             <Link className='card-title' to={`/user/${user.pk}`}>
               <div className='flex'><span>{user.username} </span><span className='material-icons sm-nav-icon'>thumb_up_off_alt</span></div>
-
             </Link>
+            {user.friends && (
+              <>
+                {user.friends.map(friend => (
+                  <ListGroupItem friend={friend} key={friend.pk}>
+                    <div>{friend}</div>
+                  </ListGroupItem>
+
+                ))}
+              </>
+            )}
+
           </ListGroupItem>
         ))}
       </ListGroup>

@@ -1,6 +1,5 @@
 import Navbar from 'react-bootstrap/Navbar'
-import { deleteCard, getCards } from '../../api'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 const CardNav = ({ token, user, pk, setIsUpdatingProfile }) => {
   function handleUpdate () {

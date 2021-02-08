@@ -30,7 +30,7 @@ const UserProfile = ({ token, username }) => {
             </div>
             <UserNav token={token} username={username} setIsUpdatingProfile={setIsUpdatingProfile} user={user} pk={pk} />
             {/* <UserContent username={user.username} avatar={user.avatar} about={user.about} friends={user.friends} /> */}
-            <UserContent username={user.username} friends={user.friends} firstName={user.first_name} />
+            <UserContent username={user.username} friends={user.friends} firstName='Tracy' lastName='Falba' email='tfalba@mac.com' about='I am an avid photographer and love my three boys' />
 
           </div>)
         : (

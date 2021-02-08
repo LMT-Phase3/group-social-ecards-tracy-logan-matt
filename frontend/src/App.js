@@ -26,7 +26,7 @@ function App () {
   const [cardFilter, setCardFilter] = useState('all')
   const [userFilter, setUserFilter] = useState('all')
   let isLoggedIn = (username && token)
-  const cardProps = { token, username, cardFilter, isCreating, setIsCreating }
+  const cardProps = { token, username, cardFilter, isCreating, setIsCreating, setCardFilter, handleCardsFilter }
   const userProps = { token, username, userFilter }
 
   // const [creating, setCreating] = useToken(false)

@@ -93,6 +93,13 @@ a {
   height: 167px;
 }
 
+.user-card-profile {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  border-radius: 80px;
+} 
+
 .flex {
   display: flex;
   flex-wrap: wrap;

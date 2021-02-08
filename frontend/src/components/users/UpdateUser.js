@@ -4,10 +4,16 @@ import AvatarSearch from './update/AvatarSearch'
 import UserForm from './update/UserForm'
 
 const UpdateUser = ({ token, handleDone, pk, user, isUpdatingProfile, setIsUpdatingProfile }) => {
-  const [firstName, setFirstName] = useState(user.first_name)
-  const [lastName, setLastName] = useState(user.last_name)
+  // const [firstName, setFirstName] = useState(user.first_name)
+  // const [lastName, setLastName] = useState(user.last_name)
+  // const [email, setEmail] = useState(user.email)
+  // const [avatarImage, setAvatarImage] = useState(user.avatar)
+
+  const [firstName, setFirstName] = useState('Tracy')
+  const [lastName, setLastName] = useState('Falba')
   const [email, setEmail] = useState(user.email)
   const [avatarImage, setAvatarImage] = useState(user.avatar)
+
   // const [username, setUsername] = useState(user.username)
 
   if (!token) {

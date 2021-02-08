@@ -2,6 +2,7 @@
 import { Redirect } from 'react-router-dom'
 import { updateUser } from '../../../api'
 import Card from 'react-bootstrap/Card'
+import UserContent from '../UserContent'
 
 const UserForm = ({ token, pk, handleDone, isUpdatingProfile, username, firstName, lastName, email, avatarImage, setFirstName, setLastName, setAvatarImage, setEmail }) => {
   if (!token) {
@@ -35,7 +36,7 @@ const UserForm = ({ token, pk, handleDone, isUpdatingProfile, username, firstNam
             </Card>
           </div>
         </div>
-
+        <UserContent username={username} firstName='Tracy' lastName='Falba' email='tfalba@mac.com' about='I am an avid photographer and love my three boys' />
         <div className='flex'>
           <Card>
             <Card.Body>

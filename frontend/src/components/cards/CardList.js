@@ -5,7 +5,7 @@ import { getCards, getMyCards } from '../../api'
 import { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-const CardList = ({ token, username, cardFilter, isCreating, setIsCreating }) => {
+const CardList = ({ token, username, cardFilter, isCreating, setIsCreating, setCardFilter, handleCardsFilter }) => {
   const [cards, setCards] = useState([])
   console.log(cardFilter)
 
@@ -68,19 +68,25 @@ const CardList = ({ token, username, cardFilter, isCreating, setIsCreating }) =>
                 <Link className='card-title' to={`/card/${card.pk}`}>
                   <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
                 </Link>
-                <div className='flex'><span>{card.user}</span><span className='material-icons sm-nav-icon'>thumb_up_off_alt</span></div>
+                <Link to={`/users-detail/${card.user.pk}`}>
+                  <div className='flex'>
+                    <span>{card.user}</span>
+                    <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
+                  </div>
+
+                </Link>
               </ListGroupItem>
             ))}
           </ListGroup>
-           </>)
+        </>)
         : (<CreateCard
-            token={token} setIsCreating={setIsCreating} handleDone={(newCard) => {
+            token={token} setIsCreating={setIsCreating} setCardFilter={setCardFilter} handleDone={(newCard) => {
               setIsCreating(false)
               setCards([newCard, ...cards])
             }}
            />
           )}
-       </>
+      </>
 
       )}
     </>
