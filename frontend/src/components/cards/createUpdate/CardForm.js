@@ -50,14 +50,14 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Dropdown.Item style={{ fontFamily: 'cursive' }} eventKey='cursive'>Cursive</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: 'Lucinda' }} eventKey='Lucinda'>Lucinda</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: 'monospace' }} eventKey='monospace'>Monospace</Dropdown.Item>
-            <Dropdown.Item style={{ fontFamily: 'fantasy' }} eventKey='monospace'>Fantasy</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: 'fantasy' }} eventKey='fantasy'>Fantasy</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Caveat', cursive" }} eventKey='caveat'>Caveat</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Anton', sans-serif" }} eventKey='anton'>Anton</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Pacifico', cursive" }} eventKey="'Pacifico', cursive">Pacifico</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Bungee Shade', cursive" }} eventKey="'Bungee Shade', cursive">Bungee Shade</Dropdown.Item>
-            <Dropdown.Item style={{ fontFamily: "'Creepster', cursive" }} eventkey="'Creepster', cursive">Creepster</Dropdown.Item>
-            <Dropdown.Item style={{ fontFamily: "'Lobster', cursive" }} eventKey='lobster'>Lobster</Dropdown.Item>
-            <Dropdown.Item style={{ fontFamily: "'Dancing Script', cursive" }} eventKey='dancing-script'>Dancing Script</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Creepster', cursive" }} eventKey="'Creepster', cursive">Creepster</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Lobster', cursive" }} eventKey="'Lobster', cursive">Lobster</Dropdown.Item>
+            <Dropdown.Item style={{ fontFamily: "'Dancing Script', cursive" }} eventKey="'Dancing Script', cursive">Dancing Script</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Indie Flower', cursive" }} eventKey="'Indie Flower', cursive">Indie Flower</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Parisienne', cursive" }} eventKey='parisienne'>Parisienne</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Bangers', cursive" }} eventKey='bangers'>Bangers</Dropdown.Item>B
