@@ -54,9 +54,9 @@ export function register (username, password) {
     })
 }
 
-export function getCards (token) {
+export function getCards (token, path) {
   return API
-    .get('cards/', {
+    .get(`${path}/`, {
       headers: {
         Authorization: `Token ${token}`
       }

@@ -1,32 +1,21 @@
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import CreateCard from './CreateCard'
-import { getCards, getMyCards } from '../../api'
+import { getCards } from '../../api'
 import { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-const CardList = ({ token, username, cardFilter, isCreating, setIsCreating, setCardFilter, handleCardsFilter }) => {
+const CardList = ({ token, username, isCreating, setIsCreating, apiPath }) => {
   const [cards, setCards] = useState([])
-  console.log(cardFilter)
 
   // const [isCreating, setIsCreating] = useState(false)
-
-  useEffect(updateCards, [token, username, cardFilter])
+  // const apiPath = 'cards'
+  useEffect(updateCards, [token, username, apiPath])
   // could write a condition within update cards to make a request to getMyCards
   // or getFriendsCards
 
   function updateCards () {
-    if (cardFilter === 'my') {
-      getMyCards(token, username).then(cards => setCards(cards))
-      // remove username once backend is set up
-    } else if (cardFilter === 'friends') {
-      getCards(token).then(cards => setCards(cards))
-      // getFriendsCards(token, username).then(cards => setCards(cards))
-      // remove username once backend is set up
-    } else {
-      getCards(token).then(cards => setCards(cards))
-    }
-    getCards(token).then(cards => setCards(cards))
+    getCards(token, apiPath).then(cards => setCards(cards))
   }
 
   if (!token) {
@@ -38,17 +27,17 @@ const CardList = ({ token, username, cardFilter, isCreating, setIsCreating, setC
       (<>{(!isCreating)
         ? (<>
           <>
-            {(cardFilter === 'all') && (
+            {(apiPath === 'cards') && (
               <div className='general-link card-detail-header card-detail-all'>All Cards</div>
             )}
           </>
           <>
-            {(cardFilter === 'my') && (
+            {(apiPath === 'user-cards') && (
               <div className='general-link card-detail-header card-detail-all'>My Cards</div>
             )}
           </>
           <>
-            {(cardFilter === 'friends') && (
+            {(apiPath === 'friends-cards') && (
               <div className='general-link card-detail-header card-detail-all'>Friends Cards</div>
             )}
           </>
@@ -79,15 +68,15 @@ const CardList = ({ token, username, cardFilter, isCreating, setIsCreating, setC
               </ListGroupItem>
             ))}
           </ListGroup>
-        </>)
+           </>)
         : (<CreateCard
-            token={token} setIsCreating={setIsCreating} setCardFilter={setCardFilter} handleDone={(newCard) => {
+            token={token} setIsCreating={setIsCreating} handleDone={(newCard) => {
               setIsCreating(false)
               setCards([newCard, ...cards])
             }}
            />
           )}
-      </>
+       </>
 
       )}
     </>

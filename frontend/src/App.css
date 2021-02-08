@@ -32,7 +32,7 @@ body {
 }
 
 .animate__animated.animate__fadeIn {
-  --animate-duration: 2s;
+  --animate-duration: 3s;
 }
 
 .animate__animated.animate__fadeInLeft {
@@ -162,7 +162,7 @@ a {
 }
 
 .btn-primary {
-  font-family: 'Anton', sans-serif;
+  /* font-family: 'Anton', sans-serif; */
 }
 
 .ml-sm-2 {
@@ -178,7 +178,7 @@ a {
 .card-detail-navbar {
   background-image: none;
   justify-content: space-around;
-  background-color: rgba(26, 28, 28, 0.678);
+  background-color: rgba(26, 28, 28, 0.413);
 }
 
 .create-card-header {
@@ -187,9 +187,9 @@ a {
   font-family: 'Rubik', sans-serif;
 }
 .create-card-section {
-  margin-left: 50px;
+  /* margin-left: 50px;
   margin-right: 50px;
-  margin-top: 25px;
+  margin-top: 25px; */
 }
 .create-card-dropdown {
   padding-left: 10px;
@@ -217,17 +217,20 @@ a {
   justify-content: space-between;
   width: 80%;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 .card-detail-holder{
   width: 500px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
+  border-radius: 0 10px 10px 10px;
   background-size: cover;
 
 }
 
 .card-detail-navbar {
-  width: 400px;
-  border-radius: 10px;
+  width: 350px;
+  /* border-radius: 10px; */
+  border-radius: 10px 10px 0 0;
   font-size: 22px;
   padding: 0;
 }
@@ -251,6 +254,8 @@ a {
   font-size: 25px;
   color: black;
   font-family: 'Caveat', cursive;
+  background-color: #ffffff3b;
+  border: none;
 }
 .card {
   background-color: rgba(255, 255, 255, 0.05);
@@ -274,7 +279,7 @@ a {
   color: white;
   background-color: #009ab1c9;
   border: 2px solid teal;
-  font-family: 'Anton', sans-serif;
+  /* font-family: 'Anton', sans-serif; */
 
 }
 
