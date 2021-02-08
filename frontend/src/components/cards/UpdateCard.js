@@ -4,15 +4,15 @@ import { Link, Redirect } from 'react-router-dom'
 import PhotoSearch from './createUpdate/PhotoSearch'
 import CardForm from './createUpdate/CardForm'
 
-const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) => {
+const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card, cardFilter, setCardFilter, handleCardsFilter }) => {
   const [backgroundColor, setBackgroundColor] = useState(card.background)
   const [border, setBorder] = useState(card.border)
   const [font, setFont] = useState(card.font)
   const [title, setTitle] = useState(card.title)
   const [message, setMessage] = useState(card.message)
   const [backgroundImage, setBackgroundImage] = useState(card.image_front)
-  const [fontColor, setFontColor] = useState('white')
-  const [borderType, setBorderType] = useState('solid')
+  const [fontColor, setFontColor] = useState(card.font_color)
+  const [borderType, setBorderType] = useState(card.border_type)
 
   if (!token) {
     return <Redirect to='/login' />
@@ -21,7 +21,18 @@ const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) 
   return (
     <>
       <div className='flex card-detail-all card-detail-header'>
-        <Link onClick={() => setIsUpdating(false)} className='general-link' to='/cards'>Return to Cards List</Link>
+        <Link onClick={() => handleCardsFilter('all')} className='general-link' to='/cards'>Return to Cards List</Link>
+
+        {/* {(cardFilter === 'any') && (
+          <Link onClick={() => handleDone()} className='general-link' to='/cards'>Return to Cards List</Link>
+        )}
+        {(cardFilter === 'my') && (
+          <Link onClick={() => handleDone()} className='general-link' to='/mycards'>Return to Cards List</Link>
+        )}
+        {(cardFilter === 'friends') && (
+          <Link onClick={() => handleDone()} className='general-link' to='/friendscards'>Return to Cards List</Link>
+        )} */}
+
       </div>
       <div className='flex'>
 

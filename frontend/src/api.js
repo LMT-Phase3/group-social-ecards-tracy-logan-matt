@@ -63,6 +63,15 @@ export function getCards (token) {
     })
     .then(res => res.data)
 }
+export function getUsers (token) {
+  return API
+    .get('users/', {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}
 
 export function getMyCards (token, username) {
   return API
@@ -72,21 +81,21 @@ export function getMyCards (token, username) {
       }
     })
     .then(res => res.data)
-    // .then(data => {
-    //   const cards = []
-    //   for (const card of cards) {
-    //     if (username === card.user) {
-    //       cards.push(card)
-    //     }
-    //     cards.push(card)
-    //   }
-    // }
-    // )
 }
 
 export function getCardDetail (token, pk) {
   return API
     .get(`card-detail/${pk}/`, {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}
+
+export function getUserProfile (token, pk) {
+  return API
+    .get(`users-detail/${pk}`, {
       headers: {
         Authorization: `Token ${token}`
       }
@@ -137,6 +146,22 @@ export function updateCard (token, pk, backgroundColor, font, border, background
       message: message,
       font_color: fontColor,
       border_type: borderType
+    },
+    {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}
+
+export function updateUser (token, pk, firstName, lastName, email, avatarImage) {
+  return API
+    .patch(`users-detail/${pk}/`, {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      avatar: avatarImage
     },
     {
       headers: {
