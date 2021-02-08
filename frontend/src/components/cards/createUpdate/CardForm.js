@@ -60,7 +60,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Dropdown.Item style={{ fontFamily: "'Dancing Script', cursive" }} eventKey="'Dancing Script', cursive">Dancing Script</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Indie Flower', cursive" }} eventKey="'Indie Flower', cursive">Indie Flower</Dropdown.Item>
             <Dropdown.Item style={{ fontFamily: "'Parisienne', cursive" }} eventKey='parisienne'>Parisienne</Dropdown.Item>
-            <Dropdown.Item style={{ fontFamily: "'Bangers', cursive" }} eventKey='bangers'>Bangers</Dropdown.Item>B
+            <Dropdown.Item style={{ fontFamily: "'Bangers', cursive" }} eventKey='bangers'>Bangers</Dropdown.Item>
 
           </DropdownButton>
           <DropdownButton
