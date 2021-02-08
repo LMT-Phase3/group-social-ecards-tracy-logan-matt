@@ -11,13 +11,10 @@ const LoginComponent = ({ setAuth, isLoggedIn }) => {
   const [errors, setErrors] = useState()
 
   if (isLoggedIn) {
-    console.log('I am logged in')
     return <Redirect to='/cards' />
   }
   function handleSubmit (event) {
     event.preventDefault()
-    console.log(username, password)
-    console.log('Submitting')
     login(username, password)
       .then(data => {
         if (data && data.auth_token) {

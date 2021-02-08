@@ -1,30 +1,30 @@
 
 import { Redirect } from 'react-router-dom'
-import { getSamplePhotos } from '../../../photoApi'
+import { getSampleAvatars } from '../../../avatarApi'
 import { useState } from 'react'
 
-const PhotoSearch = ({ token, setBackgroundImage }) => {
-  const [photos, setPhotos] = useState([])
+const AvatarSearch = ({ token, setBackgroundImage }) => {
+  const [Avatars, setAvatars] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [pageNumber, setPageNumber] = useState(0)
 
-  function getPhotos (keyword, page) {
-    getSamplePhotos(keyword, page)
-      .then(photos => setPhotos(photos))
+  function getAvatars (keyword, page) {
+    getSampleAvatars(keyword, page)
+      .then(avatars => setAvatars(avatars))
   }
 
   function pageForward (keyword, page) {
     setPageNumber(page + 1)
-    getPhotos(keyword, page + 1)
+    getAvatars(keyword, page + 1)
   }
   function pageBack (keyword, page) {
     setPageNumber(page - 1)
-    getPhotos(keyword, page - 1)
+    getAvatars(keyword, page - 1)
   }
 
-  function startPhotoSearch (keyword) {
+  function startAvatarSearch (keyword) {
     setPageNumber(1)
-    getPhotos(keyword, 1)
+    getAvatars(keyword, 1)
   }
 
   if (!token) {
@@ -33,13 +33,13 @@ const PhotoSearch = ({ token, setBackgroundImage }) => {
 
   return (
     <div className='create-card-section'>
-      <div className='create-card-header'>Search for Photos</div>
-      <label className='photo-label' htmlFor='photo'>Search Term</label>
-      <input type='text' id='photo' required value={searchTerm} onClick={evt => setSearchTerm('')} onChange={evt => setSearchTerm(evt.target.value)} />
-      <button type='submit' className='button-style' onClick={() => startPhotoSearch(searchTerm)}>Get Photos</button>
+      <div className='create-card-header'>Search for Avatars</div>
+      <label className='avatar-label' htmlFor='avatar'>Search Term</label>
+      <input type='text' id='avatar' required value={searchTerm} onClick={evt => setSearchTerm('')} onChange={evt => setSearchTerm(evt.target.value)} />
+      <button type='submit' className='button-style' onClick={() => startAvatarSearch(searchTerm)}>Get Avatars</button>
       <div className='flex'>
-        {photos.map(photo => (
-          <div className='photo-thumbnail' onClick={() => setBackgroundImage(photo)} photo={photo} key={photo} style={{ backgroundImage: `url(${photo})` }} />
+        {Avatars.map(avatar => (
+          <div className='photo-thumbnail' onClick={() => setBackgroundImage(avatar)} avatar={avatar} key={avatar} style={{ backgroundImage: `url(${avatar})` }} />
         ))}
         <div className='flex-col' style={{ justifyContent: 'center', alignItems: 'center' }}>
           <div className='flex'>
@@ -61,4 +61,4 @@ const PhotoSearch = ({ token, setBackgroundImage }) => {
   )
 }
 
-export default PhotoSearch
+export default AvatarSearch

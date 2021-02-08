@@ -10,6 +10,7 @@ import Register from './components/Register'
 import CardList from './components/cards/CardList'
 import CardDetail from './components/cards/CardDetail'
 import UserList from './components/users/UserList'
+import UserProfile from './components/users/UserProfile'
 import createPersistedState from 'use-persisted-state'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
 import { LinkContainer } from 'react-router-bootstrap'
@@ -160,6 +161,10 @@ function App () {
 
           <Route path='/users'>
             <UserList {...userProps}>Hello Everyone</UserList>
+          </Route>
+
+          <Route path='/user/:pk'>
+            <UserProfile {...userProps} />
           </Route>
 
           <Route path='/'>

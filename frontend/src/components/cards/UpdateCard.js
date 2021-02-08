@@ -11,8 +11,8 @@ const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) 
   const [title, setTitle] = useState(card.title)
   const [message, setMessage] = useState(card.message)
   const [backgroundImage, setBackgroundImage] = useState(card.image_front)
-  const [fontColor, setFontColor] = useState('white')
-  const [borderType, setBorderType] = useState('solid')
+  const [fontColor, setFontColor] = useState(card.font_color)
+  const [borderType, setBorderType] = useState(card.border_type)
 
   if (!token) {
     return <Redirect to='/login' />
