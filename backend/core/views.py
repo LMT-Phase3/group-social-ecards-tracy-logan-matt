@@ -84,23 +84,7 @@ class FriendsCardsView(ListAPIView):
 
 
 class FriendsListView(APIView):
-    """
-    GET - list of friends, identified by username
-    POST - add a person to our friends, identified by username
     
-    POST request data:
-    {
-        "username": "logan12"
-    }
-    
-    GET or POST response data:
-    {
-        "friends": [
-            "logan12",
-            "pam31"
-        ]
-    }
-    """
     def get(self, request):
         user = self.request.user
         serializer = FriendSerializer(user)
@@ -129,13 +113,24 @@ class FriendsListView(APIView):
         return Response(serializer.data)
 
 
-    # def delete(self, request):
-    #     delete_username = request.data.get('username')
-    #     if delete_username is None:
-    #         raise ParseError(f"User {new_friend_username} does not exist")
+
+
+
+    def delete(self, request):
+        delete_friend_username = request.data.get('username')
+
+        if not delete_friend_username:
+            raise ParseError("No username provided")
+
+        user = User.objects.filter(username=delete_friend_username).first()
+        if user is None:
+            raise ParseError(f"User {delete_friend_username} does not exist")
+
+        self.request.user.friends.remove(user)
         
-    #     # case 4: good username sent
-    #     self.request.user.friends.add(user)
+        serializer = FriendSerializer(self.request.user)
+        return Response(serializer.data)
+
         
 
 
