@@ -45,7 +45,9 @@ const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
                   <Link to={`/user/${card.user}`}>
                     <div className='flex'>
                       <span>{card.user}</span>
-                      <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
+                      {(card.user !== username) && (
+                        <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
+                      )}
                     </div>
 
                   </Link>
