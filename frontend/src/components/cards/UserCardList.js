@@ -3,12 +3,13 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import CreateCard from './CreateCard'
 import { getCards } from '../../api'
 import { useState, useEffect } from 'react'
-import { useParams, Link, Redirect } from 'react-router-dom'
+import { useParams, useHistory, Link, Redirect } from 'react-router-dom'
 
 const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
   const [cards, setCards] = useState([])
   const { profileUsername } = useParams()
   const apiPath = `/users/${profileUsername}/cards`
+  const history = useHistory()
 
   // const [isCreating, setIsCreating] = useState(false)
   // const apiPath = 'cards'
@@ -29,7 +30,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
       (<>{(!isCreating)
         ? (
           <>
-            <div className='general-link card-detail-header card-detail-all'>{profileUsername}'s Cards</div>
+            <div className='general-link card-detail-header card-detail-all'><span onClick={() => history.goBack()} style={{ marginRight: '20px' }} className='material-icons sm-nav-icon'>arrow_back</span>{profileUsername}'s Cards</div>
             <ListGroup className='my-list-group'>
 
               {cards.map(card => (
@@ -59,7 +60,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
             }}
            />
           )}
-       </>
+      </>
 
       )}
     </>

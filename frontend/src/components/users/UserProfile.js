@@ -30,8 +30,11 @@ const UserProfile = ({ token, username }) => {
               <Link className='general-link' to='/users'>Return to User List</Link>
             </div>
             <UserNav token={token} username={username} setIsUpdatingProfile={setIsUpdatingProfile} user={user} profileUsername={profileUsername} />
-            <UserContent token={token} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name} email={user.email} about={user.about} avatarImage={user.avatar} />
-            <UserFriends token={token} user={user} profileUsername={profileUsername} />
+            <div className='flex'>
+              <UserContent token={token} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name} email={user.email} about={user.about} avatarImage={user.avatar} />
+              <UserFriends token={token} user={user} profileUsername={profileUsername} />
+
+            </div>
 
           </div>)
         : (

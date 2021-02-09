@@ -1,7 +1,7 @@
 import Navbar from 'react-bootstrap/Navbar'
 import { Redirect } from 'react-router-dom'
 
-const UserNav = ({ token, user, profileUsername, setIsUpdatingProfile }) => {
+const UserNav = ({ token, user, username, profileUsername, setIsUpdatingProfile }) => {
   function handleUpdate () {
     setIsUpdatingProfile(true)
   }
@@ -12,11 +12,11 @@ const UserNav = ({ token, user, profileUsername, setIsUpdatingProfile }) => {
   return (
     <Navbar className='card-detail-navbar'>
       <>
-        <Navbar.Text style={{ color: 'white' }}>
-          {/* <Link to={`/cards/${pk}/`}> */}
-          <span onClick={() => handleUpdate()}>Edit</span><span className='material-icons sm-nav-icon'>edit</span>
-          {/* </Link> */}
-        </Navbar.Text>
+        {(username === profileUsername) && (
+          <Navbar.Text style={{ color: 'white' }}>
+            <span onClick={() => handleUpdate()}>Edit Profile</span><span className='material-icons sm-nav-icon'>edit</span>
+          </Navbar.Text>
+        )}
       </>
     </Navbar>
   )
