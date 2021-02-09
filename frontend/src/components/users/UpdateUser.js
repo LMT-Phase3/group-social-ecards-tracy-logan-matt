@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import AvatarSearch from './update/AvatarSearch'
 import UserForm from './update/UserForm'
 
-const UpdateUser = ({ token, handleDone, profileUsername, user, isUpdatingProfile, setIsUpdatingProfile }) => {
+const UpdateUser = ({ token, handleDone, profileUsername, user, isUpdatingProfile, setIsUpdatingProfile, username, pathUsername }) => {
   const [firstName, setFirstName] = useState(user.first_name)
   const [lastName, setLastName] = useState(user.last_name)
   const [email, setEmail] = useState(user.email)
@@ -12,6 +12,9 @@ const UpdateUser = ({ token, handleDone, profileUsername, user, isUpdatingProfil
 
   if (!token) {
     return <Redirect to='/login' />
+  }
+  if (profileUsername === undefined) {
+    pathUsername = username
   }
 
   return (
@@ -22,7 +25,7 @@ const UpdateUser = ({ token, handleDone, profileUsername, user, isUpdatingProfil
       <div className='flex'>
 
         <UserForm
-          token={token} handleDone={handleDone} profileUsername={profileUsername} firstName={firstName} setFirstName={setFirstName}
+          token={token} handleDone={handleDone} profileUsername={pathUsername} firstName={firstName} setFirstName={setFirstName}
           lastName={lastName} setLastName={setLastName} email={email} setEmail={setEmail}
           avatarImage={avatarImage} setAvatarImage={setAvatarImage} isUpdatingProfile={isUpdatingProfile} about={about} setAbout={setAbout}
         />

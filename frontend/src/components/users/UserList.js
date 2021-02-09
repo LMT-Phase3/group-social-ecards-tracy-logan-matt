@@ -31,7 +31,6 @@ const UserList = ({ token, username, userFilter }) => {
       <ListGroup className='my-list-group'>
         {users.map(user => (
           <ListGroupItem user={user} key={user.pk}>
-            {/* <Link className='card-title' to={`/user/${user.pk}`}> */}
             <Link className='card-title' to={`/user/${user.username}`}>
               <div style={{ color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <div className='user-card-profile' style={{ borderRadius: '80px', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', backgroundImage: `url(${user.avatar})` }} />

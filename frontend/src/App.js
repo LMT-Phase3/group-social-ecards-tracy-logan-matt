@@ -118,8 +118,8 @@ function App () {
                   <Nav.Link>All Users</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item>Update My Profile</NavDropdown.Item>
+              {/* <NavDropdown.Divider />
+              <NavDropdown.Item>Update My Profile</NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
           <div>

@@ -5,7 +5,7 @@ import { getCards } from '../../api'
 import { useState, useEffect } from 'react'
 import { useParams, useHistory, Link, Redirect } from 'react-router-dom'
 
-const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
+const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, setMyProfile }) => {
   const [cards, setCards] = useState([])
   const { profileUsername } = useParams()
   const apiPath = `/users/${profileUsername}/cards`
@@ -39,8 +39,11 @@ const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
                   <Link to={`/user/${card.user}`}>
                     <div className='flex'>
                       <span>{card.user}</span>
-                      {(card.user !== username) && (
+                      {(card.user !== username && !myProfile.friends.includes(card.user)) && (
                         <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
+                      )}
+                      {(card.user !== username && myProfile.friends.includes(card.user)) && (
+                        <span className='material-icons sm-nav-icon'>thumb_up</span>
                       )}
                     </div>
 
@@ -56,7 +59,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
             }}
            />
           )}
-       </>
+      </>
 
       )}
     </>
