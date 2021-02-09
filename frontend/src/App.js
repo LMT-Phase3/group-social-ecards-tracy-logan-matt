@@ -13,9 +13,10 @@ import CardDetail from './components/cards/CardDetail'
 import UserList from './components/users/UserList'
 import UserProfile from './components/users/UserProfile'
 import createPersistedState from 'use-persisted-state'
+import { getMyCards, getAllUsers } from './api'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
 import { LinkContainer } from 'react-router-bootstrap'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const useUsername = createPersistedState('cards_username')
 const useToken = createPersistedState('cards_token')
@@ -24,47 +25,45 @@ function App () {
   const [username, setUsername] = useUsername()
   const [token, setToken] = useToken()
   const [isCreating, setIsCreating] = useState(false)
-  const [cardFilter, setCardFilter] = useState('all')
-  const [userFilter, setUserFilter] = useState('all')
+  const [myCards, setMyCards] = useState([])
+  const [allUsers, setAllUsers] = useState([])
   let isLoggedIn = (username && token)
-  const cardProps = { token, username, cardFilter, isCreating, setIsCreating, setCardFilter, handleCardsFilter }
-  const userProps = { token, username, userFilter }
+  const cardProps = { token, username, isCreating, setIsCreating, myCards, setMyCards, allUsers, setAllUsers }
+  const userProps = { token, username, allUsers, setAllUsers }
 
-  // const [creating, setCreating] = useToken(false)
+  useEffect(updateAllCards, [token])
+
+  function updateAllCards () {
+    getMyCards(token).then(cards => setMyCards(cards))
+  }
+  // Use MyCards to be my set of favorites
+
+  useEffect(updateAllUsers, [token])
+  function updateAllUsers () {
+    getAllUsers(token).then(users => setAllUsers(users))
+  }
+  console.log(allUsers)
+  console.log(myCards)
 
   function setAuth (username, token) {
     setUsername(username)
     setToken(token)
   }
 
-  function handleCardsFilter (whichSet) {
-    setIsCreating(false)
-    setCardFilter(whichSet)
-    setUserFilter('all')
-  }
   function handleLogOut () {
     setToken(null)
     setIsCreating(false)
     isLoggedIn = false
-    setCardFilter('all')
   }
 
-  function handleUserFilter (who) {
-    setIsCreating(false)
-    setUserFilter(who)
-    setCardFilter('all')
-  }
   function handleHome () {
     setIsCreating(false)
-    setUserFilter('all')
-    setCardFilter('all')
   }
 
   function handleCreate () {
     setIsCreating(true)
-    setUserFilter('all')
-    setCardFilter('all')
   }
+
   return (
     <Router>
       <Navbar className='top-navbar' expand='lg'>
@@ -80,17 +79,17 @@ function App () {
             </LinkContainer>
             <NavDropdown className='top-dropdown' title='Cards' id='basic-nav-dropdown'>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleCardsFilter('my')} to='/mycards'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/mycards'>
                   <Nav.Link style={{ color: 'black' }}>My Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleCardsFilter('friends')} to='/friendscards'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/friendscards'>
                   <Nav.Link>Friends Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleCardsFilter('all')} to='/cards'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/cards'>
                   <Nav.Link>All Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
@@ -99,17 +98,17 @@ function App () {
             </NavDropdown>
             <NavDropdown className='top-dropdown' title='Users' id='basic-nav-dropdown'>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleUserFilter('me')} to='/me'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/me'>
                   <Nav.Link style={{ color: 'black' }}>My Profile</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleUserFilter('friends')} to='/friends'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/friends'>
                   <Nav.Link>My Friends</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleUserFilter('all')} to='/users'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/users'>
                   <Nav.Link>All Users</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
@@ -141,7 +140,6 @@ function App () {
           </Route>
 
           <Route path='/mycards'>
-            {/* <CardList cardFilter='my' {...cardProps} /> */}
             <CardList apiPath='user-cards' {...cardProps} />
           </Route>
 

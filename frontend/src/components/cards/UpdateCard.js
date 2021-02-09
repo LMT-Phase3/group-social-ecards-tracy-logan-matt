@@ -4,7 +4,7 @@ import { Redirect, useHistory } from 'react-router-dom'
 import PhotoSearch from './createUpdate/PhotoSearch'
 import CardForm from './createUpdate/CardForm'
 
-const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card, cardFilter, setCardFilter, handleCardsFilter }) => {
+const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) => {
   const [backgroundColor, setBackgroundColor] = useState(card.background)
   const [border, setBorder] = useState(card.border)
   const [font, setFont] = useState(card.font)
@@ -26,18 +26,6 @@ const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card, ca
     <>
       <div className='flex card-detail-all card-detail-header'>
         <button className='general-link' onClick={() => handleGoBack({ card })}>Return to Cards List</button>
-
-        {/* <Link onClick={() => handleCardsFilter('all')} className='general-link' to='/cards'>Return to Cards List</Link> */}
-
-        {/* {(cardFilter === 'any') && (
-          <Link onClick={() => handleDone()} className='general-link' to='/cards'>Return to Cards List</Link>
-        )}
-        {(cardFilter === 'my') && (
-          <Link onClick={() => handleDone()} className='general-link' to='/mycards'>Return to Cards List</Link>
-        )}
-        {(cardFilter === 'friends') && (
-          <Link onClick={() => handleDone()} className='general-link' to='/friendscards'>Return to Cards List</Link>
-        )} */}
 
       </div>
       <div className='flex'>

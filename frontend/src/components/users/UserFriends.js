@@ -1,31 +1,43 @@
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import ListGroup from 'react-bootstrap/ListGroup'
 
-const UserFriends = ({ token, user, profileUsername }) => {
+const UserFriends = ({ token, user, profileUsername, allUsers, setAllUsers }) => {
   // function handleUpdate () {
   //   setIsUpdatingProfile(true)
   // }
+
   if (!token) {
     return <Redirect to='/' />
   }
 
   return (
     <>
-      <div className='create-card-header'>{profileUsername}'s Friends</div>
-      <ListGroup>
+      <div className='create-card-header flex-col'>{profileUsername}'s Friends
         {user.friends && (
           <>
-            {user.friends.map(friend => (
-              <ListGroupItem friend={friend} key={friend.pk}>
-                <div>{friend}</div>
-              </ListGroupItem>
+            {allUsers.map(other => (
+              <>
+                {(user.friends.includes(other.username)) && (
+                  <ListGroup other={other.value} key={other.key} className='my-list-group flex'>
 
+                    <ListGroupItem>
+                      <Link className='card-title' to={`/user/${other.username}`}>
+                        <div style={{ color: 'black', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                          <div className='user-card-profile' style={{ borderRadius: '80px', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', backgroundImage: `url(${other.avatar})` }} />
+                          <div>{other.username}</div>
+                        </div>
+                      </Link>
+                    </ListGroupItem>
+                  </ListGroup>
+
+                )}
+              </>
             ))}
           </>
         )}
-      </ListGroup>
 
+      </div>
     </>
   )
 }

@@ -221,14 +221,13 @@ a {
 }
 .card-detail-holder{
   width: 500px;
-  /* border-radius: 10px; */
-  border-radius: 0 10px 10px 10px;
+  border-radius: 10px;
   background-size: cover;
 
 }
 
 .card-detail-navbar {
-  width: 350px;
+  width: 500px;
   /* border-radius: 10px; */
   border-radius: 10px 10px 0 0;
   font-size: 22px;

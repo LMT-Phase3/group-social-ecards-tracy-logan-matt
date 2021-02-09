@@ -30,7 +30,6 @@ const CreateCard = ({ token, setIsCreating, handleDone }) => {
           fontColor={fontColor} setFontColor={setFontColor}
         />
       </div>
-      {/* <CardContent backgroundColor={backgroundColor} border={border} font={font} backgroundImage={backgroundImage} title={title} message={message} /> */}
       <PhotoSearch token={token} setBackgroundImage={setBackgroundImage} />
     </>
   )

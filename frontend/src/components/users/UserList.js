@@ -6,15 +6,12 @@ import { useEffect, useState } from 'react'
 
 const UserList = ({ token, username, userFilter }) => {
   const [users, setUsers] = useState([])
-  useEffect(updateUsers, [token, username])
-  // could write a condition within update cards to make a request to getMyCards
-  // or getFriendsCards
 
+  useEffect(updateUsers, [token, username])
   function updateUsers () {
     getUsers(token).then(users => setUsers(users))
   }
-
-  // console.log(users[0].friends)
+  console.log({ users })
   if (!token) {
     return <Redirect to='/login' />
   }
