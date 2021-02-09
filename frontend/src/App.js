@@ -24,11 +24,13 @@ function App () {
   const [username, setUsername] = useUsername()
   const [token, setToken] = useToken()
   const [isCreating, setIsCreating] = useState(false)
-  const [cardFilter, setCardFilter] = useState('all')
-  const [userFilter, setUserFilter] = useState('all')
+  // const [cardFilter, setCardFilter] = useState('all')
+  // const [userFilter, setUserFilter] = useState('all')
   let isLoggedIn = (username && token)
-  const cardProps = { token, username, cardFilter, isCreating, setIsCreating, setCardFilter, handleCardsFilter }
-  const userProps = { token, username, userFilter }
+  // const cardProps = { token, username, cardFilter, isCreating, setIsCreating, setCardFilter, handleCardsFilter }
+  // const userProps = { token, username, userFilter }
+  const cardProps = { token, username, isCreating, setIsCreating }
+  const userProps = { token, username }
 
   // const [creating, setCreating] = useToken(false)
 
@@ -37,34 +39,20 @@ function App () {
     setToken(token)
   }
 
-  function handleCardsFilter (whichSet) {
-    setIsCreating(false)
-    setCardFilter(whichSet)
-    setUserFilter('all')
-  }
   function handleLogOut () {
     setToken(null)
     setIsCreating(false)
     isLoggedIn = false
-    setCardFilter('all')
   }
 
-  function handleUserFilter (who) {
-    setIsCreating(false)
-    setUserFilter(who)
-    setCardFilter('all')
-  }
   function handleHome () {
     setIsCreating(false)
-    setUserFilter('all')
-    setCardFilter('all')
   }
 
   function handleCreate () {
     setIsCreating(true)
-    setUserFilter('all')
-    setCardFilter('all')
   }
+
   return (
     <Router>
       <Navbar className='top-navbar' expand='lg'>
@@ -80,17 +68,17 @@ function App () {
             </LinkContainer>
             <NavDropdown className='top-dropdown' title='Cards' id='basic-nav-dropdown'>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleCardsFilter('my')} to='/mycards'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/mycards'>
                   <Nav.Link style={{ color: 'black' }}>My Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleCardsFilter('friends')} to='/friendscards'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/friendscards'>
                   <Nav.Link>Friends Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleCardsFilter('all')} to='/cards'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/cards'>
                   <Nav.Link>All Cards</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
@@ -99,17 +87,17 @@ function App () {
             </NavDropdown>
             <NavDropdown className='top-dropdown' title='Users' id='basic-nav-dropdown'>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleUserFilter('me')} to='/me'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/me'>
                   <Nav.Link style={{ color: 'black' }}>My Profile</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleUserFilter('friends')} to='/friends'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/friends'>
                   <Nav.Link>My Friends</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => handleUserFilter('all')} to='/users'>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/users'>
                   <Nav.Link>All Users</Nav.Link>
                 </LinkContainer>
               </NavDropdown.Item>
@@ -141,7 +129,6 @@ function App () {
           </Route>
 
           <Route path='/mycards'>
-            {/* <CardList cardFilter='my' {...cardProps} /> */}
             <CardList apiPath='user-cards' {...cardProps} />
           </Route>
 

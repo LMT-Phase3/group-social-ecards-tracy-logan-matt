@@ -8,11 +8,7 @@ import { Link, Redirect } from 'react-router-dom'
 const CardList = ({ token, username, isCreating, setIsCreating, apiPath }) => {
   const [cards, setCards] = useState([])
 
-  // const [isCreating, setIsCreating] = useState(false)
-  // const apiPath = 'cards'
   useEffect(updateCards, [token, username, apiPath])
-  // could write a condition within update cards to make a request to getMyCards
-  // or getFriendsCards
 
   function updateCards () {
     getCards(token, apiPath).then(cards => setCards(cards))
@@ -61,7 +57,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath }) => {
                 <Link to={`/user/${card.user}`}>
                   <div className='flex'>
                     <span>{card.user}</span>
-                    {(card.user !== username) && (
+              
                       <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
 
                     )}

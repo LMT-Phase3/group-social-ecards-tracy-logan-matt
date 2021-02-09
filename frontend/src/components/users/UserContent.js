@@ -1,6 +1,4 @@
 
-import { Link } from 'react-router-dom'
-
 const UserContent = ({ token, profileUsername, firstName, lastName, email, avatarImage, about }) => {
   return (
     <>

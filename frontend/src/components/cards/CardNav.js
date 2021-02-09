@@ -34,16 +34,13 @@ const CardNav = ({ token, username, card, pk, setIsUpdating }) => {
       {(username === card.user) && (
         <>
           <Navbar.Text style={{ color: 'white' }}>
-            {/* <Link to={`/cards/${pk}/`}> */}
             {/* Make these buttons */}
             <span onClick={() => handleUpdate()}>Edit</span><span className='material-icons sm-nav-icon'>edit</span>
-            {/* </Link> */}
           </Navbar.Text>
           <Navbar.Text style={{ color: 'white' }}>
             <Link style={{ color: 'white' }} to='/cards' onClick={() => handleDelete(pk)}>
               <span>Delete</span><span className='material-icons sm-van-icon'>delete</span>
             </Link>
-            {/* <span onClick={() => handleDelete(pk)} className='material-icons sm-nav-icon'>delete</span> */}
           </Navbar.Text>
         </>
       )}

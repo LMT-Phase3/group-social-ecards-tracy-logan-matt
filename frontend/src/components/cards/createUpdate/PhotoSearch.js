@@ -40,22 +40,22 @@ const PhotoSearch = ({ token, setBackgroundImage }) => {
         <button type='submit' className='button-style' onClick={() => startPhotoSearch(searchTerm)}>Get Photos</button>
         <div className='flex'>
           {photos.map(photo => (
-          <div className='photo-thumbnail' onClick={() => setBackgroundImage(photo)} photo={photo} key={photo} style={{ backgroundImage: `url(${photo})` }} />
-        ))}
+            <div className='photo-thumbnail' onClick={() => setBackgroundImage(photo)} photo={photo} key={photo} style={{ backgroundImage: `url(${photo})` }} />
+          ))}
           <div className='flex-col' style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <div className='flex'>
-            {(pageNumber === 1) && (
-              <button className='button-style' onClick={() => pageForward(searchTerm, pageNumber)}><span>Next</span></button>
-
-            )}
-            {(pageNumber > 1) && (
-              <>
-                <button className='button-style' onClick={() => pageBack(searchTerm, pageNumber)}><span>Previous</span></button>
+            <div className='flex'>
+              {(pageNumber === 1) && (
                 <button className='button-style' onClick={() => pageForward(searchTerm, pageNumber)}><span>Next</span></button>
-              </>
-            )}
+
+              )}
+              {(pageNumber > 1) && (
+                <>
+                  <button className='button-style' onClick={() => pageBack(searchTerm, pageNumber)}><span>Previous</span></button>
+                  <button className='button-style' onClick={() => pageForward(searchTerm, pageNumber)}><span>Next</span></button>
+                </>
+              )}
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>

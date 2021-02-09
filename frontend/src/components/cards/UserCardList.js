@@ -10,12 +10,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
   const { profileUsername } = useParams()
   const apiPath = `/users/${profileUsername}/cards`
   const history = useHistory()
-
-  // const [isCreating, setIsCreating] = useState(false)
-  // const apiPath = 'cards'
   useEffect(updateCards, [token, username, apiPath])
-  // could write a condition within update cards to make a request to getMyCards
-  // or getFriendsCards
 
   function updateCards () {
     getCards(token, apiPath).then(cards => setCards(cards))
@@ -41,7 +36,6 @@ const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
                   <Link className='card-title' to={`/card/${card.pk}`}>
                     <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
                   </Link>
-                  {/* <Link to={`/users-detail/${card.user.pk}`}> */}
                   <Link to={`/user/${card.user}`}>
                     <div className='flex'>
                       <span>{card.user}</span>
@@ -62,7 +56,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
             }}
            />
           )}
-      </>
+       </>
 
       )}
     </>

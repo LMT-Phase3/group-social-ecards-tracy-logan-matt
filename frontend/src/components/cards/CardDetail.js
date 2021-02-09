@@ -5,7 +5,7 @@ import CardNav from './CardNav'
 import CardContent from './CardContent'
 import UpdateCard from './UpdateCard'
 
-const CardDetail = ({ token, username, setCardFilter, cardFilter, handleCardsFilter }) => {
+const CardDetail = ({ token, username }) => {
   const { pk } = useParams()
   const [card, setCard] = useState([])
   const [isUpdating, setIsUpdating] = useState(false)
@@ -37,13 +37,13 @@ const CardDetail = ({ token, username, setCardFilter, cardFilter, handleCardsFil
           </div>)
         : (
           <UpdateCard
-            token={token} pk={pk} isUpdating={isUpdating} setIsUpdating={setIsUpdating} cardFilter={cardFilter} setCardFilter={setCardFilter} card={card} handleCardsFilter={handleCardsFilter} handleDone={(updatedCard) => {
+            token={token} pk={pk} isUpdating={isUpdating} setIsUpdating={setIsUpdating} card={card} handleDone={(updatedCard) => {
               setIsUpdating(false)
               setCard(updatedCard)
             }}
           />
           )}
-       </>)}
+      </>)}
     </>
 
   )

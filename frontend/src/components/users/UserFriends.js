@@ -29,7 +29,7 @@ const UserFriends = ({ token, user, profileUsername }) => {
           </ListGroup>
 
         )}
-        <Link className='create-bar-header' style={{ width: '100%' }} to={`/users/${profileUsername}/cards`}>{profileUsername} Cards</Link>
+        <Link className='create-bar-header' style={{ width: '100%' }} to={`/users/${profileUsername}/cards`}>{profileUsername}'s Cards</Link>
 
       </div>
     </>
