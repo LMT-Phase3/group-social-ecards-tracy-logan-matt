@@ -1,8 +1,10 @@
 
+import { Link } from 'react-router-dom'
+
 const UserContent = ({ token, username, profileUsername, firstName, lastName, email, avatarImage, about }) => {
   return (
     <>
-      <div className='create-card-header'>Show {profileUsername} Cards</div>
+      <Link to={`/users/${profileUsername}/cards`} className='create-card-header'>Show {profileUsername} Cards</Link>
       <div style={{ width: '90%' }} className='create-card-section flex-col'>
         <div style={{ width: '60%', justifyContent: 'space-around' }} className='flex animate__animated animate__fadeIn'>
           <div style={{ color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
