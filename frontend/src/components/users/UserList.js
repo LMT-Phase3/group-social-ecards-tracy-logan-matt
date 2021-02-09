@@ -40,7 +40,7 @@ const UserList = ({ token, username, userFilter, myProfile, setMyProfile }) => {
                   <span>{user.username}</span>
                   {(user.username !== username) && (
                     <>
-                      {(myProfile.friends.includes(user.username))
+                      {((myProfile && myProfile.friends.includes(user.username)))
                         ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
                         : <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}

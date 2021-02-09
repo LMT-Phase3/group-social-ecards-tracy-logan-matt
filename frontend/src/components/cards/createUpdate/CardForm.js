@@ -6,10 +6,20 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
 import { useState } from 'react'
 
-const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBorder, setFont, setTitle, setMessage, setBackgroundImage, setFontColor, setBorderType, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType }) => {
+const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBorder, setFont, setTitle, setMessage, setBackgroundImage, setFontColor, setBorderType, setJustify, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify }) => {
   // const [fontColor, setFontColor] = useState('white')
   // const [borderType, setBorderType] = useState('solid')
-  const [justification, setJustification] = useState('left')
+  const [justification, setJustification] = useState()
+  function handleJustify (e) {
+    setJustification(e)
+    if (justification === 'left') {
+      setJustify('flex-start')
+    } else if (justify === 'center') {
+      setJustify('center')
+    } else {
+      setJustify('flex-end')
+    }
+  }
 
   if (!token) {
     return <Redirect to='/' />
@@ -20,13 +30,13 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
     console.log('at top of handle submit')
     console.log(isUpdating)
     if (!isUpdating) {
-      createCard(token, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType)
+      createCard(token, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify)
         .then(card => {
           handleDone(card)
         })
     } else {
       console.log('I am here')
-      updateCard(token, pk, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType)
+      updateCard(token, pk, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify)
         .then(card => {
           console.log(card)
           handleDone(card)
@@ -140,7 +150,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             alignRight
             title='Select Justification'
             id='justification'
-            onSelect={(e) => setJustification(e)}
+            onSelect={(e) => handleJustify(e)}
           >
             <Dropdown.Item style={{ textAlign: 'left' }} eventKey='left'>Left</Dropdown.Item>
             <Dropdown.Item style={{ textAlign: 'center' }} eventKey='center'>Center</Dropdown.Item>

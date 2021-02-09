@@ -27,7 +27,7 @@ function App () {
   const [isCreating, setIsCreating] = useState(false)
   const [myCards, setMyCards] = useState([])
   const [allUsers, setAllUsers] = useState([])
-  const [myProfile, setMyProfile] = useState([])
+  const [myProfile, setMyProfile] = useState()
   let isLoggedIn = (username && token)
   const cardProps = { token, username, isCreating, setIsCreating, myCards, setMyCards, allUsers, setAllUsers, myProfile, setMyProfile }
   const userProps = { token, username, allUsers, setAllUsers, myProfile, setMyProfile }

@@ -11,7 +11,7 @@ const Register = ({ setAuth, isLoggedIn }) => {
   const [errors, setErrors] = useState()
 
   if (isLoggedIn) {
-    return <Redirect to='/cards' />
+    return <Redirect to='/me' />
   }
   function handleSubmit (event) {
     event.preventDefault()
