@@ -13,9 +13,10 @@ import CardDetail from './components/cards/CardDetail'
 import UserList from './components/users/UserList'
 import UserProfile from './components/users/UserProfile'
 import createPersistedState from 'use-persisted-state'
+import { getMyCards, getAllUsers } from './api'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
 import { LinkContainer } from 'react-router-bootstrap'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const useUsername = createPersistedState('cards_username')
 const useToken = createPersistedState('cards_token')
@@ -24,15 +25,25 @@ function App () {
   const [username, setUsername] = useUsername()
   const [token, setToken] = useToken()
   const [isCreating, setIsCreating] = useState(false)
-  // const [cardFilter, setCardFilter] = useState('all')
-  // const [userFilter, setUserFilter] = useState('all')
+  const [myCards, setMyCards] = useState([])
+  const [allUsers, setAllUsers] = useState([])
   let isLoggedIn = (username && token)
-  // const cardProps = { token, username, cardFilter, isCreating, setIsCreating, setCardFilter, handleCardsFilter }
-  // const userProps = { token, username, userFilter }
-  const cardProps = { token, username, isCreating, setIsCreating }
-  const userProps = { token, username }
+  const cardProps = { token, username, isCreating, setIsCreating, myCards, setMyCards, allUsers, setAllUsers }
+  const userProps = { token, username, allUsers, setAllUsers }
 
-  // const [creating, setCreating] = useToken(false)
+  useEffect(updateAllCards, [token])
+
+  function updateAllCards () {
+    getMyCards(token).then(cards => setMyCards(cards))
+  }
+  // Use MyCards to be my set of favorites
+
+  useEffect(updateAllUsers, [token])
+  function updateAllUsers () {
+    getAllUsers(token).then(users => setAllUsers(users))
+  }
+  console.log(allUsers)
+  console.log(myCards)
 
   function setAuth (username, token) {
     setUsername(username)

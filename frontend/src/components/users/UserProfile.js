@@ -6,7 +6,7 @@ import UserContent from './UserContent'
 import UpdateUser from './UpdateUser'
 import UserFriends from './UserFriends'
 
-const UserProfile = ({ token, username }) => {
+const UserProfile = ({ token, username, allUsers, setAllUsers }) => {
   const { profileUsername } = useParams()
   const [user, setUser] = useState()
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false)
@@ -29,10 +29,10 @@ const UserProfile = ({ token, username }) => {
             <div className='flex card-detail-header'>
               <Link className='general-link' to='/users'>Return to User List</Link>
             </div>
-            <UserNav token={token} username={username} setIsUpdatingProfile={setIsUpdatingProfile} user={user} profileUsername={profileUsername} />
+            <UserNav token={token} user={user} username={username} setIsUpdatingProfile={setIsUpdatingProfile} profileUsername={profileUsername} />
             <div className='flex'>
-              <UserContent token={token} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name} email={user.email} about={user.about} avatarImage={user.avatar} />
-              <UserFriends token={token} user={user} profileUsername={profileUsername} />
+              <UserContent token={token} user={user} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name} email={user.email} about={user.about} avatarImage={user.avatar} />
+              <UserFriends token={token} user={user} profileUsername={profileUsername} allUsers={allUsers} setAllUsers={setAllUsers} />
 
             </div>
 

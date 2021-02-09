@@ -2,7 +2,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import { deleteCard, getCards } from '../../api'
 import { Link, Redirect } from 'react-router-dom'
 
-const CardNav = ({ token, username, card, pk, setIsUpdating }) => {
+const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards }) => {
   function handleDelete (pk) {
     deleteCard(token, pk)
       .then(getCards(token))

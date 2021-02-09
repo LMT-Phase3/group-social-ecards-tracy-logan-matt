@@ -46,7 +46,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath }) => {
               <div className='flex'><span /></div>
             </ListGroupItem>
             {cards.map(card => (
-              <ListGroupItem card={card} key={card.url}>
+              <ListGroupItem card={card} key={card.pk}>
 
                 <div style={{ justifyContent: 'space-between' }} className='flex'><span>{card.title}</span><span className='material-icons sm-nav-icon'>favorite_border</span></div>
 
@@ -57,17 +57,20 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath }) => {
                 <Link to={`/user/${card.user}`}>
                   <div className='flex'>
                     <span>{card.user}</span>
-              
+
+                    {(card.user !== username) && (
                       <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
 
                     )}
+
                   </div>
 
                 </Link>
               </ListGroupItem>
             ))}
           </ListGroup>
-           </>)
+           </>
+          )
         : (<CreateCard
             token={token} setIsCreating={setIsCreating} handleDone={(newCard) => {
               setIsCreating(false)

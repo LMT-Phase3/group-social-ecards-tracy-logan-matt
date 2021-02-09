@@ -1,5 +1,7 @@
 
-const UserContent = ({ token, profileUsername, firstName, lastName, email, avatarImage, about }) => {
+import { Link } from 'react-router-dom'
+
+const UserContent = ({ token, profileUsername, user, firstName, lastName, email, avatarImage, about }) => {
   return (
     <>
       <div style={{ }} className='create-card-section flex-col'>
@@ -14,8 +16,8 @@ const UserContent = ({ token, profileUsername, firstName, lastName, email, avata
             <div>{about}</div>
           </div>
         </div>
+        <Link className='create-bar-header create-card-header' to={`/users/${profileUsername}/cards`}>{profileUsername}'s Cards</Link>
       </div>
-
     </>
   )
 }

@@ -63,6 +63,18 @@ export function getCards (token, path) {
     })
     .then(res => res.data)
 }
+
+export function getMyCards (token) {
+  return API
+    .get('user-cards/', {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}
+
+// rewrite this to take user.friends and select on all, friends or my
 export function getUsers (token) {
   return API
     .get('users/', {
@@ -73,9 +85,9 @@ export function getUsers (token) {
     .then(res => res.data)
 }
 
-export function getMyCards (token, username) {
+export function getAllUsers (token) {
   return API
-    .get('cards/', {
+    .get('users/', {
       headers: {
         Authorization: `Token ${token}`
       }
