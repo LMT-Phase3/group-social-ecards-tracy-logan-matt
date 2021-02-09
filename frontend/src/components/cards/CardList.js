@@ -54,20 +54,27 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
                   <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
                 </Link>
                 {/* <Link to={`/users-detail/${card.user.pk}`}> */}
-                <Link to={`/user/${card.user}`}>
-                  <div className='flex'>
+                <div className='flex'>
+                  <Link to={`/user/${card.user}`}>
                     <span>{card.user}</span>
+                  </Link>
+                  {(card.user !== username) && (
+                    <>
+                      {(myProfile.friends.includes(card.user))
+                        ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
-                    {(card.user !== username && !myProfile.friends.includes(card.user)) && (
-                      <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
-                    )}
-                    {(card.user !== username && myProfile.friends.includes(card.user)) && (
-                      <span className='material-icons sm-nav-icon'>thumb_up</span>
-                    )}
+                        : <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
+                    </>
+                  )}
+                  {/* {(card.user !== username && !myProfile.friends.includes(card.user)) && (
+                    <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
+                  )}
+                  {(card.user !== username && myProfile.friends.includes(card.user)) && (
+                    <span className='material-icons sm-nav-icon'>thumb_up</span>
+                  )} */}
 
-                  </div>
+                </div>
 
-                </Link>
               </ListGroupItem>
             ))}
           </ListGroup>

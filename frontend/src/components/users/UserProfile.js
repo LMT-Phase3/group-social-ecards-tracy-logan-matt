@@ -6,7 +6,7 @@ import UserContent from './UserContent'
 import UpdateUser from './UpdateUser'
 import UserFriends from './UserFriends'
 
-const UserProfile = ({ token, username, allUsers, setAllUsers }) => {
+const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyProfile }) => {
   const { profileUsername } = useParams()
   const [user, setUser] = useState()
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false)
@@ -40,7 +40,10 @@ const UserProfile = ({ token, username, allUsers, setAllUsers }) => {
             </div>
             <UserNav token={token} user={user} username={username} setIsUpdatingProfile={setIsUpdatingProfile} profileUsername={profileUsername} pathUsername={pathUsername} />
             <div className='flex'>
-              <UserContent token={token} user={user} pathUsername={pathUsername} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name} email={user.email} about={user.about} avatarImage={user.avatar} />
+              <UserContent
+                token={token} user={user} pathUsername={pathUsername} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name}
+                email={user.email} about={user.about} avatarImage={user.avatar} myProfile={myProfile} setMyProfile={setMyProfile}
+              />
               <UserFriends token={token} user={user} pathUsername={pathUsername} profileUsername={profileUsername} allUsers={allUsers} setAllUsers={setAllUsers} />
 
             </div>

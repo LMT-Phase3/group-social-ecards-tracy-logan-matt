@@ -36,18 +36,20 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
                   <Link className='card-title' to={`/card/${card.pk}`}>
                     <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
                   </Link>
-                  <Link to={`/user/${card.user}`}>
-                    <div className='flex'>
+                  <div className='flex'>
+                    <Link to={`/user/${card.user}`}>
                       <span>{card.user}</span>
-                      {(card.user !== username && !myProfile.friends.includes(card.user)) && (
-                        <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
-                      )}
-                      {(card.user !== username && myProfile.friends.includes(card.user)) && (
-                        <span className='material-icons sm-nav-icon'>thumb_up</span>
-                      )}
-                    </div>
+                    </Link>
+                    {(card.user !== username) && (
+                      <>
+                        {(myProfile.friends.includes(card.user))
+                          ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
-                  </Link>
+                          : <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
+                      </>
+                    )}
+                  </div>
+
                 </ListGroupItem>
               ))}
             </ListGroup>
@@ -59,7 +61,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
             }}
            />
           )}
-      </>
+       </>
 
       )}
     </>
