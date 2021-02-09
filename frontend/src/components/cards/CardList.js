@@ -5,7 +5,7 @@ import { getCards } from '../../api'
 import { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-const CardList = ({ token, username, isCreating, setIsCreating, apiPath }) => {
+const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfile, setMyProfile }) => {
   const [cards, setCards] = useState([])
 
   useEffect(updateCards, [token, username, apiPath])
@@ -58,9 +58,11 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath }) => {
                   <div className='flex'>
                     <span>{card.user}</span>
 
-                    {(card.user !== username) && (
+                    {(card.user !== username && !myProfile.friends.includes(card.user)) && (
                       <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
-
+                    )}
+                    {(card.user !== username && myProfile.friends.includes(card.user)) && (
+                      <span className='material-icons sm-nav-icon'>thumb_up</span>
                     )}
 
                   </div>
@@ -69,7 +71,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath }) => {
               </ListGroupItem>
             ))}
           </ListGroup>
-           </>
+        </>
           )
         : (<CreateCard
             token={token} setIsCreating={setIsCreating} handleDone={(newCard) => {
@@ -78,7 +80,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath }) => {
             }}
            />
           )}
-       </>
+      </>
 
       )}
     </>
