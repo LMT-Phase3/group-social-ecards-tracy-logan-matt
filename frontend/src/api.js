@@ -75,6 +75,17 @@ export function getMyCards (token) {
 }
 
 // rewrite this to take user.friends and select on all, friends or my
+
+export function getMyProfile (token, username) {
+  return API
+    .get(`users-detail/${username}/`, {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}
+
 export function getUsers (token) {
   return API
     .get('users/', {

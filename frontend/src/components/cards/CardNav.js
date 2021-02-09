@@ -2,7 +2,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import { deleteCard, getCards } from '../../api'
 import { Link, Redirect } from 'react-router-dom'
 
-const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards }) => {
+const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards, myProfile, setMyProfile }) => {
   function handleDelete (pk) {
     deleteCard(token, pk)
       .then(getCards(token))
@@ -24,7 +24,9 @@ const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards
             </Link>
           </Navbar.Text>
           <Navbar.Text style={{ color: 'white' }}>
-            <span className='follow-link'>Follow<span className='material-icons'>thumb_up_off_alt</span></span>
+            {(card.user !== username && myProfile.friends.includes(card.user))
+              ? <span className='follow-link'>Following<span className='material-icons'>thumb_up</span></span>
+              : <span className='follow-link'>Follow<span className='material-icons'>thumb_up_off_alt</span></span>}
           </Navbar.Text>
           <Navbar.Text style={{ color: 'white' }}>
             <span className='material-icons sm-nav-icon'>favorite_border</span>
