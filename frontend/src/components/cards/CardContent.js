@@ -1,7 +1,7 @@
 
 import Card from 'react-bootstrap/Card'
 
-const CardContent = ({ backgroundColor, border, font, backgroundImage, title, message, fontColor, borderType }) => {
+const CardContent = ({ backgroundColor, border, font, backgroundImage, title, message, fontColor, borderType, justify }) => {
   return (
     <div className='create-card-section flex-col'>
       <div className='flex'>
@@ -12,7 +12,7 @@ const CardContent = ({ backgroundColor, border, font, backgroundImage, title, me
         </Card>
         <Card className='flex animate__animated animate__fadeIn'>
           <Card.Body>
-            <div className='inside-body' style={{ border: `${borderType} ${border}`, justifyContent: 'center', alignItems: 'center', color: `${fontColor}`, backgroundColor: `${backgroundColor}` }}><span style={{ fontFamily: `${font}` }}>{message}</span></div>
+            <div className='inside-body' style={{ border: `${borderType} ${border}`, justifyContent: `${justify}`, alignItems: 'center', color: `${fontColor}`, backgroundColor: `${backgroundColor}` }}><span style={{ fontFamily: `${font}` }}>{message}</span></div>
             {/* Make border-solid and justification fields in model */}
           </Card.Body>
         </Card>

@@ -22,7 +22,7 @@ const CardDetail = ({ token, username, myCards, setMyCards, myProfile, setMyProf
 
   return (
     <>
-      {card &&
+      {card && myProfile &&
       (<>{(!isUpdating)
         ? (
           <div className='flex-col card-detail-all'>
@@ -32,7 +32,7 @@ const CardDetail = ({ token, username, myCards, setMyCards, myProfile, setMyProf
             </div>
             <CardContent
               backgroundColor={card.background} border={card.border} font={card.font} backgroundImage={card.image_front} title={card.title} message={card.message}
-              fontColor={card.font_color} borderType={card.border_type}
+              fontColor={card.font_color} borderType={card.border_type} justify={card.justify}
             />
           </div>)
         : (

@@ -21,7 +21,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
   }
 
   return (
-    <>{token && cards &&
+    <>{token && cards && myProfile &&
       (<>{(!isCreating)
         ? (
           <>
@@ -61,7 +61,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
             }}
            />
           )}
-       </>
+      </>
 
       )}
     </>

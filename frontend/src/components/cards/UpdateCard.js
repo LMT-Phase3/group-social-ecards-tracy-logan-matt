@@ -13,6 +13,7 @@ const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) 
   const [backgroundImage, setBackgroundImage] = useState(card.image_front)
   const [fontColor, setFontColor] = useState(card.font_color)
   const [borderType, setBorderType] = useState(card.border_type)
+  const [justify, setJustify] = useState(card.justify)
   const history = useHistory()
   if (!token) {
     return <Redirect to='/login' />
@@ -33,7 +34,7 @@ const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) 
         <CardForm
           token={token} pk={pk} isUpdating={isUpdating} handleDone={handleDone} setBackgroundColor={setBackgroundColor} setBorder={setBorder} setFont={setFont} setTitle={setTitle} setMessage={setMessage} setBackgroundImage={setBackgroundImage}
           backgroundColor={backgroundColor} font={font} border={border} backgroundImage={backgroundImage} title={title} message={message} borderType={borderType} setBorderType={setBorderType}
-          fontColor={fontColor} setFontColor={setFontColor}
+          fontColor={fontColor} setFontColor={setFontColor} justify={justify} setJustify={setJustify}
         />
       </div>
       {/* <CardContent backgroundColor={backgroundColor} border={border} font={font} backgroundImage={backgroundImage} title={title} message={message} /> */}

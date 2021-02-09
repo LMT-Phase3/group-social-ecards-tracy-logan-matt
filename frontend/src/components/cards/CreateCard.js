@@ -13,6 +13,7 @@ const CreateCard = ({ token, setIsCreating, handleDone }) => {
   const [backgroundImage, setBackgroundImage] = useState('https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2700&q=80')
   const [fontColor, setFontColor] = useState('white')
   const [borderType, setBorderType] = useState('solid 10px')
+  const [justify, setJustify] = useState('flex-left')
 
   if (!token) {
     return <Redirect to='/login' />
@@ -27,7 +28,7 @@ const CreateCard = ({ token, setIsCreating, handleDone }) => {
         <CardForm
           token={token} pk='' handleDone={handleDone} setBackgroundColor={setBackgroundColor} setBorder={setBorder} setFont={setFont} setTitle={setTitle} setMessage={setMessage} setBackgroundImage={setBackgroundImage}
           backgroundColor={backgroundColor} font={font} border={border} backgroundImage={backgroundImage} title={title} message={message} borderType={borderType} setBorderType={setBorderType}
-          fontColor={fontColor} setFontColor={setFontColor}
+          fontColor={fontColor} setFontColor={setFontColor} justify={justify} setJustify={setJustify}
         />
       </div>
       <PhotoSearch token={token} setBackgroundImage={setBackgroundImage} />
