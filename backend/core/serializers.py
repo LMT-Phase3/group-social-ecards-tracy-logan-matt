@@ -32,6 +32,7 @@ class CardSerializer(serializers.ModelSerializer):
             'font_color',
             'justify',
         ]
+        
 class UserCreateSerializer(serializers.ModelSerializer):
     friends = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
@@ -46,3 +47,11 @@ class UserCreateSerializer(serializers.ModelSerializer):
             "avatar"
         ]
  
+class FriendSerializer(serializers.ModelSerializer):
+    friends = serializers.StringRelatedField(many=True, read_only=True)
+    
+    class Meta:
+        model = User
+        fields = [
+            'friends'
+        ]

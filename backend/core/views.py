@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
-from .serializers import UserSerializer, CardSerializer, UserCreateSerializer
+from rest_framework.exceptions import ParseError
+from .serializers import UserSerializer, CardSerializer, UserCreateSerializer, FriendSerializer
 from rest_framework.response import Response 
 from core.models import Card, User
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
@@ -74,18 +75,68 @@ class CardsForUserView(APIView):
         return Response(data=serializer.data)
 
 
-
-# class FriendsCardsView(APIView):
-#      def get(self, request):
-#         user = self.request.user
-#         cards = Card.objects.filter(user__friends=self.request.user)
-#         serializer = CardSerializer(cards, many=True)
-#         return Response(serializer.data)
-
-
 class FriendsCardsView(ListAPIView):
     serializer_class = CardSerializer
 
     def get_queryset(self):
+        current_user = self.request.user
+        return Card.objects.filter(user__followers=current_user)
+
+
+class FriendsListView(APIView):
+    """
+    GET - list of friends, identified by username
+    POST - add a person to our friends, identified by username
+    
+    POST request data:
+    {
+        "username": "logan12"
+    }
+    
+    GET or POST response data:
+    {
+        "friends": [
+            "logan12",
+            "pam31"
+        ]
+    }
+    """
+    def get(self, request):
         user = self.request.user
-        return Card.objects.filter(user__followers=user)
+        serializer = FriendSerializer(user)
+        return Response(serializer.data)
+
+    def post(self, request):
+        new_friend_username = request.data.get('username')
+        
+        # case 1: no username sent
+        if not new_friend_username:
+            raise ParseError("No username provided")
+        
+        # case 2: your own username sent
+        if new_friend_username == self.request.user.username:
+            raise ParseError("You cannot be your own friend :(")
+        
+        # case 3: bad username sent
+        user = User.objects.filter(username=new_friend_username).first()
+        if user is None:
+            raise ParseError(f"User {new_friend_username} does not exist")
+        
+        # case 4: good username sent
+        self.request.user.friends.add(user)
+        
+        serializer = FriendSerializer(self.request.user)
+        return Response(serializer.data)
+
+
+    # def delete(self, request):
+    #     delete_username = request.data.get('username')
+    #     if delete_username is None:
+    #         raise ParseError(f"User {new_friend_username} does not exist")
+        
+    #     # case 4: good username sent
+    #     self.request.user.friends.add(user)
+        
+
+
+
