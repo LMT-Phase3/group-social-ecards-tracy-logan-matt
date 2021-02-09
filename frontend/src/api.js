@@ -59,10 +59,24 @@ export function getCards (token, path) {
     .get(`${path}/`, {
       headers: {
         Authorization: `Token ${token}`
+      },
+      data: {
+        minRow: 1,
+        maxRow: 10
       }
     })
     .then(res => res.data)
 }
+
+// export function getCards (token, path) {
+//   return API
+//     .get(`${path}/`, {
+//       headers: {
+//         Authorization: `Token ${token}`
+//       }
+//     })
+//     .then(res => res.data)
+// }
 
 export function getMyCards (token) {
   return API

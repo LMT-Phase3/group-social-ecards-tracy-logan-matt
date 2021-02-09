@@ -2,7 +2,7 @@ import { Link, Redirect } from 'react-router-dom'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import ListGroup from 'react-bootstrap/ListGroup'
 
-const UserFriends = ({ token, user, profileUsername, allUsers, setAllUsers }) => {
+const UserFriends = ({ token, user, profileUsername, allUsers, setAllUsers, pathUsername }) => {
   // function handleUpdate () {
   //   setIsUpdatingProfile(true)
   // }
@@ -13,13 +13,13 @@ const UserFriends = ({ token, user, profileUsername, allUsers, setAllUsers }) =>
 
   return (
     <>
-      <div className='create-card-header flex-col'>{profileUsername}'s Friends
+      <div className='create-card-header flex-col'>{pathUsername}'s Friends
         {user.friends && (
           <>
             {allUsers.map(other => (
               <>
                 {(user.friends.includes(other.username)) && (
-                  <ListGroup other={other.value} key={other.key} className='my-list-group flex'>
+                  <ListGroup other={other.value} key={other.pk} className='my-list-group flex'>
 
                     <ListGroupItem>
                       <Link className='card-title' to={`/user/${other.username}`}>

@@ -5,7 +5,7 @@ import { getCards } from '../../api'
 import { useState, useEffect } from 'react'
 import { useParams, useHistory, Link, Redirect } from 'react-router-dom'
 
-const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
+const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, setMyProfile }) => {
   const [cards, setCards] = useState([])
   const { profileUsername } = useParams()
   const apiPath = `/users/${profileUsername}/cards`
@@ -36,15 +36,20 @@ const UserCardList = ({ token, username, isCreating, setIsCreating }) => {
                   <Link className='card-title' to={`/card/${card.pk}`}>
                     <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
                   </Link>
-                  <Link to={`/user/${card.user}`}>
-                    <div className='flex'>
+                  <div className='flex'>
+                    <Link to={`/user/${card.user}`}>
                       <span>{card.user}</span>
-                      {(card.user !== username) && (
-                        <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
-                      )}
-                    </div>
+                    </Link>
+                    {(card.user !== username) && (
+                      <>
+                        {(myProfile.friends.includes(card.user))
+                          ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
-                  </Link>
+                          : <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
+                      </>
+                    )}
+                  </div>
+
                 </ListGroupItem>
               ))}
             </ListGroup>
