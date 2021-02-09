@@ -8,6 +8,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import LoginComponent from './components/LoginComponent'
 import Register from './components/Register'
 import CardList from './components/cards/CardList'
+import UserCardList from './components/cards/UserCardList'
 import CardDetail from './components/cards/CardDetail'
 import UserList from './components/users/UserList'
 import UserProfile from './components/users/UserProfile'
@@ -146,6 +147,10 @@ function App () {
 
           <Route path='/friendscards'>
             <CardList apiPath='friends-cards' {...cardProps} />
+          </Route>
+
+          <Route path='/users/:profileUsername/cards'>
+            <UserCardList {...cardProps} />
           </Route>
 
           <Route path='/card/:pk'>
