@@ -76,6 +76,11 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Dropdown.Item style={{ color: 'white', backgroundColor: 'black' }} eventKey='white'>White</Dropdown.Item>
             <Dropdown.Item style={{ color: 'blue' }} eventKey='blue'>Blue</Dropdown.Item>
             <Dropdown.Item style={{ color: 'red' }} eventKey='red'>Red</Dropdown.Item>
+            <Dropdown.Item style={{ color: '#ffcd24' }} eventKey='#ffcd24'>Gold</Dropdown.Item>
+            <Dropdown.Item style={{ color: '#2aabe4' }} eventKey='#2aebe4'>Light Blue</Dropdown.Item>
+            <Dropdown.Item style={{ color: '#9dc8e4' }} eventKey='#9dc8e4'>Sky</Dropdown.Item>
+            <Dropdown.Item style={{ color: '#666b6e' }} eventKey='#666b6e'>Gray</Dropdown.Item>
+            <Dropdown.Item style={{ color: '#ffc2bb' }} eventKey='#ffc2bb'>Pink</Dropdown.Item>
           </DropdownButton>
           <DropdownButton
             className='levels'
