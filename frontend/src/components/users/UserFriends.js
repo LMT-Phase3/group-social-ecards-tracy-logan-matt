@@ -19,7 +19,7 @@ const UserFriends = ({ token, user, profileUsername, allUsers, setAllUsers, path
             {allUsers.map(other => (
               <>
                 {(user.friends.includes(other.username)) && (
-                  <ListGroup other={other.value} key={other.key} className='my-list-group flex'>
+                  <ListGroup other={other.value} key={other.pk} className='my-list-group flex'>
 
                     <ListGroupItem>
                       <Link className='card-title' to={`/user/${other.username}`}>
