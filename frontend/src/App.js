@@ -38,10 +38,16 @@ function App () {
     getMyCards(token).then(cards => setMyCards(cards))
   }
 
-  useEffect(updateMyProfile, [token, username])
+  // useEffect(updateMyProfile, [token, username])
+  // function updateMyProfile () {
+  //   getMyProfile(token, username).then(user => setMyProfile(user))
+  // }
+
+  useEffect(updateMyProfile, [token])
   function updateMyProfile () {
-    getMyProfile(token, username).then(user => setMyProfile(user))
+    getMyProfile(token).then(user => setMyProfile(user))
   }
+
   // Use MyCards to be my set of favorites
 
   useEffect(updateAllUsers, [token])

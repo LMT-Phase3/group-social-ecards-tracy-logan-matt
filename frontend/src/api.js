@@ -90,9 +90,19 @@ export function getMyCards (token) {
 
 // rewrite this to take user.friends and select on all, friends or my
 
-export function getMyProfile (token, username) {
+// export function getMyProfile (token, username) {
+//   return API
+//     .get(`users-detail/${username}/`, {
+//       headers: {
+//         Authorization: `Token ${token}`
+//       }
+//     })
+//     .then(res => res.data)
+// }
+
+export function getMyProfile (token) {
   return API
-    .get(`users-detail/${username}/`, {
+    .get('my-friends/', {
       headers: {
         Authorization: `Token ${token}`
       }
@@ -209,4 +219,17 @@ export function updateUser (token, username, firstName, lastName, email, about, 
       }
     })
     .then(res => res.data)
+}
+
+export function addFriend (token, newUser) {
+  return API
+    .post('my-friends/', {
+      username: newUser
+    },
+    {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => (res.data))
 }

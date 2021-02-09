@@ -1,10 +1,16 @@
 
 import { Link } from 'react-router-dom'
+import { addFriend } from '../../api'
 
 const UserContent = ({ token, username, profileUsername, pathUsername, user, firstName, lastName, email, avatarImage, about, myProfile, setMyProfile }) => {
   if (profileUsername === undefined) {
     pathUsername = username
   }
+
+  function handleFollow (newuser) {
+    addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+
   return (
     <>
       <div style={{ }} className='create-card-section flex-col'>
@@ -21,7 +27,7 @@ const UserContent = ({ token, username, profileUsername, pathUsername, user, fir
                   {(myProfile.friends.includes(user.username))
                     ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
-                    : <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
+                    : <span onClick={() => handleFollow(user.username)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
                 </>
               )}
             </div>

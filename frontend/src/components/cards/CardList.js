@@ -1,7 +1,9 @@
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import CreateCard from './CreateCard'
-import { getCards } from '../../api'
+import { getCards, addFriend } from '../../api'
+// import { getCards } from '../../api'
+
 import { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
@@ -9,9 +11,14 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
   const [cards, setCards] = useState([])
 
   useEffect(updateCards, [token, username, apiPath])
+  // useEffect(handleFollow, [])
 
   function updateCards () {
     getCards(token, apiPath).then(cards => setCards(cards))
+  }
+
+  function handleFollow (newuser) {
+    addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
   }
 
   if (!token) {
@@ -62,8 +69,9 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
                     <>
                       {(myProfile.friends.includes(card.user))
                         ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
+                        // ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
-                        : <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
+                        : <span onClick={() => handleFollow(card.user)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
                     </>
                   )}
                   {/* {(card.user !== username && !myProfile.friends.includes(card.user)) && (
