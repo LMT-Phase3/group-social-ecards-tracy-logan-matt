@@ -34,12 +34,12 @@ const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyP
       {user &&
       (<>{(!isUpdatingProfile)
         ? (
-          <div className='flex-col card-detail-all'>
+          <div className='card-detail-all'>
             <div className='flex card-detail-header'>
               <Link className='general-link' to='/users'>Return to User List</Link>
             </div>
             <UserNav token={token} user={user} username={username} setIsUpdatingProfile={setIsUpdatingProfile} profileUsername={profileUsername} pathUsername={pathUsername} />
-            <div className='flex'>
+            <div style={{ justifyContent: 'space-around', marginTop: '30px' }} className='flex'>
               <UserContent
                 token={token} user={user} pathUsername={pathUsername} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name}
                 email={user.email} about={user.about} avatarImage={user.avatar} myProfile={myProfile} setMyProfile={setMyProfile}

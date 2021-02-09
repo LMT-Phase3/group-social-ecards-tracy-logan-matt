@@ -1,5 +1,5 @@
 import Navbar from 'react-bootstrap/Navbar'
-import { deleteCard, getCards } from '../../api'
+import { addFriend, deleteCard, getCards } from '../../api'
 import { Link, Redirect } from 'react-router-dom'
 
 const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards, myProfile, setMyProfile }) => {
@@ -10,6 +10,11 @@ const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards
   function handleUpdate () {
     setIsUpdating(true)
   }
+
+  function handleFollow (newuser) {
+    addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+
   if (!token) {
     return <Redirect to='/' />
   }
@@ -28,7 +33,7 @@ const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards
               <Navbar.Text style={{ color: 'white' }}>
                 {(card.user !== username && myProfile.friends.includes(card.user))
                   ? <span className='follow-link'>Following<span className='material-icons'>thumb_up</span></span>
-                  : <span className='follow-link'>Follow<span className='material-icons'>thumb_up_off_alt</span></span>}
+                  : <span onClick={() => handleFollow(card.user)} className='follow-link'>Follow<span className='material-icons'>thumb_up_off_alt</span></span>}
               </Navbar.Text>
               <Navbar.Text style={{ color: 'white' }}>
                 <span className='material-icons sm-nav-icon'>favorite_border</span>

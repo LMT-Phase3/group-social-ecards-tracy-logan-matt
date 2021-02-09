@@ -1,5 +1,5 @@
 import { Redirect, Link } from 'react-router-dom'
-import { getUsers } from '../../api'
+import { addFriend, getUsers } from '../../api'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import { useEffect, useState } from 'react'
@@ -11,6 +11,11 @@ const UserList = ({ token, username, userFilter, myProfile, setMyProfile }) => {
   function updateUsers () {
     getUsers(token).then(users => setUsers(users))
   }
+
+  function handleFollow (newuser) {
+    addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+
   console.log({ users })
   if (!token) {
     return <Redirect to='/login' />
@@ -43,7 +48,7 @@ const UserList = ({ token, username, userFilter, myProfile, setMyProfile }) => {
                       {((myProfile && myProfile.friends.includes(user.username)))
                         ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
-                        : <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
+                        : <span onClick={() => handleFollow(user.username)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
                     </>
                   )}
                 </div>

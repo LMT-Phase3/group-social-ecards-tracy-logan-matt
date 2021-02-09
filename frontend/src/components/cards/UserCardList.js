@@ -1,7 +1,7 @@
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import CreateCard from './CreateCard'
-import { getCards } from '../../api'
+import { addFriend, getCards } from '../../api'
 import { useState, useEffect } from 'react'
 import { useParams, useHistory, Link, Redirect } from 'react-router-dom'
 
@@ -14,6 +14,10 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
 
   function updateCards () {
     getCards(token, apiPath).then(cards => setCards(cards))
+  }
+
+  function handleFollow (newuser) {
+    addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
   }
 
   if (!token) {
@@ -45,7 +49,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
                         {(myProfile.friends.includes(card.user))
                           ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
-                          : <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
+                          : <span onClick={() => handleFollow(card.user)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
                       </>
                     )}
                   </div>
@@ -61,7 +65,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
             }}
            />
           )}
-      </>
+       </>
 
       )}
     </>
