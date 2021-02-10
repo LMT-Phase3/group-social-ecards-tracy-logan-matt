@@ -38,11 +38,6 @@ function App () {
     getMyCards(token).then(cards => setMyCards(cards))
   }
 
-  // useEffect(updateMyProfile, [token, username])
-  // function updateMyProfile () {
-  //   getMyProfile(token, username).then(user => setMyProfile(user))
-  // }
-
   useEffect(updateMyProfile, [token])
   function updateMyProfile () {
     getMyProfile(token).then(user => setMyProfile(user))
@@ -166,15 +161,15 @@ function App () {
           </Route>
 
           <Route path='/me'>
-            <UserProfile {...userProps}>Hello Me</UserProfile>
+            <UserProfile {...userProps} />
           </Route>
 
           <Route path='/friends'>
-            <UserList {...userProps}>Hello Friends</UserList>
+            <UserList {...userProps} />
           </Route>
 
           <Route path='/users'>
-            <UserList {...userProps}>Hello Everyone</UserList>
+            <UserList {...userProps} />
           </Route>
 
           <Route path='/user/:profileUsername'>

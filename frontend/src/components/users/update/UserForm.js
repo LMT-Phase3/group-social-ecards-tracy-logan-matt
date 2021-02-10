@@ -8,7 +8,6 @@ const UserForm = ({ token, handleDone, isUpdatingProfile, profileUsername, first
   if (!token) {
     return <Redirect to='/' />
   }
-  console.log(profileUsername)
   function handleSubmit (event) {
     event.preventDefault()
 
