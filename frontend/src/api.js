@@ -235,7 +235,6 @@ export function addFriend (token, newUser) {
 }
 
 export function deleteFriend (token, newUser) {
-  console.log(newUser)
   return API
     .delete('my-friends/',
       {

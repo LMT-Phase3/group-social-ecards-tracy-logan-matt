@@ -33,7 +33,6 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
     } else {
       updateCard(token, pk, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify)
         .then(card => {
-          console.log(card)
           handleDone(card)
         })
     }
