@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/users/<username>/cards/', core_views.CardsForUserView.as_view()),
     path('api/friends-cards/', core_views.FriendsCardsView.as_view()),
     path('api/my-friends/', core_views.FriendsListView.as_view()),
+    path('api/user-friends/', core_views.FriendsView.as_view())
     
    
 ]

@@ -132,6 +132,12 @@ class FriendsListView(APIView):
         return Response(serializer.data)
 
         
+class FriendsView(ListAPIView):
+    serializer_class = UserSerializer
 
+    def get_queryset(self):
+        current_user = self.request.user
+        return User.objects.filter(followers__username=current_user)
+       
 
 
