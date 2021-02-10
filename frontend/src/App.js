@@ -167,11 +167,11 @@ function App () {
           </Route>
 
           <Route path='/friends'>
-            <UserList {...userProps} />
+            <UserList userApiPath='user-friends' {...userProps} />
           </Route>
 
           <Route path='/users'>
-            <UserList {...userProps} />
+            <UserList userApiPath='users' {...userProps} />
           </Route>
 
           <Route path='/user/:profileUsername'>
