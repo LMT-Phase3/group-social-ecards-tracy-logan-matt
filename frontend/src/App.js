@@ -54,8 +54,6 @@ function App () {
   function updateAllUsers () {
     getAllUsers(token).then(users => setAllUsers(users))
   }
-  console.log(allUsers)
-  console.log(myCards)
 
   function setAuth (username, token) {
     setUsername(username)

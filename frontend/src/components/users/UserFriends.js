@@ -12,7 +12,7 @@ const UserFriends = ({ token, user, profileUsername, allUsers, setAllUsers, path
   }
 
   return (
-    <div>
+    <div className='flex'>
       {user.friends && (
         <div className='create-card-header flex-col'>{pathUsername}'s Friends
           {allUsers.map(other => (
