@@ -70,7 +70,7 @@ class UserDetailView(RetrieveUpdateDestroyAPIView):
 class CardsForUserView(APIView):
     def get(self,request, username):
         user = get_object_or_404(User, username=username)
-        serializer = CardSerializer(user.cards.all(), many=True)
+        serializer = CardSerializer(user.cards.all().order_by('-updated_date'), many=True)
 
         return Response(data=serializer.data)
 
