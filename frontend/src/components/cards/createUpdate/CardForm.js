@@ -6,7 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
 import { useState } from 'react'
 
-const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBorder, setFont, setTitle, setMessage, setBackgroundImage, setFontColor, setBorderType, setJustify, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify }) => {
+const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBorder, setFont, setTitle, setMessage, setBackgroundImage, setFontColor, setBorderType, setJustify, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify, autoClear }) => {
   const [justification, setJustification] = useState()
   function handleJustify (e) {
     setJustification(e)
@@ -162,15 +162,18 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             <Card>
               <Card.Body>
                 <div className='card-detail-holder myimage myfont-big' style={{ color: `${fontColor}`, backgroundImage: `url(${backgroundImage}` }}>
-                  <input style={{ fontFamily: `${font}`, color: 'white' }} className='my-card-title' type='text' id='title' required value={title} onClick={evt => setTitle('')} onChange={evt => setTitle(evt.target.value)} />
+                  {(autoClear === 'true')
+                    ? <input style={{ fontFamily: `${font}`, color: 'white' }} className='my-card-title' type='text' id='title' required value={title} onClick={evt => setTitle('')} onChange={evt => setTitle(evt.target.value)} />
+                    : <input style={{ fontFamily: `${font}`, color: 'white' }} className='my-card-title' type='text' id='title' required value={title} onChange={evt => setTitle(evt.target.value)} />}
                 </div>
               </Card.Body>
             </Card>
             <Card className='flex animate__animated animate__fadeIn'>
               <Card.Body>
                 <div className='inside-body flex' style={{ border: `${borderType} ${border}`, justifyContent: 'center', alignItems: 'center', backgroundColor: `${backgroundColor}` }}>
-                  <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justification}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
-
+                  {(autoClear === 'true')
+                    ? <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justification}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
+                    : <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justification}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onChange={evt => setMessage(evt.target.value)} />}
                 </div>
                 {/* Make border-solid and justification fields in model */}
               </Card.Body>

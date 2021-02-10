@@ -27,14 +27,12 @@ const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) 
     <>
       <div className='flex card-detail-all card-detail-header'>
         <button className='general-link' onClick={() => handleGoBack({ card })}>Return to Cards List</button>
-
       </div>
       <div className='flex'>
-
         <CardForm
           token={token} pk={pk} isUpdating={isUpdating} handleDone={handleDone} setBackgroundColor={setBackgroundColor} setBorder={setBorder} setFont={setFont} setTitle={setTitle} setMessage={setMessage} setBackgroundImage={setBackgroundImage}
           backgroundColor={backgroundColor} font={font} border={border} backgroundImage={backgroundImage} title={title} message={message} borderType={borderType} setBorderType={setBorderType}
-          fontColor={fontColor} setFontColor={setFontColor} justify={justify} setJustify={setJustify}
+          fontColor={fontColor} setFontColor={setFontColor} justify={justify} setJustify={setJustify} autoClear='false'
         />
       </div>
       {/* <CardContent backgroundColor={backgroundColor} border={border} font={font} backgroundImage={backgroundImage} title={title} message={message} /> */}

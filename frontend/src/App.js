@@ -166,10 +166,12 @@ function App () {
             <UserProfile {...userProps} />
           </Route>
 
+          {/* API PATH */}
           <Route path='/friends'>
             <UserList userApiPath='user-friends' {...userProps} />
           </Route>
 
+          {/* API PATH */}
           <Route path='/users'>
             <UserList userApiPath='users' {...userProps} />
           </Route>
@@ -208,6 +210,12 @@ function App () {
                       <CardContent
                         backgroundColor='black' font='Lucinda' border='white' title='Flowers from My Garden' message='Wishing you a lovely day' fontColor='white' borderType='15px dotted' justify='flex-start'
                         backgroundImage='https://images.unsplash.com/photo-1520690214124-2405c5217036?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHwzfHxibHVlfGVufDB8MHx8&ixlib=rb-1.2.1&q=80&w=1080'
+                      />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <CardContent
+                        backgroundColor='yellow' font='Lucinda' border='brown' title='Happy Thanksgiving' message='Hoping you had a lovely holiday!' fontColor='black' borderType='15px dotted' justify='flex-end'
+                        backgroundImage='https://images.unsplash.com/photo-1538883689728-2c32af36a313?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHwxfHx0aGFua3NnaXZpbmd8ZW58MHwwfHw&ixlib=rb-1.2.1&q=80&w=1080'
                       />
                     </Carousel.Item>
                   </Carousel>

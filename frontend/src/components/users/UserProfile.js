@@ -11,10 +11,6 @@ const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyP
   const [user, setUser] = useState()
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false)
 
-  // useEffect(updateUser, [token, profileUsername])
-  // function updateUser () {
-  //   getUserProfile(token, profileUsername).then(user => setUser(user))
-  // }
   let pathUsername = profileUsername
 
   useEffect(updateUser, [token, pathUsername])
@@ -53,7 +49,7 @@ const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyP
             }}
           />
           )}
-       </>)}
+      </>)}
     </>
 
   )

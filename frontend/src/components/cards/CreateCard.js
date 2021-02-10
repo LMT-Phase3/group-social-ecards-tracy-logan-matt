@@ -28,7 +28,7 @@ const CreateCard = ({ token, setIsCreating, handleDone }) => {
         <CardForm
           token={token} pk='' handleDone={handleDone} setBackgroundColor={setBackgroundColor} setBorder={setBorder} setFont={setFont} setTitle={setTitle} setMessage={setMessage} setBackgroundImage={setBackgroundImage}
           backgroundColor={backgroundColor} font={font} border={border} backgroundImage={backgroundImage} title={title} message={message} borderType={borderType} setBorderType={setBorderType}
-          fontColor={fontColor} setFontColor={setFontColor} justify={justify} setJustify={setJustify}
+          fontColor={fontColor} setFontColor={setFontColor} justify={justify} setJustify={setJustify} autoClear='true'
         />
       </div>
       <PhotoSearch token={token} setBackgroundImage={setBackgroundImage} />
