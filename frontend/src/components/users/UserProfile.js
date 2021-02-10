@@ -34,22 +34,16 @@ const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyP
       {user &&
       (<>{(!isUpdatingProfile)
         ? (
-          // <div className='card-detail-all'>
-          <div>
-            {/* <div className='flex card-detail-header'> */}
-            <Link className='general-link' to='/users'>Return to User List</Link>
-            {/* </div> */}
+          <div className='card-detail-all'>
+            <Link className='general-link card-detail-header' to='/users'>Return to User List</Link>
             <UserNav token={token} user={user} username={username} setIsUpdatingProfile={setIsUpdatingProfile} profileUsername={profileUsername} pathUsername={pathUsername} />
             <div>
               <UserContent
-                className='flex-col'
+                // className='flex-col'
                 token={token} user={user} pathUsername={pathUsername} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name}
                 email={user.email} about={user.about} avatarImage={user.avatar} myProfile={myProfile} setMyProfile={setMyProfile} allUsers={allUsers} setAllUsers={setAllUsers}
               />
-              {/* <UserFriends token={token} user={user} pathUsername={pathUsername} profileUsername={profileUsername} allUsers={allUsers} setAllUsers={setAllUsers} /> */}
-
             </div>
-
           </div>)
         : (
           <UpdateUser
@@ -59,7 +53,7 @@ const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyP
             }}
           />
           )}
-      </>)}
+       </>)}
     </>
 
   )

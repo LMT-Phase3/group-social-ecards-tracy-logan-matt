@@ -32,7 +32,7 @@ const AvatarSearch = ({ token, setAvatarImage }) => {
   }
 
   return (
-    <div className='create-card-section'>
+    <div className='card-detail-all create-card-section'>
       <div className='create-card-header'>Search for Avatars</div>
       <label className='avatar-label' htmlFor='avatar'>Search Term</label>
       <input type='text' id='avatar' required value={searchTerm} onClick={evt => setSearchTerm('')} onChange={evt => setSearchTerm(evt.target.value)} />

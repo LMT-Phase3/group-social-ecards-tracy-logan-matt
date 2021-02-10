@@ -20,7 +20,6 @@ const UserList = ({ token, username, userFilter, myProfile, setMyProfile }) => {
     deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
   }
 
-  console.log({ users })
   if (!token) {
     return <Redirect to='/login' />
   }

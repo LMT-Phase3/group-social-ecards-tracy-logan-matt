@@ -5,10 +5,13 @@ import { addFriend, deleteFriend, getCards } from '../../api'
 import { useState, useEffect } from 'react'
 import { useParams, Link, Redirect } from 'react-router-dom'
 
-const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, setMyProfile }) => {
+const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, setMyProfile, pathUsername }) => {
   const [cards, setCards] = useState([])
   const { profileUsername } = useParams()
-  const apiPath = `/users/${profileUsername}/cards`
+  if (profileUsername === undefined) {
+    pathUsername = username
+  } else { pathUsername = profileUsername }
+  const apiPath = `/users/${pathUsername}/cards`
   useEffect(updateCards, [token, username, apiPath])
 
   function updateCards () {
@@ -32,7 +35,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
       (<>{(!isCreating)
         ? (
 
-          <div className='flex create-bar-header create-card-header'>{profileUsername}'s Cards
+          <div className='create-bar-header create-card-header'>{pathUsername}'s Cards
 
             <ListGroup className='flex my-list-group'>
 
@@ -67,7 +70,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
             }}
            />
           )}
-       </>
+      </>
       )}
     </>
 
