@@ -55,8 +55,14 @@ export function register (username, password) {
 }
 
 export function getCards (token, path, page) {
+  let apiPath = ''
+  if (path === 'cards') {
+    apiPath = `${path}/?limit=10&offset=${(page - 1) * 10}`
+  } else {
+    apiPath = `${path}/?page=${page}`
+  }
   return API
-    .get(`${path}/?limit=10&offset=${(page - 1) * 10}`, {
+    .get(apiPath, {
       headers: {
         Authorization: `Token ${token}`
       }
@@ -84,9 +90,9 @@ export function getMyProfile (token) {
     .then(res => res.data)
 }
 
-export function getUsers (token, path) {
+export function getUsers (token, path, page) {
   return API
-    .get(`${path}/`, {
+    .get(`${path}/?page=${page}`, {
       headers: {
         Authorization: `Token ${token}`
       }

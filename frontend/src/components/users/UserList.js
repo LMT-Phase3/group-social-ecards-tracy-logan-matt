@@ -6,10 +6,11 @@ import { useEffect, useState } from 'react'
 
 const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyProfile }) => {
   const [users, setUsers] = useState([])
+  const [pagination, setPagination] = useState(1)
 
-  useEffect(updateUsers, [token, username, userApiPath])
+  useEffect(updateUsers, [token, username, userApiPath, pagination])
   function updateUsers () {
-    getUsers(token, userApiPath).then(users => setUsers(users))
+    getUsers(token, userApiPath, pagination).then(users => setUsers(users))
   }
 
   function handleFollow (newuser) {
@@ -18,6 +19,29 @@ const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyPr
 
   function handleUnFollow (newuser) {
     deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+  function handleForward (pageNumber) {
+    if (!stopForward) {
+      setPagination(pagination + 1)
+    }
+  }
+  function handleBackward (pageNumber) {
+    if (!stopBackward) {
+      setPagination(pagination - 1)
+    }
+  }
+  let stopForward = false
+  if (users.length < 10) {
+    stopForward = true
+  }
+  let stopBackward = true
+  if (pagination > 1) {
+    stopBackward = false
+  }
+
+  let navigate = true
+  if (pagination === 1 && users.length < 10) {
+    navigate = false
   }
 
   if (!token) {
@@ -62,6 +86,15 @@ const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyPr
             </div>
           </ListGroupItem>
         ))}
+        {navigate && (
+          <ListGroupItem key='a'>
+            <div className='card-title'>
+              <div style={{ color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <div className='user-card-profile' style={{ borderRadius: '80px', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: '#00000030' }}><span style={{ marginTop: '40px', color: 'black', fontSize: '50px', paddingRight: '40px', width: '50px' }} onClick={() => handleBackward(pagination)} className='material-icons'>arrow_backward</span><span style={{ color: 'black', fontSize: '50px', paddingLeft: '40px' }} onClick={() => handleForward(pagination)} className='material-icons'>arrow_forward</span></div>
+              </div>
+            </div>
+          </ListGroupItem>
+        )}
       </ListGroup>
     </>
   )
