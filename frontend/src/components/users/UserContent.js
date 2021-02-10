@@ -38,7 +38,7 @@ const UserContent = ({ token, username, profileUsername, pathUsername, user, fir
                 )}
               </div>
             </div>
-            <div style={{ flexBasis: '30%' }} className='main-user-content'>
+            <div style={{ flexBasis: '25%' }} className='main-user-content'>
               <div><span>{firstName}</span><span> {lastName}</span></div>
               <div>{email}</div>
               <div>{about}</div>

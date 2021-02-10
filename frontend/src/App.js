@@ -179,7 +179,9 @@ function App () {
           </Route>
 
           <Route path='/'>
-            <Jumbotron className='animate__animated animate__fadeInLeft' fluid>
+            <Jumbotron fluid>
+
+              {/* <Jumbotron className='animate__animated animate__fadeInLeft' fluid> */}
               <Container className='jumbotron-container'>
                 <h1 className='splash-title'>Welcome to Card Circle</h1>
                 <p className='splash-space'>
