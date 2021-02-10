@@ -3,13 +3,15 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import CreateCard from './CreateCard'
 import { addFriend, deleteFriend, getCards } from '../../api'
 import { useState, useEffect } from 'react'
-import { useParams, useHistory, Link, Redirect } from 'react-router-dom'
+import { useParams, Link, Redirect } from 'react-router-dom'
 
-const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, setMyProfile }) => {
+const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, setMyProfile, pathUsername }) => {
   const [cards, setCards] = useState([])
   const { profileUsername } = useParams()
-  const apiPath = `/users/${profileUsername}/cards`
-  const history = useHistory()
+  if (profileUsername === undefined) {
+    pathUsername = username
+  } else { pathUsername = profileUsername }
+  const apiPath = `/users/${pathUsername}/cards`
   useEffect(updateCards, [token, username, apiPath])
 
   function updateCards () {
@@ -32,15 +34,14 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
     <>{token && cards && myProfile &&
       (<>{(!isCreating)
         ? (
-          <>
-            <div className='general-link card-detail-header card-detail-all'><span onClick={() => history.goBack()} style={{ marginRight: '20px' }} className='material-icons sm-nav-icon'>arrow_back</span>{profileUsername}'s Cards</div>
-            <ListGroup className='my-list-group'>
+
+          <div className='create-bar-header create-card-header'>{pathUsername}'s Cards
+
+            <ListGroup className='flex my-list-group'>
 
               {cards.map(card => (
                 <ListGroupItem card={card} key={card.pk}>
-
                   <div style={{ justifyContent: 'space-between' }} className='flex'><span>{card.title}</span><span className='material-icons sm-nav-icon'>favorite_border</span></div>
-
                   <Link className='card-title' to={`/card/${card.pk}`}>
                     <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
                   </Link>
@@ -57,11 +58,11 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
                       </>
                     )}
                   </div>
-
                 </ListGroupItem>
               ))}
             </ListGroup>
-          </>)
+          </div>
+          )
         : (<CreateCard
             token={token} setIsCreating={setIsCreating} handleDone={(newCard) => {
               setIsCreating(false)
@@ -70,7 +71,6 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
            />
           )}
       </>
-
       )}
     </>
 

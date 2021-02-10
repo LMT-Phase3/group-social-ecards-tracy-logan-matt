@@ -4,7 +4,7 @@ import { Redirect, Link, useParams } from 'react-router-dom'
 import UserNav from './UserNav'
 import UserContent from './UserContent'
 import UpdateUser from './UpdateUser'
-import UserFriends from './UserFriends'
+// import UserFriends from './UserFriends'
 
 const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyProfile }) => {
   const { profileUsername } = useParams()
@@ -35,19 +35,15 @@ const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyP
       (<>{(!isUpdatingProfile)
         ? (
           <div className='card-detail-all'>
-            <div className='flex card-detail-header'>
-              <Link className='general-link' to='/users'>Return to User List</Link>
-            </div>
+            <Link className='general-link card-detail-header' to='/users'>Return to User List</Link>
             <UserNav token={token} user={user} username={username} setIsUpdatingProfile={setIsUpdatingProfile} profileUsername={profileUsername} pathUsername={pathUsername} />
-            <div style={{ justifyContent: 'space-around', marginTop: '30px' }} className='flex'>
+            <div>
               <UserContent
+                // className='flex-col'
                 token={token} user={user} pathUsername={pathUsername} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name}
-                email={user.email} about={user.about} avatarImage={user.avatar} myProfile={myProfile} setMyProfile={setMyProfile}
+                email={user.email} about={user.about} avatarImage={user.avatar} myProfile={myProfile} setMyProfile={setMyProfile} allUsers={allUsers} setAllUsers={setAllUsers}
               />
-              <UserFriends token={token} user={user} pathUsername={pathUsername} profileUsername={profileUsername} allUsers={allUsers} setAllUsers={setAllUsers} />
-
             </div>
-
           </div>)
         : (
           <UpdateUser

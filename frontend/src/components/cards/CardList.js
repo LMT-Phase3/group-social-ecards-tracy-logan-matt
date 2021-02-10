@@ -19,6 +19,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
 
   function handleUnFollow (newuser) {
     deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+    getCards(token, apiPath).then(cards => setCards(cards))
   }
   function handleFollow (newuser) {
     addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
