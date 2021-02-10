@@ -7,6 +7,8 @@ from core.models import Card, User
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from rest_framework import permissions
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView, ListAPIView
+from rest_framework.pagination import PageNumberPagination
+from project import settings
 
 # Create your views here.
 class TestView(APIView):
@@ -14,13 +16,23 @@ class TestView(APIView):
         serializer = UserSerializer(request.user)
         return Response(data=serializer.data)
 
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 15
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
+
 
 
 class UserCardView(APIView):
     def get(self, request):
-        cards = self.request.user.cards.all().order_by('-updated_date')
-        serializer = CardSerializer(cards, many=True)
-        return Response(serializer.data)
+        queryset = self.request.user.cards.all().order_by('-updated_date')
+        
+        paginator = PageNumberPagination()
+        page = paginator.paginate_queryset(queryset, request, view=self)
+        serializer = CardSerializer(page, many=True, context={
+            'request': request
+        })
+        return paginator.get_paginated_response(serializer.data)
 
 class IsUserOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
@@ -48,15 +60,24 @@ class CardListView(ListCreateAPIView):
 
 class UserListView(APIView):
     def get(self, request):
-        users = User.objects.all()
-        serializer = UserSerializer(users, many=True)
-        return Response(serializer.data)
+        queryset = User.objects.all()
+        paginator = PageNumberPagination()
+        page = paginator.paginate_queryset(queryset, request, view=self)
+        serializer = UserSerializer(page, many=True, context={
+            'request': request
+        })
+        return paginator.get_paginated_response(serializer.data)
 
 
-class FollowersView(APIView):
-    def get(self,request):
-        user = self.request.user()
-        serializer = UserCreateSerializer(user)
+# class FollowersView(APIView):
+#     def get(self,request):
+#         queryset = self.request.user()
+#         paginator = PageNumberPagination()
+#         page = paginator.paginate_queryset(queryset, request, view=self)
+#         serializer = UserCreateSerializer(page, many=True, context={
+#             'request':request
+#         })
+#         return paginator.get_paginated_response(serializer.data)
 
 
 class UserDetailView(RetrieveUpdateDestroyAPIView):
@@ -70,12 +91,18 @@ class UserDetailView(RetrieveUpdateDestroyAPIView):
 class CardsForUserView(APIView):
     def get(self,request, username):
         user = get_object_or_404(User, username=username)
-        serializer = CardSerializer(user.cards.all().order_by('-updated_date'), many=True)
+        queryset = user.cards.all().order_by('-updated_date')
+        paginator = PageNumberPagination()
+        page = paginator.paginate_queryset(queryset, request, view=self)
+        serializer = CardSerializer(page, many=True, context={
+            'request': request
+        })
 
-        return Response(data=serializer.data)
+        return paginator.get_paginated_response(data=serializer.data)
 
 
 class FriendsCardsView(ListAPIView):
+    pagination_class = StandardResultsSetPagination
     serializer_class = CardSerializer
 
     def get_queryset(self):
