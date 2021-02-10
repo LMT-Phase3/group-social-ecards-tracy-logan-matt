@@ -7,8 +7,6 @@ import Card from 'react-bootstrap/Card'
 import { useState } from 'react'
 
 const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBorder, setFont, setTitle, setMessage, setBackgroundImage, setFontColor, setBorderType, setJustify, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify }) => {
-  // const [fontColor, setFontColor] = useState('white')
-  // const [borderType, setBorderType] = useState('solid')
   const [justification, setJustification] = useState()
   function handleJustify (e) {
     setJustification(e)
@@ -27,18 +25,14 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
 
   function handleSubmit (event) {
     event.preventDefault()
-    console.log('at top of handle submit')
-    console.log(isUpdating)
     if (!isUpdating) {
       createCard(token, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify)
         .then(card => {
           handleDone(card)
         })
     } else {
-      console.log('I am here')
       updateCard(token, pk, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify)
         .then(card => {
-          console.log(card)
           handleDone(card)
         })
     }

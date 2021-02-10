@@ -23,6 +23,9 @@ const UserList = ({ token, username, userFilter, myProfile, setMyProfile }) => {
   if (!token) {
     return <Redirect to='/login' />
   }
+  if (userFilter === undefined) {
+    userFilter = 'all'
+  }
 
   return (
     <>

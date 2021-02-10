@@ -5,11 +5,13 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Container from 'react-bootstrap/Container'
 import Jumbotron from 'react-bootstrap/Jumbotron'
+import Carousel from 'react-bootstrap/Carousel'
 import LoginComponent from './components/LoginComponent'
 import Register from './components/Register'
 import CardList from './components/cards/CardList'
 import UserCardList from './components/cards/UserCardList'
 import CardDetail from './components/cards/CardDetail'
+import CardContent from './components/cards/CardContent'
 import UserList from './components/users/UserList'
 import UserProfile from './components/users/UserProfile'
 import createPersistedState from 'use-persisted-state'
@@ -37,11 +39,6 @@ function App () {
   function updateAllCards () {
     getMyCards(token).then(cards => setMyCards(cards))
   }
-
-  // useEffect(updateMyProfile, [token, username])
-  // function updateMyProfile () {
-  //   getMyProfile(token, username).then(user => setMyProfile(user))
-  // }
 
   useEffect(updateMyProfile, [token])
   function updateMyProfile () {
@@ -82,25 +79,25 @@ function App () {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
             <LinkContainer onClick={() => handleHome()} to='/'>
-              <Nav.Link>Home</Nav.Link>
+              <Nav.Item className='fix-header' style={{ padding: '8px' }}>Home</Nav.Item>
             </LinkContainer>
             <LinkContainer onClick={() => handleCreate()} to='/cards'>
-              <Nav.Link>Create A Card</Nav.Link>
+              <Nav.Item className='fix-header' style={{ padding: '8px' }}>Create A Card</Nav.Item>
             </LinkContainer>
             <NavDropdown className='top-dropdown' title='Cards' id='basic-nav-dropdown'>
               <NavDropdown.Item>
                 <LinkContainer onClick={() => setIsCreating(false)} to='/mycards'>
-                  <Nav.Link style={{ color: 'black' }}>My Cards</Nav.Link>
+                  <Nav.Item>My Cards</Nav.Item>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
                 <LinkContainer onClick={() => setIsCreating(false)} to='/friendscards'>
-                  <Nav.Link>Friends Cards</Nav.Link>
+                  <Nav.Item>Friends Cards</Nav.Item>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
                 <LinkContainer onClick={() => setIsCreating(false)} to='/cards'>
-                  <Nav.Link>All Cards</Nav.Link>
+                  <Nav.Item>All Cards</Nav.Item>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Divider />
@@ -109,17 +106,17 @@ function App () {
             <NavDropdown className='top-dropdown' title='Users' id='basic-nav-dropdown'>
               <NavDropdown.Item>
                 <LinkContainer onClick={() => setIsCreating(false)} to='/me'>
-                  <Nav.Link style={{ color: 'black' }}>My Profile</Nav.Link>
+                  <Nav.Item style={{ color: 'black' }}>My Profile</Nav.Item>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
                 <LinkContainer onClick={() => setIsCreating(false)} to='/friends'>
-                  <Nav.Link>My Friends</Nav.Link>
+                  <Nav.Item>My Friends</Nav.Item>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
                 <LinkContainer onClick={() => setIsCreating(false)} to='/users'>
-                  <Nav.Link>All Users</Nav.Link>
+                  <Nav.Item>All Users</Nav.Item>
                 </LinkContainer>
               </NavDropdown.Item>
               {/* <NavDropdown.Divider />
@@ -166,15 +163,15 @@ function App () {
           </Route>
 
           <Route path='/me'>
-            <UserProfile {...userProps}>Hello Me</UserProfile>
+            <UserProfile {...userProps} />
           </Route>
 
           <Route path='/friends'>
-            <UserList {...userProps}>Hello Friends</UserList>
+            <UserList {...userProps} />
           </Route>
 
           <Route path='/users'>
-            <UserList {...userProps}>Hello Everyone</UserList>
+            <UserList {...userProps} />
           </Route>
 
           <Route path='/user/:profileUsername'>
@@ -182,16 +179,41 @@ function App () {
           </Route>
 
           <Route path='/'>
-            <Jumbotron className='animate__animated animate__fadeInLeft' fluid>
+            <Jumbotron fluid>
+
+              {/* <Jumbotron className='animate__animated animate__fadeInLeft' fluid> */}
               <Container className='jumbotron-container'>
                 <h1 className='splash-title'>Welcome to Card Circle</h1>
                 <p className='splash-space'>
                   A space where you can share all your greetings with friends.
                 </p>
+                <Container className='carousel-container'>
+                  <Carousel>
+
+                    <Carousel.Item>
+                      <CardContent
+                        backgroundColor='pink' font='Lucinda' border='white' title='Happy Birthday' message="You don't look a day older!" fontColor='black' borderType='15px solid' justify='flex-start'
+                        backgroundImage='https://images.unsplash.com/photo-1517398823963-c2dc6fc3e837?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHw1fHxwcmluY2Vzc3xlbnwwfDB8fA&ixlib=rb-1.2.1&q=80&w=1080'
+                      />
+
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <CardContent
+                        backgroundColor='darkgray' font='monospace' border='teal' title='Happy Anniversary' message='Ready for another 50?' fontColor='white' borderType='15px dotted' justify='center'
+                        backgroundImage='https://images.unsplash.com/photo-1604668915999-03e1269f6af6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHwxMHx8YmFsbG9vbnN8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080'
+                      />
+
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <CardContent
+                        backgroundColor='black' font='Lucinda' border='white' title='Flowers from My Garden' message='Wishing you a lovely day' fontColor='white' borderType='15px dotted' justify='flex-start'
+                        backgroundImage='https://images.unsplash.com/photo-1520690214124-2405c5217036?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHwzfHxibHVlfGVufDB8MHx8&ixlib=rb-1.2.1&q=80&w=1080'
+                      />
+                    </Carousel.Item>
+                  </Carousel>
+                </Container>
               </Container>
-              <Container className='jumbotron-container'>
-                <p>Holder space to add carousel of images</p>
-              </Container>
+
             </Jumbotron>
 
           </Route>
