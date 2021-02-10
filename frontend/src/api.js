@@ -101,7 +101,7 @@ export function getAllUsers (token) {
         Authorization: `Token ${token}`
       }
     })
-    .then(res => res.data)
+    .then(res => res.data.results)
 }
 
 export function getCardDetail (token, pk) {
@@ -121,7 +121,7 @@ export function getUserProfile (token, pk) {
         Authorization: `Token ${token}`
       }
     })
-    .then(res => res.data.results)
+    .then(res => res.data)
 }
 
 export function deleteCard (token, pk) {
