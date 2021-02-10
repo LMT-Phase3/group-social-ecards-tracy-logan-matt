@@ -9,12 +9,13 @@ import { Link, Redirect } from 'react-router-dom'
 
 const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfile, setMyProfile }) => {
   const [cards, setCards] = useState([])
+  const [pagination, setPagination] = useState(1)
 
-  useEffect(updateCards, [token, username, apiPath])
+  useEffect(updateCards, [token, username, apiPath, pagination])
   // useEffect(handleFollow, [])
 
   function updateCards () {
-    getCards(token, apiPath).then(cards => setCards(cards))
+    getCards(token, apiPath, pagination).then(cards => setCards(cards))
   }
 
   function handleUnFollow (newuser) {
@@ -23,6 +24,29 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
   }
   function handleFollow (newuser) {
     addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+  function handleForward (pageNumber) {
+    if (!stopForward) {
+      setPagination(pagination + 1)
+    }
+  }
+  function handleBackward (pageNumber) {
+    if (!stopBackward) {
+      setPagination(pagination - 1)
+    }
+  }
+  let stopForward = false
+  if (cards.length < 10) {
+    stopForward = true
+  }
+  let stopBackward = true
+  if (pagination > 1) {
+    stopBackward = false
+  }
+
+  let navigate = true
+  if (pagination === 1 && cards.length < 10) {
+    navigate = false
   }
 
   if (!token) {
@@ -49,7 +73,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
             )}
           </>
           <ListGroup className='my-list-group'>
-            <ListGroupItem key='1'>
+            <ListGroupItem key='a'>
               <div style={{ justifyContent: 'space-between' }} className='flex'><span>New Card</span></div>
               <div onClick={() => setIsCreating(true)} style={{ margin: '0 0 12px' }} className='card-title'>
                 <div style={{ backgroundColor: '#5ebaba85', justifyContent: 'center', alignItems: 'center' }} className='list-view-image flex'><span style={{ fontSize: '50px' }} className='material-icons'>add_circle_outline</span></div>
@@ -58,9 +82,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
             </ListGroupItem>
             {cards.map(card => (
               <ListGroupItem card={card} key={card.pk}>
-
                 <div style={{ justifyContent: 'space-between' }} className='flex'><span>{card.title}</span><span className='material-icons sm-nav-icon'>favorite_border</span></div>
-
                 <Link className='card-title' to={`/card/${card.pk}`}>
                   <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
                 </Link>
@@ -77,11 +99,20 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
                     </>
                   )}
                 </div>
-
               </ListGroupItem>
             ))}
+            {navigate && (
+              <ListGroupItem key='b'>
+                <div style={{ justifyContent: 'space-between' }} className='flex'><span>View Cards</span></div>
+                <div style={{ margin: '0 0 12px' }} className='card-title'>
+                  <div style={{ display: 'flex', backgroundColor: '#5ebaba85', justifyContent: 'center', alignItems: 'center' }} className='list-view-image flex'><span style={{ fontSize: '50px', paddingRight: '40px', width: '50px' }} onClick={() => handleBackward(pagination)} className='material-icons'>arrow_backward</span><span style={{ fontSize: '50px', paddingLeft: '40px' }} onClick={() => handleForward(pagination)} className='material-icons'>arrow_forward</span></div>
+                </div>
+                <div className='flex'><span /></div>
+              </ListGroupItem>
+            )}
+
           </ListGroup>
-        </>
+           </>
           )
         : (<CreateCard
             token={token} setIsCreating={setIsCreating} handleDone={(newCard) => {
@@ -90,7 +121,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
             }}
            />
           )}
-      </>
+       </>
 
       )}
     </>

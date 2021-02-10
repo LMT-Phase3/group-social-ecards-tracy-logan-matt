@@ -54,18 +54,14 @@ export function register (username, password) {
     })
 }
 
-export function getCards (token, path) {
+export function getCards (token, path, page) {
   return API
-    .get(`${path}/`, {
+    .get(`${path}/?limit=10&offset=${(page - 1) * 10}`, {
       headers: {
         Authorization: `Token ${token}`
-      },
-      data: {
-        minRow: 1,
-        maxRow: 10
       }
     })
-    .then(res => res.data)
+    .then(res => res.data.results)
 }
 
 export function getMyCards (token) {
@@ -75,7 +71,7 @@ export function getMyCards (token) {
         Authorization: `Token ${token}`
       }
     })
-    .then(res => res.data)
+    .then(res => res.data.results)
 }
 
 export function getMyProfile (token) {
@@ -95,7 +91,7 @@ export function getUsers (token, path) {
         Authorization: `Token ${token}`
       }
     })
-    .then(res => res.data)
+    .then(res => res.data.results)
 }
 
 export function getAllUsers (token) {
@@ -125,7 +121,7 @@ export function getUserProfile (token, pk) {
         Authorization: `Token ${token}`
       }
     })
-    .then(res => res.data)
+    .then(res => res.data.results)
 }
 
 export function deleteCard (token, pk) {
