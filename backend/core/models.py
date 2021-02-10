@@ -10,7 +10,7 @@ class User(AbstractUser):
         return self.username
 
 class Card(models.Model):
-    created_date = models.DateTimeField(auto_now=True)
+    updated_date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='cards')
     background = models.CharField(max_length=100, null=True)
     font = models.CharField(max_length=100, null=True)
