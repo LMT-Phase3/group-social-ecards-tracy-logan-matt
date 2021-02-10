@@ -73,24 +73,15 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
                     <>
                       {(myProfile.friends.includes(card.user))
                         ? <span onClick={() => handleUnFollow(card.user)} style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
-                        // ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
-
                         : <span onClick={() => handleFollow(card.user)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
                     </>
                   )}
-                  {/* {(card.user !== username && !myProfile.friends.includes(card.user)) && (
-                    <span className='material-icons sm-nav-icon'>thumb_up_off_alt</span>
-                  )}
-                  {(card.user !== username && myProfile.friends.includes(card.user)) && (
-                    <span className='material-icons sm-nav-icon'>thumb_up</span>
-                  )} */}
-
                 </div>
 
               </ListGroupItem>
             ))}
           </ListGroup>
-           </>
+        </>
           )
         : (<CreateCard
             token={token} setIsCreating={setIsCreating} handleDone={(newCard) => {
@@ -99,7 +90,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
             }}
            />
           )}
-       </>
+      </>
 
       )}
     </>

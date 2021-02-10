@@ -4,12 +4,12 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import { useEffect, useState } from 'react'
 
-const UserList = ({ token, username, userFilter, myProfile, setMyProfile }) => {
+const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyProfile }) => {
   const [users, setUsers] = useState([])
 
-  useEffect(updateUsers, [token, username])
+  useEffect(updateUsers, [token, username, userApiPath])
   function updateUsers () {
-    getUsers(token).then(users => setUsers(users))
+    getUsers(token, userApiPath).then(users => setUsers(users))
   }
 
   function handleFollow (newuser) {

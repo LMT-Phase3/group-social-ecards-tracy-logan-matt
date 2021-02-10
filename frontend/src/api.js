@@ -68,16 +68,6 @@ export function getCards (token, path) {
     .then(res => res.data)
 }
 
-// export function getCards (token, path) {
-//   return API
-//     .get(`${path}/`, {
-//       headers: {
-//         Authorization: `Token ${token}`
-//       }
-//     })
-//     .then(res => res.data)
-// }
-
 export function getMyCards (token) {
   return API
     .get('user-cards/', {
@@ -87,18 +77,6 @@ export function getMyCards (token) {
     })
     .then(res => res.data)
 }
-
-// rewrite this to take user.friends and select on all, friends or my
-
-// export function getMyProfile (token, username) {
-//   return API
-//     .get(`users-detail/${username}/`, {
-//       headers: {
-//         Authorization: `Token ${token}`
-//       }
-//     })
-//     .then(res => res.data)
-// }
 
 export function getMyProfile (token) {
   return API
@@ -110,9 +88,9 @@ export function getMyProfile (token) {
     .then(res => res.data)
 }
 
-export function getUsers (token) {
+export function getUsers (token, path) {
   return API
-    .get('users/', {
+    .get(`${path}/`, {
       headers: {
         Authorization: `Token ${token}`
       }
