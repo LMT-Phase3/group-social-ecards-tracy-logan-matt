@@ -1,7 +1,7 @@
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import CreateCard from './CreateCard'
-import { getCards, addFriend } from '../../api'
+import { getCards, addFriend, deleteFriend } from '../../api'
 // import { getCards } from '../../api'
 
 import { useState, useEffect } from 'react'
@@ -17,6 +17,9 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
     getCards(token, apiPath).then(cards => setCards(cards))
   }
 
+  function handleUnFollow (newuser) {
+    deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
   function handleFollow (newuser) {
     addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
   }
@@ -68,7 +71,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
                   {(card.user !== username) && (
                     <>
                       {(myProfile.friends.includes(card.user))
-                        ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
+                        ? <span onClick={() => handleUnFollow(card.user)} style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
                         // ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
                         : <span onClick={() => handleFollow(card.user)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
@@ -86,7 +89,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
               </ListGroupItem>
             ))}
           </ListGroup>
-        </>
+           </>
           )
         : (<CreateCard
             token={token} setIsCreating={setIsCreating} handleDone={(newCard) => {
@@ -95,7 +98,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
             }}
            />
           )}
-      </>
+       </>
 
       )}
     </>

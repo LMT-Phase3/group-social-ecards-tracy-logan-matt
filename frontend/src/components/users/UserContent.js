@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom'
-import { addFriend } from '../../api'
+import { addFriend, deleteFriend } from '../../api'
 
 const UserContent = ({ token, username, profileUsername, pathUsername, user, firstName, lastName, email, avatarImage, about, myProfile, setMyProfile }) => {
   if (profileUsername === undefined) {
@@ -9,6 +9,10 @@ const UserContent = ({ token, username, profileUsername, pathUsername, user, fir
 
   function handleFollow (newuser) {
     addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+
+  function handleUnFollow (newuser) {
+    deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
   }
 
   return (
@@ -25,7 +29,7 @@ const UserContent = ({ token, username, profileUsername, pathUsername, user, fir
               {(user.username !== username) && (
                 <>
                   {(myProfile.friends.includes(user.username))
-                    ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
+                    ? <span onClick={() => handleUnFollow(user.username)} style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
                     : <span onClick={() => handleFollow(user.username)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
                 </>
