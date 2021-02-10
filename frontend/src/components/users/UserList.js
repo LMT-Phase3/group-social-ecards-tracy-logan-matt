@@ -1,5 +1,5 @@
 import { Redirect, Link } from 'react-router-dom'
-import { addFriend, getUsers } from '../../api'
+import { addFriend, deleteFriend, getUsers } from '../../api'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import { useEffect, useState } from 'react'
@@ -14,6 +14,10 @@ const UserList = ({ token, username, userFilter, myProfile, setMyProfile }) => {
 
   function handleFollow (newuser) {
     addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+
+  function handleUnFollow (newuser) {
+    deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
   }
 
   console.log({ users })
@@ -46,7 +50,7 @@ const UserList = ({ token, username, userFilter, myProfile, setMyProfile }) => {
                   {(user.username !== username) && (
                     <>
                       {((myProfile && myProfile.friends.includes(user.username)))
-                        ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
+                        ? <span onClick={() => handleUnFollow(user.username)} style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
                         : <span onClick={() => handleFollow(user.username)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
                     </>

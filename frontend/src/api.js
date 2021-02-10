@@ -233,3 +233,18 @@ export function addFriend (token, newUser) {
     })
     .then(res => (res.data))
 }
+
+export function deleteFriend (token, newUser) {
+  console.log(newUser)
+  return API
+    .delete('my-friends/',
+      {
+        headers: {
+          Authorization: `Token ${token}`
+        },
+        data: {
+          username: newUser
+        }
+      })
+    .then(res => (res.data))
+}

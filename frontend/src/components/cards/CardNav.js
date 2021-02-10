@@ -1,5 +1,5 @@
 import Navbar from 'react-bootstrap/Navbar'
-import { addFriend, deleteCard, getCards } from '../../api'
+import { addFriend, deleteFriend, deleteCard, getCards } from '../../api'
 import { Link, Redirect } from 'react-router-dom'
 
 const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards, myProfile, setMyProfile }) => {
@@ -13,6 +13,10 @@ const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards
 
   function handleFollow (newuser) {
     addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+
+  function handleUnFollow (newuser) {
+    deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
   }
 
   if (!token) {
@@ -32,7 +36,7 @@ const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards
               </Navbar.Text>
               <Navbar.Text style={{ color: 'white' }}>
                 {(card.user !== username && myProfile.friends.includes(card.user))
-                  ? <span className='follow-link'>Following<span className='material-icons'>thumb_up</span></span>
+                  ? <span onClick={() => handleUnFollow(card.user)} className='follow-link'>Following<span className='material-icons'>thumb_up</span></span>
                   : <span onClick={() => handleFollow(card.user)} className='follow-link'>Follow<span className='material-icons'>thumb_up_off_alt</span></span>}
               </Navbar.Text>
               <Navbar.Text style={{ color: 'white' }}>

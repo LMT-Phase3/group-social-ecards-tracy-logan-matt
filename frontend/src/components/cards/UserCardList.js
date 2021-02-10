@@ -1,7 +1,7 @@
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import CreateCard from './CreateCard'
-import { addFriend, getCards } from '../../api'
+import { addFriend, deleteFriend, getCards } from '../../api'
 import { useState, useEffect } from 'react'
 import { useParams, useHistory, Link, Redirect } from 'react-router-dom'
 
@@ -20,6 +20,10 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
     addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
   }
 
+  function handleUnFollow (newuser) {
+    deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+
   if (!token) {
     return <Redirect to='/login' />
   }
@@ -33,7 +37,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
             <ListGroup className='my-list-group'>
 
               {cards.map(card => (
-                <ListGroupItem card={card} key={card.url}>
+                <ListGroupItem card={card} key={card.pk}>
 
                   <div style={{ justifyContent: 'space-between' }} className='flex'><span>{card.title}</span><span className='material-icons sm-nav-icon'>favorite_border</span></div>
 
@@ -47,7 +51,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
                     {(card.user !== username) && (
                       <>
                         {(myProfile.friends.includes(card.user))
-                          ? <span style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
+                          ? <span onClick={() => handleUnFollow(card.user)} style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
 
                           : <span onClick={() => handleFollow(card.user)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
                       </>
@@ -65,7 +69,7 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
             }}
            />
           )}
-       </>
+      </>
 
       )}
     </>
