@@ -18,7 +18,7 @@ class TestView(APIView):
 
 class UserCardView(APIView):
     def get(self, request):
-        cards = self.request.user.cards.all().order_by('updated_date')
+        cards = self.request.user.cards.all().order_by('-updated_date')
         serializer = CardSerializer(cards, many=True)
         return Response(serializer.data)
 
@@ -34,14 +34,14 @@ class CardDetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticated, IsUserOrReadOnly)
 
     def get_queryset(self):
-        return Card.objects.all().order_by('updated_date')
+        return Card.objects.all().order_by('-updated_date')
         # return self.request.user.cards.all()
     
     
 
 class CardListView(ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    queryset = Card.objects.all().order_by('updated_date')
+    queryset = Card.objects.all().order_by('-updated_date')
     serializer_class = CardSerializer
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -80,7 +80,7 @@ class FriendsCardsView(ListAPIView):
 
     def get_queryset(self):
         current_user = self.request.user
-        return Card.objects.filter(user__followers=current_user).order_by('updated_date')
+        return Card.objects.filter(user__followers=current_user).order_by('-updated_date')
 
 
 class FriendsListView(APIView):
