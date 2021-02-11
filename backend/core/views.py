@@ -16,10 +16,7 @@ class TestView(APIView):
         serializer = UserSerializer(request.user)
         return Response(data=serializer.data)
 
-class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 15
-    page_size_query_param = 'page_size'
-    max_page_size = 1000
+
 
 
 
@@ -102,7 +99,7 @@ class CardsForUserView(APIView):
 
 
 class FriendsCardsView(ListAPIView):
-    pagination_class = StandardResultsSetPagination
+    
     serializer_class = CardSerializer
 
     def get_queryset(self):
@@ -199,3 +196,11 @@ class FavoritesView(ListAPIView):
     def get_queryset(self):
         current_user = self.request.user
         return Card.objects.filter(favorite_cards__username=current_user)
+
+
+class FollowersView(ListAPIView):
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        current_user = self.request.user
+        return User.objects.filter(friends__username=current_user)
