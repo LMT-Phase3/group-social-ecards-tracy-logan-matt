@@ -4,20 +4,20 @@ import { createCard, updateCard } from '../../../api'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
-import { useState } from 'react'
+// import { useState } from 'react'
 
 const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBorder, setFont, setTitle, setMessage, setBackgroundImage, setFontColor, setBorderType, setJustify, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify, autoClear }) => {
-  const [justification, setJustification] = useState()
-  function handleJustify (e) {
-    setJustification(e)
-    if (justification === 'left') {
-      setJustify('flex-start')
-    } else if (justify === 'center') {
-      setJustify('center')
-    } else {
-      setJustify('flex-end')
-    }
-  }
+  // const [justification, setJustification] = useState()
+  // function handleJustify (e) {
+  //   setJustification(e)
+  //   if (justification === 'left') {
+  //     setJustify('flex-start')
+  //   } else if (justify === 'center') {
+  //     setJustify('center')
+  //   } else {
+  //     setJustify('flex-end')
+  //   }
+  // }
 
   if (!token) {
     return <Redirect to='/' />
@@ -94,7 +94,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             onSelect={(e) => setBorder(e)}
           >
             <Dropdown.Item style={{ border: 'solid 5px black' }} eventKey='black'>Black</Dropdown.Item>
-            <Dropdown.Item style={{ border: 'dotted 5px yellow' }} eventKey='yellow'>Yellow</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'solid 5px yellow' }} eventKey='yellow'>Yellow</Dropdown.Item>
             <Dropdown.Item style={{ border: 'solid 5px blue' }} eventKey='blue'>Blue</Dropdown.Item>
             <Dropdown.Item style={{ border: 'solid 5px green' }} eventKey='green'>Green</Dropdown.Item>
             <Dropdown.Item style={{ border: 'solid 5px red' }} eventKey='red'>Red</Dropdown.Item>
@@ -111,15 +111,15 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             id='border-type'
             onSelect={(e) => setBorderType(e)}
           >
-            <Dropdown.Item style={{ border: 'solid 8px black', fontWeight: 'bold' }} eventKey='solid 20px'>Solid Big</Dropdown.Item>
-            <Dropdown.Item style={{ border: 'dotted 8px black', fontWeight: 'bold' }} eventKey='dotted 20px'>Dotted Big</Dropdown.Item>
-            <Dropdown.Item style={{ border: 'solid 2px black' }} eventKey='solid 5px'>Solid Narrow</Dropdown.Item>
-            <Dropdown.Item style={{ border: 'dotted 2px black' }} eventKey='dotted 5px'>Dotted Narrow</Dropdown.Item>
-            <Dropdown.Item style={{ border: 'groove 8px black' }} eventKey='groove 5px'>Groove Narrow</Dropdown.Item>
-            <Dropdown.Item style={{ border: 'ridge 8px black' }} eventKey='ridge 5px'>Ridge</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'solid 8px black', fontWeight: 'bold' }} eventKey='solid 15px'>Solid Big</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'dotted 8px black', fontWeight: 'bold' }} eventKey='dotted 12px'>Dotted Big</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'solid 2px black' }} eventKey='solid 8px'>Solid Narrow</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'dotted 2px black' }} eventKey='dotted 7px'>Dotted Narrow</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'groove 8px black' }} eventKey='groove 8px'>Groove Narrow</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'ridge 8px black' }} eventKey='ridge 8px'>Ridge</Dropdown.Item>
             <Dropdown.Item style={{ border: 'double 8px black' }} eventKey='double 10px'>Double</Dropdown.Item>
-            <Dropdown.Item style={{ border: 'outset 8px black' }} eventKey='outset 5px'>Outset</Dropdown.Item>
-            <Dropdown.Item style={{ border: 'inset 8px black' }} eventKey='inset 5px'>Inset</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'outset 8px black' }} eventKey='outset 8px'>Outset</Dropdown.Item>
+            <Dropdown.Item style={{ border: 'inset 8px black' }} eventKey='inset 8px'>Inset</Dropdown.Item>
           </DropdownButton>
           <DropdownButton
             className='levels'
@@ -144,7 +144,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             alignRight
             title='Select Justification'
             id='justification'
-            onSelect={(e) => handleJustify(e)}
+            onSelect={(e) => setJustify(e)}
           >
             <Dropdown.Item style={{ textAlign: 'left' }} eventKey='left'>Left</Dropdown.Item>
             <Dropdown.Item style={{ textAlign: 'center' }} eventKey='center'>Center</Dropdown.Item>
@@ -172,8 +172,8 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
               <Card.Body>
                 <div className='inside-body flex' style={{ border: `${borderType} ${border}`, justifyContent: 'center', alignItems: 'center', backgroundColor: `${backgroundColor}` }}>
                   {(autoClear === 'true')
-                    ? <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justification}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
-                    : <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justification}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onChange={evt => setMessage(evt.target.value)} />}
+                    ? <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justify}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
+                    : <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justify}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onChange={evt => setMessage(evt.target.value)} />}
                 </div>
                 {/* Make border-solid and justification fields in model */}
               </Card.Body>

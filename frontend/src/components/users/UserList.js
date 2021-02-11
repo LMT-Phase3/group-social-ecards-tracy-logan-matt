@@ -92,6 +92,9 @@ const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyPr
               <div style={{ color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <div className='user-card-profile' style={{ borderRadius: '80px', justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: '#00000030' }}><span style={{ marginTop: '40px', color: 'black', fontSize: '50px', paddingRight: '40px', width: '50px' }} onClick={() => handleBackward(pagination)} className='material-icons'>arrow_backward</span><span style={{ color: 'black', fontSize: '50px', paddingLeft: '40px' }} onClick={() => handleForward(pagination)} className='material-icons'>arrow_forward</span></div>
               </div>
+              <div className='flex'>
+                <span>View More Users</span>
+              </div>
             </div>
           </ListGroupItem>
         )}

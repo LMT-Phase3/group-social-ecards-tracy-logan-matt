@@ -1,7 +1,14 @@
 
 import Card from 'react-bootstrap/Card'
 
-const CardContent = ({ backgroundColor, border, font, backgroundImage, title, message, fontColor, borderType, justify }) => {
+const CardContent = ({ backgroundColor, border, font, backgroundImage, title, message, fontColor, borderType, justify, username }) => {
+  let justification = 'center'
+  if (justify === 'left') {
+    justification = 'flex-start'
+  } else if (justify === 'right') {
+    justification = 'flex-end'
+  }
+
   return (
     <div className='create-card-section flex-col'>
       <div className='flex'>
@@ -12,11 +19,15 @@ const CardContent = ({ backgroundColor, border, font, backgroundImage, title, me
         </Card>
         <Card className='flex animate__animated animate__fadeIn'>
           <Card.Body>
-            <div className='inside-body' style={{ border: `${borderType} ${border}`, justifyContent: `${justify}`, alignItems: 'center', color: `${fontColor}`, backgroundColor: `${backgroundColor}` }}><span style={{ fontFamily: `${font}` }}>{message}</span></div>
+            <div className='inside-body' style={{ border: `${borderType} ${border}`, justifyContent: `${justification}`, alignItems: 'center', color: `${fontColor}`, backgroundColor: `${backgroundColor}` }}><span style={{ textAlign: `${justify}`, fontFamily: `${font}` }}>{message}</span></div>
             {/* Make border-solid and justification fields in model */}
           </Card.Body>
         </Card>
       </div>
+      {/* <div>
+        <div>Here is message 1<span>{username}</span></div>
+        <div>Here is message 2<span>{username}</span></div>
+      </div> */}
     </div>
   )
 }
