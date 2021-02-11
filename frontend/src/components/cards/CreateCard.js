@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-// import CardContent from './CardContent'
 import PhotoSearch from './createUpdate/PhotoSearch'
 import CardForm from './createUpdate/CardForm'
 

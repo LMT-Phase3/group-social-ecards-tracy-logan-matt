@@ -1,10 +1,10 @@
 import { Redirect, Link } from 'react-router-dom'
-import { addFriend, deleteFriend, getUsers } from '../../api'
+import { getUsers } from '../../api'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import { useEffect, useState } from 'react'
 
-const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyProfile }) => {
+const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyProfile, handleFollow, handleUnFollow }) => {
   const [users, setUsers] = useState([])
   const [pagination, setPagination] = useState(1)
 
@@ -13,13 +13,6 @@ const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyPr
     getUsers(token, userApiPath, pagination).then(users => setUsers(users))
   }
 
-  function handleFollow (newuser) {
-    addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
-  }
-
-  function handleUnFollow (newuser) {
-    deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
-  }
   function handleForward (pageNumber) {
     if (!stopForward) {
       setPagination(pagination + 1)
@@ -53,16 +46,7 @@ const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyPr
 
   return (
     <>
-      <>
-        {(userApiPath === 'users') && (
-          <div className='general-link card-detail-header card-detail-all'>All Users</div>
-        )}
-      </>
-      <>
-        {(userApiPath === 'user-friends') && (
-          <div className='general-link card-detail-header card-detail-all'>Friends' Profiles</div>
-        )}
-      </>
+      <div className='general-link card-detail-header card-detail-all'>{(userApiPath === 'users') ? 'All Users' : "Friends' Profiles"}</div>
       <ListGroup className='my-list-group'>
         {users.map(user => (
           <ListGroupItem user={user} key={user.pk}>

@@ -14,13 +14,11 @@ const UserNav = ({ token, user, username, pathUsername, profileUsername, setIsUp
 
   return (
     <Navbar className='card-detail-navbar'>
-      <>
-        {(username === pathUsername) && (
-          <Navbar.Text style={{ color: 'white' }}>
-            <span onClick={() => handleUpdate()}>Edit Profile</span><span className='material-icons sm-nav-icon'>edit</span>
-          </Navbar.Text>
-        )}
-      </>
+      {(username === pathUsername) && (
+        <Navbar.Text style={{ color: 'white' }}>
+          <span onClick={() => handleUpdate()}>Edit Profile</span><span className='material-icons sm-nav-icon'>edit</span>
+        </Navbar.Text>
+      )}
     </Navbar>
   )
 }

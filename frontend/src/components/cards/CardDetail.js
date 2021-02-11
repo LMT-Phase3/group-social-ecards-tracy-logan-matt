@@ -5,7 +5,7 @@ import CardNav from './CardNav'
 import CardContent from './CardContent'
 import UpdateCard from './UpdateCard'
 
-const CardDetail = ({ token, username, myCards, setMyCards, myProfile, setMyProfile, myFavorites, setMyFavorites }) => {
+const CardDetail = ({ token, username, myCards, setMyCards, myProfile, setMyProfile, myFavorites, setMyFavorites, handleUnFollow, handleFollow, handleFavorite, handleUnFavorite }) => {
   const { pk } = useParams()
   const [card, setCard] = useState([])
   const [isUpdating, setIsUpdating] = useState(false)
@@ -27,10 +27,11 @@ const CardDetail = ({ token, username, myCards, setMyCards, myProfile, setMyProf
         ? (
           <div className='flex-col card-detail-all'>
             <div className='flex-col card-detail-header'>
-              <button className='general-link' onClick={() => history.goBack()}>Return to Cards List</button>
+              <button className='general-link' onClick={() => history.goBack()}>Return to Previous</button>
               <CardNav
                 token={token} username={username} setIsUpdating={setIsUpdating}
                 myFavorites={myFavorites} setMyFavorites={setMyFavorites} card={card} pk={pk} myCards={myCards} setMyCards={setMyCards} myProfile={myProfile} setMyProfile={setMyProfile}
+                handleFollow={handleFollow} handleUnFollow={handleUnFollow} handleUnFavorite={handleUnFavorite} handleFavorite={handleFavorite}
               />
             </div>
             <CardContent
@@ -46,7 +47,7 @@ const CardDetail = ({ token, username, myCards, setMyCards, myProfile, setMyProf
             }}
           />
           )}
-       </>)}
+      </>)}
     </>
 
   )
