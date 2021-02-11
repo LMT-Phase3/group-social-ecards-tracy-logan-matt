@@ -90,6 +90,16 @@ export function getMyProfile (token) {
     .then(res => res.data)
 }
 
+export function getMyFavorites (token) {
+  return API
+    .get('my-favorites/', {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => res.data)
+}
+
 export function getUsers (token, path, page) {
   return API
     .get(`${path}/?page=${page}`, {
@@ -223,6 +233,33 @@ export function deleteFriend (token, newUser) {
         },
         data: {
           username: newUser
+        }
+      })
+    .then(res => (res.data))
+}
+
+export function addFavorite (token, newFavorite) {
+  return API
+    .post('my-favorites/', {
+      title: newFavorite
+    },
+    {
+      headers: {
+        Authorization: `Token ${token}`
+      }
+    })
+    .then(res => (res.data))
+}
+
+export function deleteFavorite (token, newFavorite) {
+  return API
+    .delete('my-favorites/',
+      {
+        headers: {
+          Authorization: `Token ${token}`
+        },
+        data: {
+          title: newFavorite
         }
       })
     .then(res => (res.data))

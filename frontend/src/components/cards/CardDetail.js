@@ -5,7 +5,7 @@ import CardNav from './CardNav'
 import CardContent from './CardContent'
 import UpdateCard from './UpdateCard'
 
-const CardDetail = ({ token, username, myCards, setMyCards, myProfile, setMyProfile }) => {
+const CardDetail = ({ token, username, myCards, setMyCards, myProfile, setMyProfile, myFavorites, setMyFavorites }) => {
   const { pk } = useParams()
   const [card, setCard] = useState([])
   const [isUpdating, setIsUpdating] = useState(false)
@@ -28,11 +28,14 @@ const CardDetail = ({ token, username, myCards, setMyCards, myProfile, setMyProf
           <div className='flex-col card-detail-all'>
             <div className='flex-col card-detail-header'>
               <button className='general-link' onClick={() => history.goBack()}>Return to Cards List</button>
-              <CardNav token={token} username={username} setIsUpdating={setIsUpdating} card={card} pk={pk} myCards={myCards} setMyCards={setMyCards} myProfile={myProfile} setMyProfile={setMyProfile} />
+              <CardNav
+                token={token} username={username} setIsUpdating={setIsUpdating}
+                myFavorites={myFavorites} setMyFavorites={setMyFavorites} card={card} pk={pk} myCards={myCards} setMyCards={setMyCards} myProfile={myProfile} setMyProfile={setMyProfile}
+              />
             </div>
             <CardContent
               backgroundColor={card.background} border={card.border} font={card.font} backgroundImage={card.image_front} title={card.title} message={card.message}
-              fontColor={card.font_color} borderType={card.border_type} justify={card.justify}
+              fontColor={card.font_color} borderType={card.border_type} justify={card.justify} username={username}
             />
           </div>)
         : (
@@ -43,7 +46,7 @@ const CardDetail = ({ token, username, myCards, setMyCards, myProfile, setMyProf
             }}
           />
           )}
-      </>)}
+       </>)}
     </>
 
   )

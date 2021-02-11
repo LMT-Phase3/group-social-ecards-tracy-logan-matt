@@ -1,8 +1,8 @@
 import Navbar from 'react-bootstrap/Navbar'
-import { addFriend, deleteFriend, deleteCard, getCards } from '../../api'
+import { addFriend, deleteFriend, deleteCard, getCards, addFavorite, deleteFavorite } from '../../api'
 import { Link, Redirect } from 'react-router-dom'
 
-const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards, myProfile, setMyProfile }) => {
+const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards, myProfile, setMyProfile, myFavorites, setMyFavorites }) => {
   function handleDelete (pk) {
     deleteCard(token, pk)
       .then(getCards(token))
@@ -17,6 +17,14 @@ const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards
 
   function handleUnFollow (newuser) {
     deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+
+  function handleFavorite (newFavorite) {
+    addFavorite(token, newFavorite).then(updatedFavorites => setMyFavorites(updatedFavorites))
+  }
+
+  function handleUnFavorite (newFavorite) {
+    deleteFavorite(token, newFavorite).then(updatedFavorites => setMyFavorites(updatedFavorites))
   }
 
   if (!token) {
@@ -40,7 +48,13 @@ const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards
                   : <span onClick={() => handleFollow(card.user)} className='follow-link'>Follow<span className='material-icons'>thumb_up_off_alt</span></span>}
               </Navbar.Text>
               <Navbar.Text style={{ color: 'white' }}>
-                <span className='material-icons sm-nav-icon'>favorite_border</span>
+                {myFavorites && (
+                  <>
+                    {(myFavorites.favorites.includes(card.title))
+                      ? <span onClick={() => handleUnFavorite(card.title)} style={{ color: 'red' }} className='material-icons sm-nav-icon'>favorite</span>
+                      : <span onClick={() => handleFavorite(card.title)} style={{ color: 'red' }} className='material-icons sm-nav-icon'>favorite_border</span>}
+                  </>
+                )}
               </Navbar.Text>
             </>
           )}

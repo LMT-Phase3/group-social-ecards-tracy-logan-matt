@@ -1,7 +1,7 @@
 
 import Card from 'react-bootstrap/Card'
 
-const CardContent = ({ backgroundColor, border, font, backgroundImage, title, message, fontColor, borderType, justify }) => {
+const CardContent = ({ backgroundColor, border, font, backgroundImage, title, message, fontColor, borderType, justify, username }) => {
   let justification = 'center'
   if (justify === 'left') {
     justification = 'flex-start'
@@ -24,6 +24,10 @@ const CardContent = ({ backgroundColor, border, font, backgroundImage, title, me
           </Card.Body>
         </Card>
       </div>
+      {/* <div>
+        <div>Here is message 1<span>{username}</span></div>
+        <div>Here is message 2<span>{username}</span></div>
+      </div> */}
     </div>
   )
 }

@@ -15,7 +15,7 @@ import CardContent from './components/cards/CardContent'
 import UserList from './components/users/UserList'
 import UserProfile from './components/users/UserProfile'
 import createPersistedState from 'use-persisted-state'
-import { getMyCards, getAllUsers, getMyProfile } from './api'
+import { getMyCards, getAllUsers, getMyProfile, getMyFavorites } from './api'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useEffect, useState } from 'react'
@@ -30,8 +30,9 @@ function App () {
   const [myCards, setMyCards] = useState([])
   const [allUsers, setAllUsers] = useState([])
   const [myProfile, setMyProfile] = useState()
+  const [myFavorites, setMyFavorites] = useState()
   let isLoggedIn = (username && token)
-  const cardProps = { token, username, isCreating, setIsCreating, myCards, setMyCards, allUsers, setAllUsers, myProfile, setMyProfile }
+  const cardProps = { token, username, isCreating, setIsCreating, myCards, setMyCards, allUsers, setAllUsers, myProfile, setMyProfile, myFavorites, setMyFavorites }
   const userProps = { token, username, allUsers, setAllUsers, myProfile, setMyProfile }
 
   useEffect(updateAllCards, [token])
@@ -44,6 +45,12 @@ function App () {
   function updateMyProfile () {
     getMyProfile(token).then(user => setMyProfile(user))
   }
+
+  useEffect(updateMyFavorites, [token])
+  function updateMyFavorites () {
+    getMyFavorites(token).then(favorite => setMyFavorites(favorite))
+  }
+  console.log(myFavorites)
 
   // Use MyCards to be my set of favorites
 
@@ -201,20 +208,20 @@ function App () {
                     </Carousel.Item>
                     <Carousel.Item>
                       <CardContent
-                        backgroundColor='darkgray' font='monospace' border='teal' title='Happy Anniversary' message='Ready for another 50?' fontColor='white' borderType='15px dotted' justify='center'
+                        backgroundColor='darkgray' font='monospace' border='teal' title='Happy Anniversary' message='Ready for another 50?' fontColor='white' borderType='10px ridge' justify='center'
                         backgroundImage='https://images.unsplash.com/photo-1604668915999-03e1269f6af6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHwxMHx8YmFsbG9vbnN8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080'
                       />
 
                     </Carousel.Item>
                     <Carousel.Item>
                       <CardContent
-                        backgroundColor='black' font='Lucinda' border='white' title='Flowers from My Garden' message='Wishing you a lovely day' fontColor='white' borderType='15px dotted' justify='flex-start'
+                        backgroundColor='black' font='Lucinda' border='white' title='Flowers from My Garden' message='Wishing you a lovely day' fontColor='white' borderType='10px dotted' justify='flex-start'
                         backgroundImage='https://images.unsplash.com/photo-1520690214124-2405c5217036?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHwzfHxibHVlfGVufDB8MHx8&ixlib=rb-1.2.1&q=80&w=1080'
                       />
                     </Carousel.Item>
                     <Carousel.Item>
                       <CardContent
-                        backgroundColor='yellow' font='Lucinda' border='brown' title='Happy Thanksgiving' message='Hoping you had a lovely holiday!' fontColor='black' borderType='15px dotted' justify='flex-end'
+                        backgroundColor='yellow' font='Lucinda' border='brown' title='Happy Thanksgiving' message='Hoping you had a lovely holiday!' fontColor='black' borderType='10px double' justify='flex-end'
                         backgroundImage='https://images.unsplash.com/photo-1538883689728-2c32af36a313?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHwxfHx0aGFua3NnaXZpbmd8ZW58MHwwfHw&ixlib=rb-1.2.1&q=80&w=1080'
                       />
                     </Carousel.Item>
