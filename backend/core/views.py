@@ -204,3 +204,12 @@ class FollowersView(ListAPIView):
     def get_queryset(self):
         current_user = self.request.user
         return User.objects.filter(friends__username=current_user)
+
+
+class LikeCountView(APIView):
+    
+
+    def get(self, request, format=None):
+        like_count = User.objects.favorites.count()
+        content = {'like_count': like_count}
+        return Response(content)
