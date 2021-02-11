@@ -16,6 +16,10 @@ class TestView(APIView):
         serializer = UserSerializer(request.user)
         return Response(data=serializer.data)
 
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
 
 
 
@@ -194,4 +198,4 @@ class FavoritesView(ListAPIView):
 
     def get_queryset(self):
         current_user = self.request.user
-        return Card.objects.filter(favorite_cards__username=current_user).order_by('-updated_date')
+        return Card.objects.filter(favorite_cards__username=current_user)
