@@ -19,10 +19,12 @@
   height: 100vh;
   padding-top: 15vh;
 }
+@media (min-width: 576px) {
 body {
   background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1268&q=80");
   background-size: cover;
 }
+
 .flex {
   display: flex;
   flex-wrap: wrap;
@@ -31,8 +33,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+}
 
-
+@media (min-width: 576px) {
 .jumbotron-container {
   color:white;
   background-color: #00000024;
@@ -110,11 +113,14 @@ a {
   font-size: large;
 
 }
+}
+
 
 .list-view-image {
   width: 250px;
   height: 167px;
 }
+
 
 .user-card-profile {
   width: 140px;
@@ -130,6 +136,7 @@ a {
   background-repeat: no-repeat;
   border-radius: 120px;
 }
+
 
 .main-user-title {
   font-size: 25px;
@@ -161,6 +168,8 @@ a {
   border: none;
 }
 
+
+@media (min-width: 576px) {
 .friend-user-profile {
   width: 110px;
   height: 110px;
@@ -168,6 +177,7 @@ a {
   background-repeat: no-repeat;
   border-radius: 120px;
 }
+
 
 
 /* This is a native class to the Card component from bootstrap */
@@ -183,6 +193,7 @@ a {
 
 .carousel-container {
   max-width: 1035px;
+}
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
@@ -244,6 +255,7 @@ a {
   margin-right: 50px;
   margin-top: 25px; */
 }
+
 .create-card-dropdown {
   padding-left: 10px;
   padding-right: 10px;
@@ -251,6 +263,7 @@ a {
   margin-bottom: 20px;
   justify-content: flex-end;
 }
+
 
 .card-detail-holder {
   height: 280px;
@@ -266,12 +279,24 @@ a {
   padding-top: 50px;
 }
 
+.card-detail-holder {
+  width: 270px;
+  height: 151px;
+}
+
+.inside-body {
+  width: 270px;
+  height: 151px;
+}
+
+@media (min-width: 576px) {
 .card-detail-header {
   justify-content: space-between;
   width: 80%;
   flex-wrap: wrap;
   align-items: flex-start;
 }
+
 .card-detail-holder{
   width: 500px;
   border-radius: 10px;
@@ -297,11 +322,13 @@ a {
   padding-right: 70px;  
   font-family: 'Rubik', sans-serif;
 }
+
 .photo-label {
   margin-left: 30px;
   margin-right: 10px;
   font-size: 18px;
 }
+
 .general-link {
   font-size: 25px;
   color: black;
@@ -334,7 +361,9 @@ a {
   /* font-family: 'Anton', sans-serif; */
 
 }
+}
 
+@media (min-width: 576px) {
 .photo-thumbnail {
   border: 2px solid black;
   border-radius: 6px;
@@ -356,7 +385,7 @@ a {
   border-radius: 80px;
 
 }
-
+}
 
 .dropdown-item {
   font-family: 'Rubik', sans-serif;
