@@ -195,7 +195,7 @@ class FavoritesView(ListAPIView):
 
     def get_queryset(self):
         current_user = self.request.user
-        return Card.objects.filter(favorite_cards__username=current_user)
+        return Card.objects.filter(favorite_cards__username=current_user).order_by('-updated_date')
 
 
 class FollowersView(ListAPIView):
