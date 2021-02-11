@@ -26,14 +26,17 @@ const UserContent = ({ token, username, profileUsername, pathUsername, user, fir
                       : <span onClick={() => handleFollow(user.username)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
                   </>
                 )}
+                <div style={{ flexBasis: '25%' }} className='main-user-content'>
+                  <div><span>{firstName}</span><span> {lastName}</span></div>
+                  <div>{email}</div>
+                  <div>{about}</div>
+                </div>
               </div>
             </div>
-            <div style={{ flexBasis: '25%' }} className='main-user-content'>
-              <div><span>{firstName}</span><span> {lastName}</span></div>
-              <div>{email}</div>
-              <div>{about}</div>
-            </div>
+
             <UserFriends style={{ flexBasis: '40%' }} className='flex' user={user} allUsers={allUsers} setAllUsers={setAllUsers} {...cardProps} />
+            <UserFriends style={{ flexBasis: '40%' }} className='flex' user={user} allUsers={allUsers} setAllUsers={setAllUsers} {...cardProps} />
+
           </div>
           <div style={{ flexWrap: 'nowrap' }} className='flex'>
             <UserCardList className='flex' {...cardProps} />

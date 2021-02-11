@@ -2,7 +2,8 @@ import { Link, Redirect } from 'react-router-dom'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import ListGroup from 'react-bootstrap/ListGroup'
 
-const UserFriends = ({ token, user, profileUsername, allUsers, setAllUsers, pathUsername }) => {
+// Need to get user.followers on here
+const UserFollowers = ({ token, user, profileUsername, allUsers, setAllUsers, pathUsername }) => {
   if (!token) {
     return <Redirect to='/' />
   }
