@@ -32,6 +32,8 @@ class CardSerializer(serializers.ModelSerializer):
             'font_color',
             'justify',
         ]
+
+# Add 'likers' as a field on model Card in serializer and 'comments' potentially
         
 class UserCreateSerializer(serializers.ModelSerializer):
     friends = serializers.StringRelatedField(many=True, read_only=True)
@@ -46,7 +48,8 @@ class UserCreateSerializer(serializers.ModelSerializer):
             "about",
             "avatar"
         ]
- 
+# Add 'followers' as a field in serializer
+
 class FriendSerializer(serializers.ModelSerializer):
     friends = serializers.StringRelatedField(many=True, read_only=True)
     
