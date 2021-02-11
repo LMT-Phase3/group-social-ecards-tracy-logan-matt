@@ -196,3 +196,11 @@ class FavoritesView(ListAPIView):
     def get_queryset(self):
         current_user = self.request.user
         return Card.objects.filter(favorite_cards__username=current_user)
+
+
+class FollowersView(ListAPIView):
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        current_user = self.request.user
+        return User.objects.filter(friends__username=current_user)
