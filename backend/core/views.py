@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.exceptions import ParseError
-from .serializers import UserSerializer, CardSerializer, UserCreateSerializer, FriendSerializer
+from .serializers import UserSerializer, CardSerializer, UserCreateSerializer, FriendSerializer, FavoriteSerializer
 from rest_framework.response import Response 
 from core.models import Card, User
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
@@ -167,4 +167,35 @@ class FriendsView(ListAPIView):
         return User.objects.filter(followers__username=current_user)
        
 
+class FavoritesListView(APIView):
+    
+    def get(self, request):
+        user = self.request.user
+        serializer = FavoriteSerializer(user)
+        return Response(serializer.data)
 
+    def post(self, request):
+        new_favorite_card = request.data.get('title')
+        card = Card.objects.filter(title=new_favorite_card).first()
+
+        self.request.user.favorites.add(card)
+        
+        serializer = FavoriteSerializer(self.request.user)
+        return Response(serializer.data)
+
+    def delete(self, request):
+        new_favorite_card = request.data.get('title')
+        card = Card.objects.filter(title=new_favorite_card).first()
+
+        self.request.user.favorites.remove(card)
+        
+        serializer = FavoriteSerializer(self.request.user)
+        return Response(serializer.data)
+
+
+class FavoritesView(ListAPIView):
+    serializer_class = CardSerializer
+
+    def get_queryset(self):
+        current_user = self.request.user
+        return Card.objects.filter(favorite_cards__username=current_user)
