@@ -55,3 +55,13 @@ class FriendSerializer(serializers.ModelSerializer):
         fields = [
             'friends'
         ]
+
+
+class FavoriteSerializer(serializers.ModelSerializer):
+    favorites = serializers.StringRelatedField(many=True, read_only=True)
+    class Meta:
+        model = Card
+        fields = [
+            'favorites'
+        ]
+    
