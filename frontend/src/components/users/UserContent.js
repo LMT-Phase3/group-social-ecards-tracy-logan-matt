@@ -1,21 +1,12 @@
 
-import { addFriend, deleteFriend } from '../../api'
 import UserCardList from '../../components/cards/UserCardList'
 import UserFriends from './UserFriends'
 
-const UserContent = ({ token, username, profileUsername, pathUsername, user, firstName, lastName, email, avatarImage, about, myProfile, setMyProfile, allUsers, setAllUsers, myFavorites, setMyFavorites }) => {
-  const cardProps = { token, username, myProfile, setMyProfile, profileUsername, pathUsername, myFavorites, setMyFavorites }
+const UserContent = ({ token, username, profileUsername, pathUsername, user, firstName, lastName, email, avatarImage, about, myProfile, setMyProfile, allUsers, setAllUsers, myFavorites, setMyFavorites, handleFollow, handleUnFollow, handleFavorite, handleUnFavorite }) => {
+  const cardProps = { token, username, myProfile, setMyProfile, profileUsername, pathUsername, myFavorites, setMyFavorites, handleFollow, handleUnFollow, handleFavorite, handleUnFavorite }
 
   if (profileUsername === undefined) {
     pathUsername = username
-  }
-
-  function handleFollow (newuser) {
-    addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
-  }
-
-  function handleUnFollow (newuser) {
-    deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
   }
 
   return (

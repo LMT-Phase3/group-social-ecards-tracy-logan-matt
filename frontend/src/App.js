@@ -15,8 +15,8 @@ import CardContent from './components/cards/CardContent'
 import UserList from './components/users/UserList'
 import UserProfile from './components/users/UserProfile'
 import createPersistedState from 'use-persisted-state'
-import { getMyCards, getAllUsers, getMyProfile, getMyFavorites } from './api'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'// import Button from 'react-bootstrap/Button'
+import { getAllUsers, getMyProfile, getMyFavorites, addFriend, deleteFriend, addFavorite, deleteFavorite } from './api'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useEffect, useState } from 'react'
 
@@ -27,18 +27,39 @@ function App () {
   const [username, setUsername] = useUsername()
   const [token, setToken] = useToken()
   const [isCreating, setIsCreating] = useState(false)
-  const [myCards, setMyCards] = useState([])
   const [allUsers, setAllUsers] = useState([])
   const [myProfile, setMyProfile] = useState()
   const [myFavorites, setMyFavorites] = useState()
   let isLoggedIn = (username && token)
-  const cardProps = { token, username, isCreating, setIsCreating, myCards, setMyCards, allUsers, setAllUsers, myProfile, setMyProfile, myFavorites, setMyFavorites }
-  const userProps = { token, username, allUsers, setAllUsers, myProfile, setMyProfile, myFavorites, setMyFavorites }
-
-  useEffect(updateAllCards, [token])
-
-  function updateAllCards () {
-    getMyCards(token).then(cards => setMyCards(cards))
+  const cardProps = {
+    token,
+    username,
+    isCreating,
+    setIsCreating,
+    allUsers,
+    setAllUsers,
+    myProfile,
+    setMyProfile,
+    myFavorites,
+    setMyFavorites,
+    handleFollow,
+    handleUnFollow,
+    handleFavorite,
+    handleUnFavorite
+  }
+  const userProps = {
+    token,
+    username,
+    allUsers,
+    setAllUsers,
+    myProfile,
+    setMyProfile,
+    myFavorites,
+    setMyFavorites,
+    handleFollow,
+    handleUnFollow,
+    handleFavorite,
+    handleUnFavorite
   }
 
   useEffect(updateMyProfile, [token])
@@ -50,8 +71,6 @@ function App () {
   function updateMyFavorites () {
     getMyFavorites(token).then(favorite => setMyFavorites(favorite))
   }
-
-  // Use MyCards to be my set of favorites
 
   useEffect(updateAllUsers, [token])
   function updateAllUsers () {
@@ -75,6 +94,21 @@ function App () {
 
   function handleCreate () {
     setIsCreating(true)
+  }
+
+  function handleUnFollow (newuser) {
+    deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+  function handleFollow (newuser) {
+    addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+
+  function handleFavorite (newFavorite) {
+    addFavorite(token, newFavorite).then(updatedFavorites => setMyFavorites(updatedFavorites))
+  }
+
+  function handleUnFavorite (newFavorite) {
+    deleteFavorite(token, newFavorite).then(updatedFavorites => setMyFavorites(updatedFavorites))
   }
 
   return (
@@ -129,8 +163,6 @@ function App () {
                   <Nav.Item>All Users</Nav.Item>
                 </LinkContainer>
               </NavDropdown.Item>
-              {/* <NavDropdown.Divider />
-              <NavDropdown.Item>Update My Profile</NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
           <div>
@@ -180,12 +212,10 @@ function App () {
             <UserProfile {...userProps} />
           </Route>
 
-          {/* API PATH */}
           <Route path='/friends'>
             <UserList userApiPath='user-friends' {...userProps} />
           </Route>
 
-          {/* API PATH */}
           <Route path='/users'>
             <UserList userApiPath='users' {...userProps} />
           </Route>
@@ -196,7 +226,6 @@ function App () {
 
           <Route path='/'>
             <Jumbotron fluid>
-
               {/* <Jumbotron className='animate__animated animate__fadeInLeft' fluid> */}
               <Container className='jumbotron-container'>
                 <h1 className='splash-title'>Welcome to Card Circle</h1>
@@ -205,20 +234,17 @@ function App () {
                 </p>
                 <Container className='carousel-container'>
                   <Carousel>
-
                     <Carousel.Item>
                       <CardContent
                         backgroundColor='pink' font='Lucinda' border='white' title='Happy Birthday' message="You don't look a day older!" fontColor='black' borderType='15px solid' justify='flex-start'
                         backgroundImage='https://images.unsplash.com/photo-1517398823963-c2dc6fc3e837?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHw1fHxwcmluY2Vzc3xlbnwwfDB8fA&ixlib=rb-1.2.1&q=80&w=1080'
                       />
-
                     </Carousel.Item>
                     <Carousel.Item>
                       <CardContent
                         backgroundColor='darkgray' font='monospace' border='teal' title='Happy Anniversary' message='Ready for another 50?' fontColor='white' borderType='10px ridge' justify='center'
                         backgroundImage='https://images.unsplash.com/photo-1604668915999-03e1269f6af6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHwxMHx8YmFsbG9vbnN8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080'
                       />
-
                     </Carousel.Item>
                     <Carousel.Item>
                       <CardContent
@@ -235,14 +261,10 @@ function App () {
                   </Carousel>
                 </Container>
               </Container>
-
             </Jumbotron>
-
           </Route>
-
         </Switch>
       </>
-
     </Router>
   )
 }

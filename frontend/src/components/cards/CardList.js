@@ -1,12 +1,12 @@
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import CreateCard from './CreateCard'
-import { getCards, addFriend, deleteFriend, addFavorite, deleteFavorite } from '../../api'
+import { getCards } from '../../api'
 
 import { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
-const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfile, setMyProfile, myFavorites, setMyFavorites }) => {
+const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfile, setMyProfile, myFavorites, setMyFavorites, handleUnFollow, handleFollow, handleFavorite, handleUnFavorite }) => {
   const [cards, setCards] = useState([])
   const [pagination, setPagination] = useState(1)
 
@@ -14,21 +14,6 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
 
   function updateCards () {
     getCards(token, apiPath, pagination).then(cards => setCards(cards))
-  }
-
-  function handleUnFollow (newuser) {
-    deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
-    getCards(token, apiPath).then(cards => setCards(cards))
-  }
-  function handleFollow (newuser) {
-    addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
-  }
-  function handleFavorite (newFavorite) {
-    addFavorite(token, newFavorite).then(updatedFavorites => setMyFavorites(updatedFavorites))
-  }
-
-  function handleUnFavorite (newFavorite) {
-    deleteFavorite(token, newFavorite).then(updatedFavorites => setMyFavorites(updatedFavorites))
   }
 
   function handleForward (pageNumber) {

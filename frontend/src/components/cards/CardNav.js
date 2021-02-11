@@ -1,30 +1,14 @@
 import Navbar from 'react-bootstrap/Navbar'
-import { addFriend, deleteFriend, deleteCard, getCards, addFavorite, deleteFavorite } from '../../api'
+import { deleteCard, getCards } from '../../api'
 import { Link, Redirect } from 'react-router-dom'
 
-const CardNav = ({ token, username, card, pk, setIsUpdating, myCards, setMyCards, myProfile, setMyProfile, myFavorites, setMyFavorites }) => {
+const CardNav = ({ token, username, card, pk, setIsUpdating, myProfile, setMyProfile, myFavorites, setMyFavorites, handleFollow, handleUnFollow, handleFavorite, handleUnFavorite }) => {
   function handleDelete (pk) {
     deleteCard(token, pk)
       .then(getCards(token))
   }
   function handleUpdate () {
     setIsUpdating(true)
-  }
-
-  function handleFollow (newuser) {
-    addFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
-  }
-
-  function handleUnFollow (newuser) {
-    deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
-  }
-
-  function handleFavorite (newFavorite) {
-    addFavorite(token, newFavorite).then(updatedFavorites => setMyFavorites(updatedFavorites))
-  }
-
-  function handleUnFavorite (newFavorite) {
-    deleteFavorite(token, newFavorite).then(updatedFavorites => setMyFavorites(updatedFavorites))
   }
 
   if (!token) {

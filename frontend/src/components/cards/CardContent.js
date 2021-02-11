@@ -20,7 +20,6 @@ const CardContent = ({ backgroundColor, border, font, backgroundImage, title, me
         <Card className='flex animate__animated animate__fadeIn'>
           <Card.Body>
             <div className='inside-body' style={{ border: `${borderType} ${border}`, justifyContent: `${justification}`, alignItems: 'center', color: `${fontColor}`, backgroundColor: `${backgroundColor}` }}><span style={{ textAlign: `${justify}`, fontFamily: `${font}` }}>{message}</span></div>
-            {/* Make border-solid and justification fields in model */}
           </Card.Body>
         </Card>
       </div>

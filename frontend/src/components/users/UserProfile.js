@@ -4,9 +4,8 @@ import { Redirect, Link, useParams } from 'react-router-dom'
 import UserNav from './UserNav'
 import UserContent from './UserContent'
 import UpdateUser from './UpdateUser'
-// import UserFriends from './UserFriends'
 
-const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyProfile, myFavorites, setMyFavorites }) => {
+const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyProfile, myFavorites, setMyFavorites, handleFollow, handleUnFollow, handleFavorite, handleUnFavorite }) => {
   const { profileUsername } = useParams()
   const [user, setUser] = useState()
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false)
@@ -35,10 +34,9 @@ const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyP
             <UserNav token={token} user={user} username={username} setIsUpdatingProfile={setIsUpdatingProfile} profileUsername={profileUsername} pathUsername={pathUsername} />
             <div>
               <UserContent
-                // className='flex-col'
                 token={token} user={user} pathUsername={pathUsername} username={username} profileUsername={profileUsername} firstName={user.first_name} lastName={user.last_name}
                 email={user.email} about={user.about} avatarImage={user.avatar} myProfile={myProfile} setMyProfile={setMyProfile} allUsers={allUsers} setAllUsers={setAllUsers}
-                myFavorites={myFavorites} setMyFavorites={setMyFavorites}
+                myFavorites={myFavorites} setMyFavorites={setMyFavorites} handleFollow={handleFollow} handleUnFollow={handleUnFollow} handleFavorite={handleFavorite} handleUnFavorite={handleUnFavorite}
               />
             </div>
           </div>)
@@ -50,7 +48,7 @@ const UserProfile = ({ token, username, allUsers, setAllUsers, myProfile, setMyP
             }}
           />
           )}
-       </>)}
+      </>)}
     </>
 
   )
