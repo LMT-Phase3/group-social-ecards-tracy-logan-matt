@@ -1,11 +1,11 @@
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import CreateCard from './CreateCard'
-import { addFriend, deleteFriend, getCards } from '../../api'
+import { addFriend, deleteFriend, getCards, addFavorite, deleteFavorite } from '../../api'
 import { useState, useEffect } from 'react'
 import { useParams, Link, Redirect } from 'react-router-dom'
 
-const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, setMyProfile, pathUsername }) => {
+const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, setMyProfile, pathUsername, setMyFavorites, myFavorites }) => {
   const [cards, setCards] = useState([])
   const { profileUsername } = useParams()
   const [pagination, setPagination] = useState(1)
@@ -26,6 +26,13 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
 
   function handleUnFollow (newuser) {
     deleteFriend(token, newuser).then(updatedFriends => setMyProfile(updatedFriends))
+  }
+  function handleFavorite (newFavorite) {
+    addFavorite(token, newFavorite).then(updatedFavorites => setMyFavorites(updatedFavorites))
+  }
+
+  function handleUnFavorite (newFavorite) {
+    deleteFavorite(token, newFavorite).then(updatedFavorites => setMyFavorites(updatedFavorites))
   }
   function handleForward (pageNumber) {
     if (!stopForward) {
@@ -63,7 +70,16 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
             <ListGroup className='flex my-list-group'>
               {cards.map(card => (
                 <ListGroupItem card={card} key={card.pk}>
-                  <div style={{ justifyContent: 'space-between' }} className='flex'><span>{card.title}</span><span className='material-icons sm-nav-icon'>favorite_border</span></div>
+                  <div style={{ justifyContent: 'space-between' }} className='flex'>
+                    <span>{card.title}</span>
+                    {myFavorites && (
+                      <>
+                        {(myFavorites.favorites.includes(card.title))
+                          ? <span onClick={() => handleUnFavorite(card.title)} style={{ color: 'red' }} className='material-icons sm-nav-icon'>favorite</span>
+                          : <span onClick={() => handleFavorite(card.title)} style={{ color: 'red' }} className='material-icons sm-nav-icon'>favorite_border</span>}
+                      </>
+                    )}
+                  </div>
                   <Link className='card-title' to={`/card/${card.pk}`}>
                     <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
                   </Link>
@@ -75,7 +91,6 @@ const UserCardList = ({ token, username, isCreating, setIsCreating, myProfile, s
                       <>
                         {(myProfile.friends.includes(card.user))
                           ? <span onClick={() => handleUnFollow(card.user)} style={{ color: 'grey' }} className='material-icons sm-nav-icon'>thumb_up</span>
-
                           : <span onClick={() => handleFollow(card.user)} className='material-icons sm-nav-icon'>thumb_up_off_alt</span>}
                       </>)}
                   </div>

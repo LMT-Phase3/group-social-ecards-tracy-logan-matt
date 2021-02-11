@@ -33,7 +33,7 @@ function App () {
   const [myFavorites, setMyFavorites] = useState()
   let isLoggedIn = (username && token)
   const cardProps = { token, username, isCreating, setIsCreating, myCards, setMyCards, allUsers, setAllUsers, myProfile, setMyProfile, myFavorites, setMyFavorites }
-  const userProps = { token, username, allUsers, setAllUsers, myProfile, setMyProfile }
+  const userProps = { token, username, allUsers, setAllUsers, myProfile, setMyProfile, myFavorites, setMyFavorites }
 
   useEffect(updateAllCards, [token])
 
@@ -50,7 +50,6 @@ function App () {
   function updateMyFavorites () {
     getMyFavorites(token).then(favorite => setMyFavorites(favorite))
   }
-  console.log(myFavorites)
 
   // Use MyCards to be my set of favorites
 
@@ -108,7 +107,11 @@ function App () {
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item>My Favorites</NavDropdown.Item>
+              <NavDropdown.Item>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/favoritescards'>
+                  <Nav.Item>My Favorites</Nav.Item>
+                </LinkContainer>
+              </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown className='top-dropdown' title='Users' id='basic-nav-dropdown'>
               <NavDropdown.Item>
@@ -159,6 +162,10 @@ function App () {
 
           <Route path='/friendscards'>
             <CardList apiPath='friends-cards' {...cardProps} />
+          </Route>
+
+          <Route path='/favoritescards'>
+            <CardList apiPath='user-favorites' {...cardProps} />
           </Route>
 
           <Route path='/users/:profileUsername/cards'>

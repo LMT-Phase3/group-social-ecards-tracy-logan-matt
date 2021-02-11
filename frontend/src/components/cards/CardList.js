@@ -2,7 +2,6 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import CreateCard from './CreateCard'
 import { getCards, addFriend, deleteFriend, addFavorite, deleteFavorite } from '../../api'
-// import { getCards } from '../../api'
 
 import { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
@@ -12,7 +11,6 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
   const [pagination, setPagination] = useState(1)
 
   useEffect(updateCards, [token, username, apiPath, pagination])
-  // useEffect(handleFollow, [])
 
   function updateCards () {
     getCards(token, apiPath, pagination).then(cards => setCards(cards))
@@ -98,12 +96,10 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
                         : <span onClick={() => handleFavorite(card.title)} style={{ color: 'red' }} className='material-icons sm-nav-icon'>favorite_border</span>}
                     </>
                   )}
-                  {/* <span className='material-icons sm-nav-icon'>favorite_border</span> */}
                 </div>
                 <Link className='card-title' to={`/card/${card.pk}`}>
                   <div className='list-view-image' style={{ backgroundImage: `url(${card.image_front}`, backgroundSize: 'cover' }} />
                 </Link>
-                {/* <Link to={`/users-detail/${card.user.pk}`}> */}
                 <div className='flex'>
                   <Link to={`/user/${card.user}`}>
                     <span>{card.user}</span>
@@ -129,7 +125,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
             )}
 
           </ListGroup>
-        </>
+           </>
           )
         : (<CreateCard
             token={token} setIsCreating={setIsCreating} handleDone={(newCard) => {
@@ -138,7 +134,7 @@ const CardList = ({ token, username, isCreating, setIsCreating, apiPath, myProfi
             }}
            />
           )}
-      </>
+       </>
 
       )}
     </>
