@@ -24,7 +24,7 @@ const UserForm = ({ token, handleDone, isUpdatingProfile, profileUsername, first
         {/* INSERTING USER CONTENT HERE */}
         <>
           <div style={{ alignItems: 'center', width: '90%' }} className='create-card-section flex-col'>
-            <div style={{ border: '3px solid #0000002b', padding: '10px', borderRadius: '10px', width: '100%', justifyContent: 'space-around', alignItems: 'center' }} className='flex animate__animated animate__fadeInLeft'>
+            <div style={{ border: '3px solid #0000002b', padding: '10px', borderRadius: '10px', width: '100%', justifyContent: 'space-around', alignItems: 'center' }} className='flex animate__animated animate__fadeIn'>
               <div style={{ color: 'black', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <div className='user-card-profile' style={{ justifyContent: 'center', alignItems: 'center', color: 'white', backgroundColor: 'black', backgroundSize: 'cover', backgroundImage: `url(${avatarImage})` }} />
                 <div>{profileUsername}</div>

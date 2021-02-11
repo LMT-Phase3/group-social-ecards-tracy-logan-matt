@@ -1,6 +1,7 @@
 
 import UserCardList from '../../components/cards/UserCardList'
 import UserFriends from './UserFriends'
+import UserFollowers from './UserFollowers'
 
 const UserContent = ({ token, username, profileUsername, pathUsername, user, firstName, lastName, email, avatarImage, about, myProfile, setMyProfile, allUsers, setAllUsers, myFavorites, setMyFavorites, handleFollow, handleUnFollow, handleFavorite, handleUnFavorite }) => {
   const cardProps = { token, username, myProfile, setMyProfile, profileUsername, pathUsername, myFavorites, setMyFavorites, handleFollow, handleUnFollow, handleFavorite, handleUnFavorite }
@@ -33,9 +34,11 @@ const UserContent = ({ token, username, profileUsername, pathUsername, user, fir
                 </div>
               </div>
             </div>
+            {/* <UserList userApiPath='user-followers' {...userProps} />
+            <UserList userApiPath='user-friends' {...userProps} /> */}
 
             <UserFriends style={{ flexBasis: '40%' }} className='flex' user={user} allUsers={allUsers} setAllUsers={setAllUsers} {...cardProps} />
-            <UserFriends style={{ flexBasis: '40%' }} className='flex' user={user} allUsers={allUsers} setAllUsers={setAllUsers} {...cardProps} />
+            <UserFollowers style={{ flexBasis: '40%' }} className='flex' user={user} allUsers={allUsers} setAllUsers={setAllUsers} {...cardProps} />
 
           </div>
           <div style={{ flexWrap: 'nowrap' }} className='flex'>

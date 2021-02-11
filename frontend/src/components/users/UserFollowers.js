@@ -10,13 +10,13 @@ const UserFollowers = ({ token, user, profileUsername, allUsers, setAllUsers, pa
 
   return (
     <div className='flex'>
-      {(user.friends.length > 0) && pathUsername && (
+      {(user.followers.length > 0) && pathUsername && (
         <div className='flex'>
-          <div style={{ marginLeft: '15px' }} className='profile-header'>{pathUsername}'s Friends
+          <div style={{ marginLeft: '15px' }} className='profile-header'>{pathUsername}'s Followers
             <div style={{ justifyContent: 'center' }} className='flex'>
               {allUsers.map(other => (
                 <div key={other.pk}>
-                  {(user.friends.includes(other.username)) && (
+                  {(user.followers.includes(other.username)) && (
                     <ListGroup className='my-list-group flex'>
                       <ListGroupItem className='friend-card'>
                         <Link className='card-title' to={`/user/${other.username}`}>
@@ -41,4 +41,4 @@ const UserFollowers = ({ token, user, profileUsername, allUsers, setAllUsers, pa
   )
 }
 
-export default UserFriends
+export default UserFollowers
