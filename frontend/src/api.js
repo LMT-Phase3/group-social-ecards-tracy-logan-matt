@@ -56,7 +56,7 @@ export function register (username, password) {
 
 export function getCards (token, path, page) {
   let apiPath = ''
-  if (path === 'cards' || path === 'user-favorites') {
+  if (path === 'cards' || path === 'user-favorites' || path === 'friends-cards') {
     apiPath = `${path}/?limit=10&offset=${(page - 1) * 10}`
   } else {
     apiPath = `${path}/?page=${page}`
@@ -111,13 +111,26 @@ export function getUsers (token, path, page) {
 }
 
 export function getAllUsers (token) {
-  return API
-    .get('users/', {
-      headers: {
-        Authorization: `Token ${token}`
-      }
-    })
-    .then(res => res.data.results)
+  let allUsers = []
+
+  const getPaginated = (url) => {
+    return API
+      .get(url, {
+        headers: {
+          Authorization: `Token ${token}`
+        }
+      })
+      .then(res => {
+        allUsers = allUsers.concat(res.data.results)
+        if (res.data.next) {
+          return getPaginated(res.data.next)
+        } else {
+          return allUsers
+        }
+      })
+  }
+
+  return getPaginated('/users')
 }
 
 export function getCardDetail (token, pk) {

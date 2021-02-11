@@ -2,20 +2,21 @@ import { Link, Redirect } from 'react-router-dom'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import ListGroup from 'react-bootstrap/ListGroup'
 
-const UserFriends = ({ token, user, profileUsername, allUsers, setAllUsers, pathUsername }) => {
+// Need to get user.followers on here
+const UserFollowers = ({ token, user, profileUsername, allUsers, setAllUsers, pathUsername }) => {
   if (!token) {
     return <Redirect to='/' />
   }
 
   return (
     <div className='flex'>
-      {(user.friends.length > 0) && pathUsername && (
+      {(user.followers.length > 0) && pathUsername && (
         <div className='flex'>
-          <div style={{ marginLeft: '15px' }} className='profile-header'>{pathUsername}'s Friends
+          <div style={{ marginLeft: '15px' }} className='profile-header'>{pathUsername}'s Followers
             <div style={{ justifyContent: 'center' }} className='flex'>
               {allUsers.map(other => (
                 <div key={other.pk}>
-                  {(user.friends.includes(other.username)) && (
+                  {(user.followers.includes(other.username)) && (
                     <ListGroup className='my-list-group flex'>
                       <ListGroupItem className='friend-card'>
                         <Link className='card-title' to={`/user/${other.username}`}>
@@ -40,4 +41,4 @@ const UserFriends = ({ token, user, profileUsername, allUsers, setAllUsers, path
   )
 }
 
-export default UserFriends
+export default UserFollowers

@@ -149,13 +149,13 @@ function App () {
             </NavDropdown>
             <NavDropdown className='top-dropdown' title='Users' id='basic-nav-dropdown'>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => setIsCreating(false)} to='/me'>
-                  <Nav.Item style={{ color: 'black' }}>My Profile</Nav.Item>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/friends'>
+                  <Nav.Item>My Friends</Nav.Item>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
-                <LinkContainer onClick={() => setIsCreating(false)} to='/friends'>
-                  <Nav.Item>My Friends</Nav.Item>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/followers'>
+                  <Nav.Item>My Followers</Nav.Item>
                 </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Item>
@@ -163,6 +163,13 @@ function App () {
                   <Nav.Item>All Users</Nav.Item>
                 </LinkContainer>
               </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item>
+                <LinkContainer onClick={() => setIsCreating(false)} to='/me'>
+                  <Nav.Item style={{ color: 'black' }}>My Profile</Nav.Item>
+                </LinkContainer>
+              </NavDropdown.Item>
+
             </NavDropdown>
           </Nav>
           <div>
@@ -214,6 +221,9 @@ function App () {
 
           <Route path='/friends'>
             <UserList userApiPath='user-friends' {...userProps} />
+          </Route>
+          <Route path='/followers'>
+            <UserList userApiPath='user-followers' {...userProps} />
           </Route>
 
           <Route path='/users'>

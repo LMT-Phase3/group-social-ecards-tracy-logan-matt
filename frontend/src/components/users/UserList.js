@@ -46,7 +46,9 @@ const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyPr
 
   return (
     <>
-      <div className='general-link card-detail-header card-detail-all'>{(userApiPath === 'users') ? 'All Users' : "Friends' Profiles"}</div>
+      {(userApiPath === 'user-followers')
+        ? <div className='general-link card-detail-header card-detail-all'>Followers' Profiles</div>
+        : <div className='general-link card-detail-header card-detail-all'>{(userApiPath === 'users') ? 'All Users' : "Friends' Profiles"}</div>}
       <ListGroup className='my-list-group'>
         {users.map(user => (
           <ListGroupItem user={user} key={user.pk}>
