@@ -56,7 +56,7 @@ export function register (username, password) {
 
 export function getCards (token, path, page) {
   let apiPath = ''
-  if (path === 'cards') {
+  if (path === 'cards' || path === 'user-favorites') {
     apiPath = `${path}/?limit=10&offset=${(page - 1) * 10}`
   } else {
     apiPath = `${path}/?page=${page}`

@@ -35,7 +35,6 @@ const UpdateCard = ({ token, handleDone, pk, isUpdating, setIsUpdating, card }) 
           fontColor={fontColor} setFontColor={setFontColor} justify={justify} setJustify={setJustify} autoClear='false'
         />
       </div>
-      {/* <CardContent backgroundColor={backgroundColor} border={border} font={font} backgroundImage={backgroundImage} title={title} message={message} /> */}
       <PhotoSearch token={token} setBackgroundImage={setBackgroundImage} />
     </>
   )

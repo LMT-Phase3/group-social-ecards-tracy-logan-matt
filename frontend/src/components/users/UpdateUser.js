@@ -30,7 +30,6 @@ const UpdateUser = ({ token, handleDone, profileUsername, user, isUpdatingProfil
           avatarImage={avatarImage} setAvatarImage={setAvatarImage} isUpdatingProfile={isUpdatingProfile} about={about} setAbout={setAbout}
         />
       </div>
-      {/* <CardContent backgroundColor={backgroundColor} border={border} font={font} backgroundImage={backgroundImage} title={title} message={message} /> */}
       <AvatarSearch token={token} setAvatarImage={setAvatarImage} />
     </>
   )

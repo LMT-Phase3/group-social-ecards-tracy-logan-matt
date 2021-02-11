@@ -54,12 +54,12 @@ const UserList = ({ token, username, userFilter, userApiPath, myProfile, setMyPr
   return (
     <>
       <>
-        {(userFilter === 'all') && (
+        {(userApiPath === 'users') && (
           <div className='general-link card-detail-header card-detail-all'>All Users</div>
         )}
       </>
       <>
-        {(userFilter === 'friends') && (
+        {(userApiPath === 'user-friends') && (
           <div className='general-link card-detail-header card-detail-all'>Friends' Profiles</div>
         )}
       </>
