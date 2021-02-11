@@ -4,20 +4,20 @@ import { createCard, updateCard } from '../../../api'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
-import { useState } from 'react'
+// import { useState } from 'react'
 
 const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBorder, setFont, setTitle, setMessage, setBackgroundImage, setFontColor, setBorderType, setJustify, backgroundColor, font, border, backgroundImage, title, message, fontColor, borderType, justify, autoClear }) => {
-  const [justification, setJustification] = useState()
-  function handleJustify (e) {
-    setJustification(e)
-    if (justification === 'left') {
-      setJustify('flex-start')
-    } else if (justify === 'center') {
-      setJustify('center')
-    } else {
-      setJustify('flex-end')
-    }
-  }
+  // const [justification, setJustification] = useState()
+  // function handleJustify (e) {
+  //   setJustification(e)
+  //   if (justification === 'left') {
+  //     setJustify('flex-start')
+  //   } else if (justify === 'center') {
+  //     setJustify('center')
+  //   } else {
+  //     setJustify('flex-end')
+  //   }
+  // }
 
   if (!token) {
     return <Redirect to='/' />
@@ -144,7 +144,7 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
             alignRight
             title='Select Justification'
             id='justification'
-            onSelect={(e) => handleJustify(e)}
+            onSelect={(e) => setJustify(e)}
           >
             <Dropdown.Item style={{ textAlign: 'left' }} eventKey='left'>Left</Dropdown.Item>
             <Dropdown.Item style={{ textAlign: 'center' }} eventKey='center'>Center</Dropdown.Item>
@@ -172,8 +172,8 @@ const CardForm = ({ token, pk, isUpdating, handleDone, setBackgroundColor, setBo
               <Card.Body>
                 <div className='inside-body flex' style={{ border: `${borderType} ${border}`, justifyContent: 'center', alignItems: 'center', backgroundColor: `${backgroundColor}` }}>
                   {(autoClear === 'true')
-                    ? <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justification}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
-                    : <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justification}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onChange={evt => setMessage(evt.target.value)} />}
+                    ? <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justify}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onClick={evt => setMessage('')} onChange={evt => setMessage(evt.target.value)} />
+                    : <textarea style={{ border: 'none', width: '100%', height: '50%', textAlign: `${justify}`, fontFamily: `${font}`, color: `${fontColor}`, backgroundColor: `${backgroundColor}` }} type='textarea' id='message' required value={message} onChange={evt => setMessage(evt.target.value)} />}
                 </div>
                 {/* Make border-solid and justification fields in model */}
               </Card.Body>

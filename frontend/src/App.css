@@ -265,9 +265,7 @@ a {
 }
 
 
-.card-detail-holder {
-  height: 280px;
-}
+
 .my-card-title {
   background-color: rgba(0, 0, 0, 0.227);
   margin-left: 50px;
@@ -299,6 +297,7 @@ a {
 
 .card-detail-holder{
   width: 500px;
+  height: 280px;
   border-radius: 10px;
   background-size: cover;
 
