@@ -204,3 +204,5 @@ class FollowersView(ListAPIView):
     def get_queryset(self):
         current_user = self.request.user
         return User.objects.filter(friends__username=current_user)
+
+

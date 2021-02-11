@@ -37,6 +37,7 @@ class CardSerializer(serializers.ModelSerializer):
         
 class UserCreateSerializer(serializers.ModelSerializer):
     friends = serializers.StringRelatedField(many=True, read_only=True)
+    followers = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = User
         fields = [
@@ -46,7 +47,8 @@ class UserCreateSerializer(serializers.ModelSerializer):
             'last_name',
             'friends',
             "about",
-            "avatar"
+            "avatar",
+            "followers"
         ]
 # Add 'followers' as a field in serializer
 

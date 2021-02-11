@@ -35,7 +35,8 @@ urlpatterns = [
     path('api/user-friends/', core_views.FriendsView.as_view()),
     path('api/my-favorites/', core_views.FavoritesListView.as_view()),
     path('api/user-favorites/', core_views.FavoritesView.as_view()),
-    path('api/user-followers/', core_views.FollowersView.as_view())
+    path('api/user-followers/', core_views.FollowersView.as_view()),
+    
     
    
 ]
