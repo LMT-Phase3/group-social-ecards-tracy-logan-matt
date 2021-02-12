@@ -264,7 +264,7 @@ function App () {
                     </Carousel.Item>
                     <Carousel.Item>
                       <CardContent
-                        backgroundColor='yellow' font='Lucinda' border='brown' title='Happy Thanksgiving' message='Hoping you had a lovely holiday!' fontColor='black' borderType='10px double' justify='flex-end'
+                        backgroundColor='#fdd835' font='Lucinda' border='brown' title='Happy Thanksgiving' message='Hoping you had a lovely holiday!' fontColor='black' borderType='10px double' justify='flex-end'
                         backgroundImage='https://images.unsplash.com/photo-1538883689728-2c32af36a313?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwyMDQxMTN8MHwxfHNlYXJjaHwxfHx0aGFua3NnaXZpbmd8ZW58MHwwfHw&ixlib=rb-1.2.1&q=80&w=1080'
                       />
                     </Carousel.Item>

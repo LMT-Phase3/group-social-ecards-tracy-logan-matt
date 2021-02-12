@@ -34,8 +34,6 @@ const UserContent = ({ token, username, profileUsername, pathUsername, user, fir
                 </div>
               </div>
             </div>
-            {/* <UserList userApiPath='user-followers' {...userProps} />
-            <UserList userApiPath='user-friends' {...userProps} /> */}
 
             <UserFriends style={{ flexBasis: '40%' }} className='flex' user={user} allUsers={allUsers} setAllUsers={setAllUsers} {...cardProps} />
             <UserFollowers style={{ flexBasis: '40%' }} className='flex' user={user} allUsers={allUsers} setAllUsers={setAllUsers} {...cardProps} />
