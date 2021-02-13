@@ -10,8 +10,8 @@ const CardContent = ({ backgroundColor, border, font, backgroundImage, title, me
   }
 
   return (
-    <div className='create-card-section flex-col'>
-      <div className='flex'>
+    <div style={{ alignItems: 'center' }} className='create-card-section flex-col'>
+      <div style={{ justifyContent: 'center' }} className='flex'>
         <Card>
           <Card.Body>
             <div className='card-detail-holder myimage myfont-big' style={{ color: 'white', backgroundImage: `url(${backgroundImage}` }}><span style={{ fontFamily: `${font}` }} className='my-card-title'>{title}</span></div>
